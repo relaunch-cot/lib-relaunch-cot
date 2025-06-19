@@ -6,7 +6,7 @@ import "google/protobuf/empty.proto";
 
 option go_package = "lib-relaunch-cot.com/m/proto/user";
 
-message CreateUserRequest {
+message CreateUserRequest{
   string name = 1;
   string email = 2;
   string password = 3;
