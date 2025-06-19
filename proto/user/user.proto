@@ -1,0 +1,17 @@
+syntax= "proto3";
+
+package user;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "lib-relaunch-cot.com/m/proto/user";
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
+}
