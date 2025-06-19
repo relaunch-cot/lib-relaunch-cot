@@ -1,4 +1,4 @@
-module lib-relaunch-cot.com/m
+module github.com/relaunch-cot/lib-relaunch-cot
 
 go 1.24.1
 
