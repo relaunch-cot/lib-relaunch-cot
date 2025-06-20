@@ -4,7 +4,7 @@ package user;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "lib-relaunch-cot.com/m/proto/user";
+option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/user";
 
 message CreateUserRequest{
   string name = 1;

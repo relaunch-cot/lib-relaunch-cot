@@ -93,7 +93,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword2L\n" +
 	"\vUserService\x12=\n" +
 	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.EmptyB#Z!lib-relaunch-cot.com/m/proto/userb\x06proto3"
+	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.EmptyB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
