@@ -15,8 +15,8 @@ type Client struct {
 
 var DB *sql.DB
 
-func InitMySQL(ctx context.Context, user, password, host string, port int, dbname string) error {
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true", user, password, host, port, dbname)
+func InitMySQL(ctx context.Context, user, password, host, port, dbname string) error {
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", user, password, host, port, dbname)
 
 	var err error
 	DB, err = sql.Open("mysql", dsn)
