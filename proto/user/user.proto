@@ -25,8 +25,9 @@ message LoginUserResponse{
 
 //////////////////////////////// UPDATE USER PASSWORD REQUEST
 message UpdateUserPasswordRequest {
-  string userId = 1;
-  string password = 2;
+  string email = 1;
+  string currentPassword = 2;
+  string newPassword = 3;
 }
 
 message UpdateUserPasswordResponse {
