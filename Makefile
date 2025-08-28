@@ -6,7 +6,6 @@ pkg :=user
 
 all: $(pkg)
 user: $@
-base_models: $@
 
 $(pkg):
 	@protoc -I$(PROTO_DIR) \

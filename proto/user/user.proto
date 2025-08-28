@@ -3,7 +3,6 @@ syntax= "proto3";
 package user;
 
 import "google/protobuf/empty.proto";
-import "base_models/user.proto";
 
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/user";
 
@@ -24,15 +23,15 @@ message LoginUserResponse{
   string token = 1;
 }
 
-//////////////////////////////// UPDATE USER REQUEST
-message UpdateUserRequest {
+//////////////////////////////// UPDATE USER PASSWORD REQUEST
+message UpdateUserPasswordRequest {
   string email = 1;
-  base_models.User currentUser = 2;
-  base_models.User newUser = 3;
+  string currentPassword = 2;
+  string newPassword = 3;
 }
 
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
-  rpc UpdateUser(UpdateUserRequest) returns(google.protobuf.Empty);
+  rpc UpdateUserPassword(UpdateUserPasswordRequest) returns(google.protobuf.Empty);
 }
