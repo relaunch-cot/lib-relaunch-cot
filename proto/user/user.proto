@@ -4,6 +4,14 @@ package user;
 
 import "google/protobuf/empty.proto";
 
+//////////////////////////////// USER MESSAGE
+message User {
+  int64 userId = 1;
+  string name = 2;
+  string email = 3;
+  string hashedPassword = 4;
+}
+
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/user";
 
 //////////////////////////////// CREATE USER REQUEST
@@ -30,8 +38,16 @@ message UpdateUserPasswordRequest {
   string newPassword = 3;
 }
 
+//////////////////////////////// UPDATE USER REQUEST
+message UpdateUserRequest {
+  string email = 1;
+  User currentUser = 2;
+  User newUser = 3;
+}
+
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
   rpc UpdateUserPassword(UpdateUserPasswordRequest) returns(google.protobuf.Empty);
+  rpc UpdateUser(UpdateUserRequest) returns(google.protobuf.Empty);
 }
