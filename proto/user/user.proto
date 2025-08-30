@@ -41,7 +41,8 @@ message UpdateUserPasswordRequest {
 //////////////////////////////// UPDATE USER REQUEST
 message UpdateUserRequest {
   int64 userId = 1;
-  User newUser = 2;
+  string password = 2;
+  User newUser = 3;
 }
 
 //////////////////////////////// DELETE USER REQUEST

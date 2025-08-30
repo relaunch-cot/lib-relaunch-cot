@@ -314,7 +314,8 @@ func (x *UpdateUserPasswordRequest) GetNewPassword() string {
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	NewUser       *User                  `protobuf:"bytes,2,opt,name=newUser,proto3" json:"newUser,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewUser       *User                  `protobuf:"bytes,3,opt,name=newUser,proto3" json:"newUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -354,6 +355,13 @@ func (x *UpdateUserRequest) GetUserId() int64 {
 		return x.UserId
 	}
 	return 0
+}
+
+func (x *UpdateUserRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
 }
 
 func (x *UpdateUserRequest) GetNewUser() *User {
@@ -438,10 +446,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\x19UpdateUserPasswordRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12(\n" +
 	"\x0fcurrentPassword\x18\x02 \x01(\tR\x0fcurrentPassword\x12 \n" +
-	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"Q\n" +
+	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"m\n" +
 	"\x11UpdateUserRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12$\n" +
-	"\anewUser\x18\x02 \x01(\v2\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12$\n" +
+	"\anewUser\x18\x03 \x01(\v2\n" +
 	".user.UserR\anewUser\"E\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
