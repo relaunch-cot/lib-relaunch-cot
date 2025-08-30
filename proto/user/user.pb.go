@@ -313,9 +313,8 @@ func (x *UpdateUserPasswordRequest) GetNewPassword() string {
 // ////////////////////////////// UPDATE USER REQUEST
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	CurrentUser   *User                  `protobuf:"bytes,2,opt,name=currentUser,proto3" json:"currentUser,omitempty"`
-	NewUser       *User                  `protobuf:"bytes,3,opt,name=newUser,proto3" json:"newUser,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	NewUser       *User                  `protobuf:"bytes,2,opt,name=newUser,proto3" json:"newUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -350,18 +349,11 @@ func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateUserRequest) GetEmail() string {
+func (x *UpdateUserRequest) GetUserId() string {
 	if x != nil {
-		return x.Email
+		return x.UserId
 	}
 	return ""
-}
-
-func (x *UpdateUserRequest) GetCurrentUser() *User {
-	if x != nil {
-		return x.CurrentUser
-	}
-	return nil
 }
 
 func (x *UpdateUserRequest) GetNewUser() *User {
@@ -446,12 +438,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x19UpdateUserPasswordRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12(\n" +
 	"\x0fcurrentPassword\x18\x02 \x01(\tR\x0fcurrentPassword\x12 \n" +
-	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"}\n" +
-	"\x11UpdateUserRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12,\n" +
-	"\vcurrentUser\x18\x02 \x01(\v2\n" +
-	".user.UserR\vcurrentUser\x12$\n" +
-	"\anewUser\x18\x03 \x01(\v2\n" +
+	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"Q\n" +
+	"\x11UpdateUserRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12$\n" +
+	"\anewUser\x18\x02 \x01(\v2\n" +
 	".user.UserR\anewUser\"E\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
@@ -490,23 +480,22 @@ var file_user_user_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),             // 7: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
-	0, // 0: user.UpdateUserRequest.currentUser:type_name -> user.User
-	0, // 1: user.UpdateUserRequest.newUser:type_name -> user.User
-	1, // 2: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	2, // 3: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	4, // 4: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
-	5, // 5: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
-	6, // 6: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
-	7, // 7: user.UserService.CreateUser:output_type -> google.protobuf.Empty
-	3, // 8: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	7, // 9: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
-	7, // 10: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
-	7, // 11: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: user.UpdateUserRequest.newUser:type_name -> user.User
+	1, // 1: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	2, // 2: user.UserService.LoginUser:input_type -> user.LoginUserRequest
+	4, // 3: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
+	5, // 4: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
+	6, // 5: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
+	7, // 6: user.UserService.CreateUser:output_type -> google.protobuf.Empty
+	3, // 7: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	7, // 8: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
+	7, // 9: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
+	7, // 10: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
+	6, // [6:11] is the sub-list for method output_type
+	1, // [1:6] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }

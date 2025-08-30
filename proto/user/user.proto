@@ -40,9 +40,8 @@ message UpdateUserPasswordRequest {
 
 //////////////////////////////// UPDATE USER REQUEST
 message UpdateUserRequest {
-  string email = 1;
-  User currentUser = 2;
-  User newUser = 3;
+  string userId = 1;
+  User newUser = 2;
 }
 
 //////////////////////////////// DELETE USER REQUEST
