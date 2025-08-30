@@ -313,7 +313,7 @@ func (x *UpdateUserPasswordRequest) GetNewPassword() string {
 // ////////////////////////////// UPDATE USER REQUEST
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	NewUser       *User                  `protobuf:"bytes,2,opt,name=newUser,proto3" json:"newUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -349,11 +349,11 @@ func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateUserRequest) GetUserId() string {
+func (x *UpdateUserRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return 0
 }
 
 func (x *UpdateUserRequest) GetNewUser() *User {
@@ -440,7 +440,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x0fcurrentPassword\x18\x02 \x01(\tR\x0fcurrentPassword\x12 \n" +
 	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"Q\n" +
 	"\x11UpdateUserRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\x12$\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12$\n" +
 	"\anewUser\x18\x02 \x01(\v2\n" +
 	".user.UserR\anewUser\"E\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
