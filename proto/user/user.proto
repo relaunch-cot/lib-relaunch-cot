@@ -52,11 +52,16 @@ message DeleteUserRequest {
 }
 //////////////////////////////// REPORT GENERATION REQUEST
 message GenerateReportRequest {
-    string json_data = 1;
+  string json_data = 1;
 }
 //////////////////////////////// REPORT GENERATION RESPONSE
 message GenerateReportResponse {
-    bytes pdf_data = 1;
+  bytes pdf_data = 1;
+}
+
+//////////////////////////////// SEND PASSWORD RECOVERY EMAIL REQUEST
+message SendPasswordRecoveryEmailRequest {
+  string email = 1;
 }
 
 service UserService {
@@ -65,5 +70,6 @@ service UserService {
   rpc UpdateUserPassword(UpdateUserPasswordRequest) returns(google.protobuf.Empty);
   rpc UpdateUser(UpdateUserRequest) returns(google.protobuf.Empty);
   rpc DeleteUser(DeleteUserRequest) returns(google.protobuf.Empty);
-   rpc GenerateReportFromJSON(GenerateReportRequest) returns (GenerateReportResponse);
+  rpc GenerateReportFromJSON(GenerateReportRequest) returns(GenerateReportResponse);
+  rpc SendPasswordRecoveryEmail(SendPasswordRecoveryEmailRequest) returns(google.protobuf.Empty);
 }

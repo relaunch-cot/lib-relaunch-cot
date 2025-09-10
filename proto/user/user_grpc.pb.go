@@ -20,12 +20,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_CreateUser_FullMethodName             = "/user.UserService/CreateUser"
-	UserService_LoginUser_FullMethodName              = "/user.UserService/LoginUser"
-	UserService_UpdateUserPassword_FullMethodName     = "/user.UserService/UpdateUserPassword"
-	UserService_UpdateUser_FullMethodName             = "/user.UserService/UpdateUser"
-	UserService_DeleteUser_FullMethodName             = "/user.UserService/DeleteUser"
-	UserService_GenerateReportFromJSON_FullMethodName = "/user.UserService/GenerateReportFromJSON"
+	UserService_CreateUser_FullMethodName                = "/user.UserService/CreateUser"
+	UserService_LoginUser_FullMethodName                 = "/user.UserService/LoginUser"
+	UserService_UpdateUserPassword_FullMethodName        = "/user.UserService/UpdateUserPassword"
+	UserService_UpdateUser_FullMethodName                = "/user.UserService/UpdateUser"
+	UserService_DeleteUser_FullMethodName                = "/user.UserService/DeleteUser"
+	UserService_GenerateReportFromJSON_FullMethodName    = "/user.UserService/GenerateReportFromJSON"
+	UserService_SendPasswordRecoveryEmail_FullMethodName = "/user.UserService/SendPasswordRecoveryEmail"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -38,6 +39,7 @@ type UserServiceClient interface {
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GenerateReportFromJSON(ctx context.Context, in *GenerateReportRequest, opts ...grpc.CallOption) (*GenerateReportResponse, error)
+	SendPasswordRecoveryEmail(ctx context.Context, in *SendPasswordRecoveryEmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type userServiceClient struct {
@@ -108,6 +110,16 @@ func (c *userServiceClient) GenerateReportFromJSON(ctx context.Context, in *Gene
 	return out, nil
 }
 
+func (c *userServiceClient) SendPasswordRecoveryEmail(ctx context.Context, in *SendPasswordRecoveryEmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, UserService_SendPasswordRecoveryEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -118,6 +130,7 @@ type UserServiceServer interface {
 	UpdateUser(context.Context, *UpdateUserRequest) (*emptypb.Empty, error)
 	DeleteUser(context.Context, *DeleteUserRequest) (*emptypb.Empty, error)
 	GenerateReportFromJSON(context.Context, *GenerateReportRequest) (*GenerateReportResponse, error)
+	SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -145,6 +158,9 @@ func (UnimplementedUserServiceServer) DeleteUser(context.Context, *DeleteUserReq
 }
 func (UnimplementedUserServiceServer) GenerateReportFromJSON(context.Context, *GenerateReportRequest) (*GenerateReportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateReportFromJSON not implemented")
+}
+func (UnimplementedUserServiceServer) SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendPasswordRecoveryEmail not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -275,6 +291,24 @@ func _UserService_GenerateReportFromJSON_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_SendPasswordRecoveryEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendPasswordRecoveryEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SendPasswordRecoveryEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_SendPasswordRecoveryEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SendPasswordRecoveryEmail(ctx, req.(*SendPasswordRecoveryEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -305,6 +339,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GenerateReportFromJSON",
 			Handler:    _UserService_GenerateReportFromJSON_Handler,
+		},
+		{
+			MethodName: "SendPasswordRecoveryEmail",
+			Handler:    _UserService_SendPasswordRecoveryEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
