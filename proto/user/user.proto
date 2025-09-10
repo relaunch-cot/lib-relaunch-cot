@@ -62,6 +62,7 @@ message GenerateReportResponse {
 //////////////////////////////// SEND PASSWORD RECOVERY EMAIL REQUEST
 message SendPasswordRecoveryEmailRequest {
   string email = 1;
+  string recoveryLink = 2;
 }
 
 service UserService {

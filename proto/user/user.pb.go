@@ -518,6 +518,7 @@ func (x *GenerateReportResponse) GetPdfData() []byte {
 type SendPasswordRecoveryEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	RecoveryLink  string                 `protobuf:"bytes,2,opt,name=recoveryLink,proto3" json:"recoveryLink,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -559,6 +560,13 @@ func (x *SendPasswordRecoveryEmailRequest) GetEmail() string {
 	return ""
 }
 
+func (x *SendPasswordRecoveryEmailRequest) GetRecoveryLink() string {
+	if x != nil {
+		return x.RecoveryLink
+	}
+	return ""
+}
+
 var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
@@ -593,9 +601,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x15GenerateReportRequest\x12\x1b\n" +
 	"\tjson_data\x18\x01 \x01(\tR\bjsonData\"3\n" +
 	"\x16GenerateReportResponse\x12\x19\n" +
-	"\bpdf_data\x18\x01 \x01(\fR\apdfData\"8\n" +
+	"\bpdf_data\x18\x01 \x01(\fR\apdfData\"\\\n" +
 	" SendPasswordRecoveryEmailRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email2\x89\x04\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
+	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink2\x89\x04\n" +
 	"\vUserService\x12=\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.Empty\x12<\n" +
