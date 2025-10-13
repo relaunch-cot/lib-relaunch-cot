@@ -33,8 +33,7 @@ message LoginUserResponse{
 
 //////////////////////////////// UPDATE USER PASSWORD REQUEST
 message UpdateUserPasswordRequest {
-  string email = 1;
-  string currentPassword = 2;
+  int64 userId = 1;
   string newPassword = 3;
 }
 

@@ -251,12 +251,11 @@ func (x *LoginUserResponse) GetToken() string {
 
 // ////////////////////////////// UPDATE USER PASSWORD REQUEST
 type UpdateUserPasswordRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Email           string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	CurrentPassword string                 `protobuf:"bytes,2,opt,name=currentPassword,proto3" json:"currentPassword,omitempty"`
-	NewPassword     string                 `protobuf:"bytes,3,opt,name=newPassword,proto3" json:"newPassword,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,3,opt,name=newPassword,proto3" json:"newPassword,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateUserPasswordRequest) Reset() {
@@ -289,18 +288,11 @@ func (*UpdateUserPasswordRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateUserPasswordRequest) GetEmail() string {
+func (x *UpdateUserPasswordRequest) GetUserId() int64 {
 	if x != nil {
-		return x.Email
+		return x.UserId
 	}
-	return ""
-}
-
-func (x *UpdateUserPasswordRequest) GetCurrentPassword() string {
-	if x != nil {
-		return x.CurrentPassword
-	}
-	return ""
+	return 0
 }
 
 func (x *UpdateUserPasswordRequest) GetNewPassword() string {
@@ -585,10 +577,9 @@ const file_user_user_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\")\n" +
 	"\x11LoginUserResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"}\n" +
-	"\x19UpdateUserPasswordRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12(\n" +
-	"\x0fcurrentPassword\x18\x02 \x01(\tR\x0fcurrentPassword\x12 \n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"U\n" +
+	"\x19UpdateUserPasswordRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12 \n" +
 	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"m\n" +
 	"\x11UpdateUserRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
