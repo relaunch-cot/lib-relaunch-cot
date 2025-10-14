@@ -1,0 +1,37 @@
+syntax= "proto3";
+
+package chat;
+
+import "google/protobuf/empty.proto";
+import "base_models/base_models.proto";
+
+option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/chat";
+
+//////////////////////////////// CREATE NEW CHAT REQUEST
+message CreateNewChatRequest {
+  repeated int64 userIds = 1;
+  int64 createdBy = 2;
+}
+
+//////////////////////////////// SEND MESSAGE REQUEST
+message SendMessageRequest {
+  int64 senderId = 1;
+  int64 chatId = 2;
+  string messageContent = 3;
+}
+
+//////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
+message GetAllMessagesFromChatRequest {
+  int64 chatId = 1;
+}
+
+//////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
+message GetAllMessagesFromChatResponse {
+  repeated base_models.Message messages = 1;
+}
+
+service ChatService {
+  rpc CreateNewChat(CreateNewChatRequest) returns(google.protobuf.Empty);
+  rpc SendMessage(SendMessageRequest) returns(google.protobuf.Empty);
+  rpc GetAllMessagesFromChat(GetAllMessagesFromChatRequest) returns(GetAllMessagesFromChatResponse);
+}

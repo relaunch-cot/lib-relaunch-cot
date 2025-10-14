@@ -492,210 +492,6 @@ func (x *SendPasswordRecoveryEmailRequest) GetRecoveryLink() string {
 	return ""
 }
 
-// ////////////////////////////// CREATE NEW CHAT REQUEST
-type CreateNewChatRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserIds       []int64                `protobuf:"varint,1,rep,packed,name=userIds,proto3" json:"userIds,omitempty"`
-	CreatedBy     int64                  `protobuf:"varint,2,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateNewChatRequest) Reset() {
-	*x = CreateNewChatRequest{}
-	mi := &file_user_user_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateNewChatRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateNewChatRequest) ProtoMessage() {}
-
-func (x *CreateNewChatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateNewChatRequest.ProtoReflect.Descriptor instead.
-func (*CreateNewChatRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *CreateNewChatRequest) GetUserIds() []int64 {
-	if x != nil {
-		return x.UserIds
-	}
-	return nil
-}
-
-func (x *CreateNewChatRequest) GetCreatedBy() int64 {
-	if x != nil {
-		return x.CreatedBy
-	}
-	return 0
-}
-
-// ////////////////////////////// SEND MESSAGE REQUEST
-type SendMessageRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	SenderId       int64                  `protobuf:"varint,1,opt,name=senderId,proto3" json:"senderId,omitempty"`
-	ChatId         int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	MessageContent string                 `protobuf:"bytes,3,opt,name=messageContent,proto3" json:"messageContent,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
-}
-
-func (x *SendMessageRequest) Reset() {
-	*x = SendMessageRequest{}
-	mi := &file_user_user_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SendMessageRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SendMessageRequest) ProtoMessage() {}
-
-func (x *SendMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SendMessageRequest.ProtoReflect.Descriptor instead.
-func (*SendMessageRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *SendMessageRequest) GetSenderId() int64 {
-	if x != nil {
-		return x.SenderId
-	}
-	return 0
-}
-
-func (x *SendMessageRequest) GetChatId() int64 {
-	if x != nil {
-		return x.ChatId
-	}
-	return 0
-}
-
-func (x *SendMessageRequest) GetMessageContent() string {
-	if x != nil {
-		return x.MessageContent
-	}
-	return ""
-}
-
-// ////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
-type GetAllMessagesFromChatRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllMessagesFromChatRequest) Reset() {
-	*x = GetAllMessagesFromChatRequest{}
-	mi := &file_user_user_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllMessagesFromChatRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllMessagesFromChatRequest) ProtoMessage() {}
-
-func (x *GetAllMessagesFromChatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllMessagesFromChatRequest.ProtoReflect.Descriptor instead.
-func (*GetAllMessagesFromChatRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *GetAllMessagesFromChatRequest) GetChatId() int64 {
-	if x != nil {
-		return x.ChatId
-	}
-	return 0
-}
-
-// ////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
-type GetAllMessagesFromChatResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Messages      []*base_models.Message `protobuf:"bytes,1,rep,name=messages,proto3" json:"messages,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetAllMessagesFromChatResponse) Reset() {
-	*x = GetAllMessagesFromChatResponse{}
-	mi := &file_user_user_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetAllMessagesFromChatResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetAllMessagesFromChatResponse) ProtoMessage() {}
-
-func (x *GetAllMessagesFromChatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetAllMessagesFromChatResponse.ProtoReflect.Descriptor instead.
-func (*GetAllMessagesFromChatResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *GetAllMessagesFromChatResponse) GetMessages() []*base_models.Message {
-	if x != nil {
-		return x.Messages
-	}
-	return nil
-}
-
 var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
@@ -726,18 +522,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\bpdf_data\x18\x01 \x01(\fR\apdfData\"\\\n" +
 	" SendPasswordRecoveryEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
-	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink\"N\n" +
-	"\x14CreateNewChatRequest\x12\x18\n" +
-	"\auserIds\x18\x01 \x03(\x03R\auserIds\x12\x1c\n" +
-	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"p\n" +
-	"\x12SendMessageRequest\x12\x1a\n" +
-	"\bsenderId\x18\x01 \x01(\x03R\bsenderId\x12\x16\n" +
-	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12&\n" +
-	"\x0emessageContent\x18\x03 \x01(\tR\x0emessageContent\"7\n" +
-	"\x1dGetAllMessagesFromChatRequest\x12\x16\n" +
-	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\"R\n" +
-	"\x1eGetAllMessagesFromChatResponse\x120\n" +
-	"\bmessages\x18\x01 \x03(\v2\x14.base_models.MessageR\bmessages2\xf4\x05\n" +
+	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink2\x89\x04\n" +
 	"\vUserService\x12=\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.Empty\x12<\n" +
@@ -748,10 +533,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\n" +
 	"DeleteUser\x12\x17.user.DeleteUserRequest\x1a\x16.google.protobuf.Empty\x12S\n" +
 	"\x16GenerateReportFromJSON\x12\x1b.user.GenerateReportRequest\x1a\x1c.user.GenerateReportResponse\x12[\n" +
-	"\x19SendPasswordRecoveryEmail\x12&.user.SendPasswordRecoveryEmailRequest\x1a\x16.google.protobuf.Empty\x12C\n" +
-	"\rCreateNewChat\x12\x1a.user.CreateNewChatRequest\x1a\x16.google.protobuf.Empty\x12?\n" +
-	"\vSendMessage\x12\x18.user.SendMessageRequest\x1a\x16.google.protobuf.Empty\x12c\n" +
-	"\x16GetAllMessagesFromChat\x12#.user.GetAllMessagesFromChatRequest\x1a$.user.GetAllMessagesFromChatResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/userb\x06proto3"
+	"\x19SendPasswordRecoveryEmail\x12&.user.SendPasswordRecoveryEmailRequest\x1a\x16.google.protobuf.EmptyB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -765,7 +547,7 @@ func file_user_user_proto_rawDescGZIP() []byte {
 	return file_user_user_proto_rawDescData
 }
 
-var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_user_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),                // 0: user.CreateUserRequest
 	(*LoginUserRequest)(nil),                 // 1: user.LoginUserRequest
@@ -776,42 +558,30 @@ var file_user_user_proto_goTypes = []any{
 	(*GenerateReportRequest)(nil),            // 6: user.GenerateReportRequest
 	(*GenerateReportResponse)(nil),           // 7: user.GenerateReportResponse
 	(*SendPasswordRecoveryEmailRequest)(nil), // 8: user.SendPasswordRecoveryEmailRequest
-	(*CreateNewChatRequest)(nil),             // 9: user.CreateNewChatRequest
-	(*SendMessageRequest)(nil),               // 10: user.SendMessageRequest
-	(*GetAllMessagesFromChatRequest)(nil),    // 11: user.GetAllMessagesFromChatRequest
-	(*GetAllMessagesFromChatResponse)(nil),   // 12: user.GetAllMessagesFromChatResponse
-	(*base_models.User)(nil),                 // 13: base_models.User
-	(*base_models.Message)(nil),              // 14: base_models.Message
-	(*emptypb.Empty)(nil),                    // 15: google.protobuf.Empty
+	(*base_models.User)(nil),                 // 9: base_models.User
+	(*emptypb.Empty)(nil),                    // 10: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
-	13, // 0: user.UpdateUserRequest.newUser:type_name -> base_models.User
-	14, // 1: user.GetAllMessagesFromChatResponse.messages:type_name -> base_models.Message
-	0,  // 2: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	1,  // 3: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	3,  // 4: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
-	4,  // 5: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
-	5,  // 6: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
-	6,  // 7: user.UserService.GenerateReportFromJSON:input_type -> user.GenerateReportRequest
-	8,  // 8: user.UserService.SendPasswordRecoveryEmail:input_type -> user.SendPasswordRecoveryEmailRequest
-	9,  // 9: user.UserService.CreateNewChat:input_type -> user.CreateNewChatRequest
-	10, // 10: user.UserService.SendMessage:input_type -> user.SendMessageRequest
-	11, // 11: user.UserService.GetAllMessagesFromChat:input_type -> user.GetAllMessagesFromChatRequest
-	15, // 12: user.UserService.CreateUser:output_type -> google.protobuf.Empty
-	2,  // 13: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	15, // 14: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
-	15, // 15: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
-	15, // 16: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
-	7,  // 17: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
-	15, // 18: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
-	15, // 19: user.UserService.CreateNewChat:output_type -> google.protobuf.Empty
-	15, // 20: user.UserService.SendMessage:output_type -> google.protobuf.Empty
-	12, // 21: user.UserService.GetAllMessagesFromChat:output_type -> user.GetAllMessagesFromChatResponse
-	12, // [12:22] is the sub-list for method output_type
-	2,  // [2:12] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	9,  // 0: user.UpdateUserRequest.newUser:type_name -> base_models.User
+	0,  // 1: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	1,  // 2: user.UserService.LoginUser:input_type -> user.LoginUserRequest
+	3,  // 3: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
+	4,  // 4: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
+	5,  // 5: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
+	6,  // 6: user.UserService.GenerateReportFromJSON:input_type -> user.GenerateReportRequest
+	8,  // 7: user.UserService.SendPasswordRecoveryEmail:input_type -> user.SendPasswordRecoveryEmailRequest
+	10, // 8: user.UserService.CreateUser:output_type -> google.protobuf.Empty
+	2,  // 9: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	10, // 10: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
+	10, // 11: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
+	10, // 12: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
+	7,  // 13: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
+	10, // 14: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
+	8,  // [8:15] is the sub-list for method output_type
+	1,  // [1:8] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }
@@ -825,7 +595,7 @@ func file_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_proto_rawDesc), len(file_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

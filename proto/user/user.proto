@@ -58,29 +58,6 @@ message SendPasswordRecoveryEmailRequest {
   string recoveryLink = 2;
 }
 
-//////////////////////////////// CREATE NEW CHAT REQUEST
-message CreateNewChatRequest {
-  repeated int64 userIds = 1;
-  int64 createdBy = 2;
-}
-
-//////////////////////////////// SEND MESSAGE REQUEST
-message SendMessageRequest {
-  int64 senderId = 1;
-  int64 chatId = 2;
-  string messageContent = 3;
-}
-
-//////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
-message GetAllMessagesFromChatRequest {
-  int64 chatId = 1;
-}
-
-//////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
-message GetAllMessagesFromChatResponse {
-  repeated base_models.Message messages = 1;
-}
-
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
@@ -89,7 +66,4 @@ service UserService {
   rpc DeleteUser(DeleteUserRequest) returns(google.protobuf.Empty);
   rpc GenerateReportFromJSON(GenerateReportRequest) returns(GenerateReportResponse);
   rpc SendPasswordRecoveryEmail(SendPasswordRecoveryEmailRequest) returns(google.protobuf.Empty);
-  rpc CreateNewChat(CreateNewChatRequest) returns(google.protobuf.Empty);
-  rpc SendMessage(SendMessageRequest) returns(google.protobuf.Empty);
-  rpc GetAllMessagesFromChat(GetAllMessagesFromChatRequest) returns(GetAllMessagesFromChatResponse);
 }
