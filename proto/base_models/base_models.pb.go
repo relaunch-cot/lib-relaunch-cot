@@ -90,14 +90,14 @@ func (x *User) GetHashedPassword() string {
 }
 
 type Message struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	MessageId      int64                  `protobuf:"varint,1,opt,name=messageId,proto3" json:"messageId,omitempty"`
-	ChatId         int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	SenderId       int64                  `protobuf:"varint,3,opt,name=senderId,proto3" json:"senderId,omitempty"`
-	MessageContent string                 `protobuf:"bytes,4,opt,name=messageContent,proto3" json:"messageContent,omitempty"`
-	CreatedAt      string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ChatId        int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	SenderId      int64                  `protobuf:"varint,3,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message) Reset() {
@@ -130,9 +130,9 @@ func (*Message) Descriptor() ([]byte, []int) {
 	return file_base_models_base_models_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Message) GetMessageId() int64 {
+func (x *Message) GetId() int64 {
 	if x != nil {
-		return x.MessageId
+		return x.Id
 	}
 	return 0
 }
@@ -151,9 +151,9 @@ func (x *Message) GetSenderId() int64 {
 	return 0
 }
 
-func (x *Message) GetMessageContent() string {
+func (x *Message) GetContent() string {
 	if x != nil {
-		return x.MessageContent
+		return x.Content
 	}
 	return ""
 }
@@ -174,12 +174,12 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12&\n" +
-	"\x0ehashedPassword\x18\x04 \x01(\tR\x0ehashedPassword\"\xa1\x01\n" +
-	"\aMessage\x12\x1c\n" +
-	"\tmessageId\x18\x01 \x01(\x03R\tmessageId\x12\x16\n" +
+	"\x0ehashedPassword\x18\x04 \x01(\tR\x0ehashedPassword\"\x85\x01\n" +
+	"\aMessage\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x16\n" +
 	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12\x1a\n" +
-	"\bsenderId\x18\x03 \x01(\x03R\bsenderId\x12&\n" +
-	"\x0emessageContent\x18\x04 \x01(\tR\x0emessageContent\x12\x1c\n" +
+	"\bsenderId\x18\x03 \x01(\x03R\bsenderId\x12\x18\n" +
+	"\acontent\x18\x04 \x01(\tR\acontent\x12\x1c\n" +
 	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (

@@ -547,12 +547,12 @@ func (x *CreateNewChatRequest) GetCreatedBy() int64 {
 
 // ////////////////////////////// SEND MESSAGE REQUEST
 type SendMessageRequest struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	SenderId       int64                  `protobuf:"varint,1,opt,name=senderId,proto3" json:"senderId,omitempty"`
-	ChatId         int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	MessageContent string                 `protobuf:"bytes,3,opt,name=messageContent,proto3" json:"messageContent,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SenderId      int64                  `protobuf:"varint,1,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	ChatId        int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SendMessageRequest) Reset() {
@@ -599,9 +599,9 @@ func (x *SendMessageRequest) GetChatId() int64 {
 	return 0
 }
 
-func (x *SendMessageRequest) GetMessageContent() string {
+func (x *SendMessageRequest) GetContent() string {
 	if x != nil {
-		return x.MessageContent
+		return x.Content
 	}
 	return ""
 }
@@ -729,11 +729,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink\"N\n" +
 	"\x14CreateNewChatRequest\x12\x18\n" +
 	"\auserIds\x18\x01 \x03(\x03R\auserIds\x12\x1c\n" +
-	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"p\n" +
+	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"b\n" +
 	"\x12SendMessageRequest\x12\x1a\n" +
 	"\bsenderId\x18\x01 \x01(\x03R\bsenderId\x12\x16\n" +
-	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12&\n" +
-	"\x0emessageContent\x18\x03 \x01(\tR\x0emessageContent\"7\n" +
+	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12\x18\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\"7\n" +
 	"\x1dGetAllMessagesFromChatRequest\x12\x16\n" +
 	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\"R\n" +
 	"\x1eGetAllMessagesFromChatResponse\x120\n" +
