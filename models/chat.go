@@ -11,3 +11,11 @@ type Chat struct {
 	CreatedAt time.Time
 	CreatedBy int64
 }
+
+type Message struct {
+	MessageId      int64
+	ChatId         int64
+	SenderId       int64
+	MessageContent string
+	CreatedAt      time.Time
+}
