@@ -27,6 +27,9 @@ const (
 	UserService_DeleteUser_FullMethodName                = "/user.UserService/DeleteUser"
 	UserService_GenerateReportFromJSON_FullMethodName    = "/user.UserService/GenerateReportFromJSON"
 	UserService_SendPasswordRecoveryEmail_FullMethodName = "/user.UserService/SendPasswordRecoveryEmail"
+	UserService_CreateNewChat_FullMethodName             = "/user.UserService/CreateNewChat"
+	UserService_SendMessage_FullMethodName               = "/user.UserService/SendMessage"
+	UserService_GetAllMessagesFromChat_FullMethodName    = "/user.UserService/GetAllMessagesFromChat"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -40,6 +43,9 @@ type UserServiceClient interface {
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GenerateReportFromJSON(ctx context.Context, in *GenerateReportRequest, opts ...grpc.CallOption) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(ctx context.Context, in *SendPasswordRecoveryEmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	CreateNewChat(ctx context.Context, in *CreateNewChatRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetAllMessagesFromChat(ctx context.Context, in *GetAllMessagesFromChatRequest, opts ...grpc.CallOption) (*GetAllMessagesFromChatResponse, error)
 }
 
 type userServiceClient struct {
@@ -120,6 +126,36 @@ func (c *userServiceClient) SendPasswordRecoveryEmail(ctx context.Context, in *S
 	return out, nil
 }
 
+func (c *userServiceClient) CreateNewChat(ctx context.Context, in *CreateNewChatRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, UserService_CreateNewChat_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, UserService_SendMessage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) GetAllMessagesFromChat(ctx context.Context, in *GetAllMessagesFromChatRequest, opts ...grpc.CallOption) (*GetAllMessagesFromChatResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllMessagesFromChatResponse)
+	err := c.cc.Invoke(ctx, UserService_GetAllMessagesFromChat_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -131,6 +167,9 @@ type UserServiceServer interface {
 	DeleteUser(context.Context, *DeleteUserRequest) (*emptypb.Empty, error)
 	GenerateReportFromJSON(context.Context, *GenerateReportRequest) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error)
+	CreateNewChat(context.Context, *CreateNewChatRequest) (*emptypb.Empty, error)
+	SendMessage(context.Context, *SendMessageRequest) (*emptypb.Empty, error)
+	GetAllMessagesFromChat(context.Context, *GetAllMessagesFromChatRequest) (*GetAllMessagesFromChatResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -161,6 +200,15 @@ func (UnimplementedUserServiceServer) GenerateReportFromJSON(context.Context, *G
 }
 func (UnimplementedUserServiceServer) SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendPasswordRecoveryEmail not implemented")
+}
+func (UnimplementedUserServiceServer) CreateNewChat(context.Context, *CreateNewChatRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNewChat not implemented")
+}
+func (UnimplementedUserServiceServer) SendMessage(context.Context, *SendMessageRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
+}
+func (UnimplementedUserServiceServer) GetAllMessagesFromChat(context.Context, *GetAllMessagesFromChatRequest) (*GetAllMessagesFromChatResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllMessagesFromChat not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -309,6 +357,60 @@ func _UserService_SendPasswordRecoveryEmail_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_CreateNewChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNewChatRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CreateNewChat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_CreateNewChat_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CreateNewChat(ctx, req.(*CreateNewChatRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_SendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendMessageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).SendMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_SendMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).SendMessage(ctx, req.(*SendMessageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_GetAllMessagesFromChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllMessagesFromChatRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetAllMessagesFromChat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetAllMessagesFromChat_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetAllMessagesFromChat(ctx, req.(*GetAllMessagesFromChatRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -343,6 +445,18 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendPasswordRecoveryEmail",
 			Handler:    _UserService_SendPasswordRecoveryEmail_Handler,
+		},
+		{
+			MethodName: "CreateNewChat",
+			Handler:    _UserService_CreateNewChat_Handler,
+		},
+		{
+			MethodName: "SendMessage",
+			Handler:    _UserService_SendMessage_Handler,
+		},
+		{
+			MethodName: "GetAllMessagesFromChat",
+			Handler:    _UserService_GetAllMessagesFromChat_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

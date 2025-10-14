@@ -1,0 +1,20 @@
+syntax= "proto3";
+
+package base_models;
+
+option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/base_models";
+
+message User {
+  int64 userId = 1;
+  string name = 2;
+  string email = 3;
+  string hashedPassword = 4;
+}
+
+message Message {
+  int64 messageId = 1;
+  int64 chatId = 2;
+  int64 senderId = 3;
+  string messageContent = 4;
+  string createdAt = 5;
+}

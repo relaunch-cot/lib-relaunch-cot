@@ -3,14 +3,7 @@ syntax= "proto3";
 package user;
 
 import "google/protobuf/empty.proto";
-
-//////////////////////////////// USER MESSAGE
-message User {
-  int64 userId = 1;
-  string name = 2;
-  string email = 3;
-  string hashedPassword = 4;
-}
+import "base_models/user.proto";
 
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/user";
 
@@ -27,6 +20,7 @@ message LoginUserRequest{
   string password = 2;
 }
 
+//////////////////////////////// LOGIN USER RESPONSE
 message LoginUserResponse{
   string token = 1;
 }
@@ -41,7 +35,7 @@ message UpdateUserPasswordRequest {
 message UpdateUserRequest {
   int64 userId = 1;
   string password = 2;
-  User newUser = 3;
+  base_models.User newUser = 3;
 }
 
 //////////////////////////////// DELETE USER REQUEST
@@ -64,6 +58,28 @@ message SendPasswordRecoveryEmailRequest {
   string recoveryLink = 2;
 }
 
+//////////////////////////////// CREATE NEW CHAT REQUEST
+message CreateNewChatRequest {
+  repeated int64 userIds = 1;
+}
+
+//////////////////////////////// SEND MESSAGE REQUEST
+message SendMessageRequest {
+  int64 senderId = 1;
+  int64 chatId = 2;
+  string messageContent = 3;
+}
+
+//////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
+message GetAllMessagesFromChatRequest {
+  int64 chatId = 1;
+}
+
+//////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
+message GetAllMessagesFromChatResponse {
+  repeated base_models.Message messages = 1;
+}
+
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
@@ -72,4 +88,7 @@ service UserService {
   rpc DeleteUser(DeleteUserRequest) returns(google.protobuf.Empty);
   rpc GenerateReportFromJSON(GenerateReportRequest) returns(GenerateReportResponse);
   rpc SendPasswordRecoveryEmail(SendPasswordRecoveryEmailRequest) returns(google.protobuf.Empty);
+  rpc CreateNewChat(CreateNewChatRequest) returns(google.protobuf.Empty);
+  rpc SendMessage(SendMessageRequest) returns(google.protobuf.Empty);
+  rpc GetAllMessagesFromChat(GetAllMessagesFromChatRequest) returns(GetAllMessagesFromChatResponse);
 }
