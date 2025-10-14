@@ -68,7 +68,7 @@ message CreateNewChatRequest {
 message SendMessageRequest {
   int64 senderId = 1;
   int64 chatId = 2;
-  string content = 3;
+  string messageContent = 3;
 }
 
 //////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
