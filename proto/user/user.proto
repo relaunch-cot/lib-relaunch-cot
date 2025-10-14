@@ -3,7 +3,7 @@ syntax= "proto3";
 package user;
 
 import "google/protobuf/empty.proto";
-import "base_models/user.proto";
+import "base_models/base_models.proto";
 
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/user";
 
