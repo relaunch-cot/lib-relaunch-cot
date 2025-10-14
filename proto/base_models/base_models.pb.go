@@ -168,8 +168,8 @@ func (x *Message) GetCreatedAt() string {
 type Chat struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        int64                  `protobuf:"varint,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	User1Id       int64                  `protobuf:"varint,2,opt,name=user1_id,json=user1Id,proto3" json:"user1_id,omitempty"`
-	User2Id       int64                  `protobuf:"varint,3,opt,name=user2_id,json=user2Id,proto3" json:"user2_id,omitempty"`
+	User1         *User                  `protobuf:"bytes,2,opt,name=user1,proto3" json:"user1,omitempty"`
+	User2         *User                  `protobuf:"bytes,3,opt,name=user2,proto3" json:"user2,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	CreatedBy     int64                  `protobuf:"varint,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -213,18 +213,18 @@ func (x *Chat) GetChatId() int64 {
 	return 0
 }
 
-func (x *Chat) GetUser1Id() int64 {
+func (x *Chat) GetUser1() *User {
 	if x != nil {
-		return x.User1Id
+		return x.User1
 	}
-	return 0
+	return nil
 }
 
-func (x *Chat) GetUser2Id() int64 {
+func (x *Chat) GetUser2() *User {
 	if x != nil {
-		return x.User2Id
+		return x.User2
 	}
-	return 0
+	return nil
 }
 
 func (x *Chat) GetCreatedAt() string {
@@ -256,11 +256,11 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12\x1a\n" +
 	"\bsenderId\x18\x03 \x01(\x03R\bsenderId\x12&\n" +
 	"\x0emessageContent\x18\x04 \x01(\tR\x0emessageContent\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\x90\x01\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\xac\x01\n" +
 	"\x04Chat\x12\x16\n" +
-	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\x12\x19\n" +
-	"\buser1_id\x18\x02 \x01(\x03R\auser1Id\x12\x19\n" +
-	"\buser2_id\x18\x03 \x01(\x03R\auser2Id\x12\x1c\n" +
+	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\x12'\n" +
+	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
+	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
 	"\tcreatedBy\x18\x05 \x01(\x03R\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
@@ -283,11 +283,13 @@ var file_base_models_base_models_proto_goTypes = []any{
 	(*Chat)(nil),    // 2: base_models.Chat
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: base_models.Chat.user1:type_name -> base_models.User
+	0, // 1: base_models.Chat.user2:type_name -> base_models.User
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_base_models_base_models_proto_init() }
