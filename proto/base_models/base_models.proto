@@ -18,3 +18,11 @@ message Message {
   string messageContent = 4;
   string createdAt = 5;
 }
+
+message Chat {
+  int64 chatId = 1;
+  int64 user1_id = 2;
+  int64 user2_id = 3;
+  string createdAt = 4;
+  int64 createdBy = 5;
+}

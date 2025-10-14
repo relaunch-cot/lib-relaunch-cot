@@ -165,6 +165,82 @@ func (x *Message) GetCreatedAt() string {
 	return ""
 }
 
+type Chat struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ChatId        int64                  `protobuf:"varint,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	User1Id       int64                  `protobuf:"varint,2,opt,name=user1_id,json=user1Id,proto3" json:"user1_id,omitempty"`
+	User2Id       int64                  `protobuf:"varint,3,opt,name=user2_id,json=user2Id,proto3" json:"user2_id,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy     int64                  `protobuf:"varint,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Chat) Reset() {
+	*x = Chat{}
+	mi := &file_base_models_base_models_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Chat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Chat) ProtoMessage() {}
+
+func (x *Chat) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Chat.ProtoReflect.Descriptor instead.
+func (*Chat) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Chat) GetChatId() int64 {
+	if x != nil {
+		return x.ChatId
+	}
+	return 0
+}
+
+func (x *Chat) GetUser1Id() int64 {
+	if x != nil {
+		return x.User1Id
+	}
+	return 0
+}
+
+func (x *Chat) GetUser2Id() int64 {
+	if x != nil {
+		return x.User2Id
+	}
+	return 0
+}
+
+func (x *Chat) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Chat) GetCreatedBy() int64 {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return 0
+}
+
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
@@ -180,7 +256,13 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12\x1a\n" +
 	"\bsenderId\x18\x03 \x01(\x03R\bsenderId\x12&\n" +
 	"\x0emessageContent\x18\x04 \x01(\tR\x0emessageContent\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\x90\x01\n" +
+	"\x04Chat\x12\x16\n" +
+	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\x12\x19\n" +
+	"\buser1_id\x18\x02 \x01(\x03R\auser1Id\x12\x19\n" +
+	"\buser2_id\x18\x03 \x01(\x03R\auser2Id\x12\x1c\n" +
+	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tcreatedBy\x18\x05 \x01(\x03R\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -194,10 +276,11 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_base_models_base_models_proto_goTypes = []any{
 	(*User)(nil),    // 0: base_models.User
 	(*Message)(nil), // 1: base_models.Message
+	(*Chat)(nil),    // 2: base_models.Chat
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -218,7 +301,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
