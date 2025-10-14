@@ -496,7 +496,7 @@ func (x *SendPasswordRecoveryEmailRequest) GetRecoveryLink() string {
 type CreateNewChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserIds       []int64                `protobuf:"varint,1,rep,packed,name=userIds,proto3" json:"userIds,omitempty"`
-	CreateBy      int64                  `protobuf:"varint,2,opt,name=createBy,proto3" json:"createBy,omitempty"`
+	CreatedBy     int64                  `protobuf:"varint,2,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -538,9 +538,9 @@ func (x *CreateNewChatRequest) GetUserIds() []int64 {
 	return nil
 }
 
-func (x *CreateNewChatRequest) GetCreateBy() int64 {
+func (x *CreateNewChatRequest) GetCreatedBy() int64 {
 	if x != nil {
-		return x.CreateBy
+		return x.CreatedBy
 	}
 	return 0
 }
@@ -726,10 +726,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\bpdf_data\x18\x01 \x01(\fR\apdfData\"\\\n" +
 	" SendPasswordRecoveryEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
-	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink\"L\n" +
+	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink\"N\n" +
 	"\x14CreateNewChatRequest\x12\x18\n" +
-	"\auserIds\x18\x01 \x03(\x03R\auserIds\x12\x1a\n" +
-	"\bcreateBy\x18\x02 \x01(\x03R\bcreateBy\"p\n" +
+	"\auserIds\x18\x01 \x03(\x03R\auserIds\x12\x1c\n" +
+	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"p\n" +
 	"\x12SendMessageRequest\x12\x1a\n" +
 	"\bsenderId\x18\x01 \x01(\x03R\bsenderId\x12\x16\n" +
 	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12&\n" +

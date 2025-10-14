@@ -61,7 +61,7 @@ message SendPasswordRecoveryEmailRequest {
 //////////////////////////////// CREATE NEW CHAT REQUEST
 message CreateNewChatRequest {
   repeated int64 userIds = 1;
-  int64 createBy = 2;
+  int64 createdBy = 2;
 }
 
 //////////////////////////////// SEND MESSAGE REQUEST
