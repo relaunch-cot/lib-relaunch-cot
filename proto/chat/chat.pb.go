@@ -26,7 +26,7 @@ const (
 // ////////////////////////////// CREATE NEW CHAT REQUEST
 type CreateNewChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserIds       []int64                `protobuf:"varint,1,rep,packed,name=userIds,proto3" json:"userIds,omitempty"`
+	UserIds       []string               `protobuf:"bytes,1,rep,name=userIds,proto3" json:"userIds,omitempty"`
 	CreatedBy     int64                  `protobuf:"varint,2,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -62,7 +62,7 @@ func (*CreateNewChatRequest) Descriptor() ([]byte, []int) {
 	return file_chat_chat_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateNewChatRequest) GetUserIds() []int64 {
+func (x *CreateNewChatRequest) GetUserIds() []string {
 	if x != nil {
 		return x.UserIds
 	}
@@ -79,8 +79,8 @@ func (x *CreateNewChatRequest) GetCreatedBy() int64 {
 // ////////////////////////////// SEND MESSAGE REQUEST
 type SendMessageRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	SenderId       int64                  `protobuf:"varint,1,opt,name=senderId,proto3" json:"senderId,omitempty"`
-	ChatId         int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	SenderId       string                 `protobuf:"bytes,1,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	ChatId         string                 `protobuf:"bytes,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
 	MessageContent string                 `protobuf:"bytes,3,opt,name=messageContent,proto3" json:"messageContent,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -116,18 +116,18 @@ func (*SendMessageRequest) Descriptor() ([]byte, []int) {
 	return file_chat_chat_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SendMessageRequest) GetSenderId() int64 {
+func (x *SendMessageRequest) GetSenderId() string {
 	if x != nil {
 		return x.SenderId
 	}
-	return 0
+	return ""
 }
 
-func (x *SendMessageRequest) GetChatId() int64 {
+func (x *SendMessageRequest) GetChatId() string {
 	if x != nil {
 		return x.ChatId
 	}
-	return 0
+	return ""
 }
 
 func (x *SendMessageRequest) GetMessageContent() string {
@@ -140,7 +140,7 @@ func (x *SendMessageRequest) GetMessageContent() string {
 // ////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
 type GetAllMessagesFromChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	ChatId        string                 `protobuf:"bytes,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -175,11 +175,11 @@ func (*GetAllMessagesFromChatRequest) Descriptor() ([]byte, []int) {
 	return file_chat_chat_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetAllMessagesFromChatRequest) GetChatId() int64 {
+func (x *GetAllMessagesFromChatRequest) GetChatId() string {
 	if x != nil {
 		return x.ChatId
 	}
-	return 0
+	return ""
 }
 
 // ////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
@@ -230,7 +230,7 @@ func (x *GetAllMessagesFromChatResponse) GetMessages() []*base_models.Message {
 // ////////////////////////////// GET ALL CHATS FROM USER REQUEST
 type GetAllChatsFromUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -265,11 +265,11 @@ func (*GetAllChatsFromUserRequest) Descriptor() ([]byte, []int) {
 	return file_chat_chat_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetAllChatsFromUserRequest) GetUserId() int64 {
+func (x *GetAllChatsFromUserRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 // ////////////////////////////// GET ALL CHATS FROM USER RESPONSE
@@ -323,18 +323,18 @@ const file_chat_chat_proto_rawDesc = "" +
 	"\n" +
 	"\x0fchat/chat.proto\x12\x04chat\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"N\n" +
 	"\x14CreateNewChatRequest\x12\x18\n" +
-	"\auserIds\x18\x01 \x03(\x03R\auserIds\x12\x1c\n" +
+	"\auserIds\x18\x01 \x03(\tR\auserIds\x12\x1c\n" +
 	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"p\n" +
 	"\x12SendMessageRequest\x12\x1a\n" +
-	"\bsenderId\x18\x01 \x01(\x03R\bsenderId\x12\x16\n" +
-	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12&\n" +
+	"\bsenderId\x18\x01 \x01(\tR\bsenderId\x12\x16\n" +
+	"\x06chatId\x18\x02 \x01(\tR\x06chatId\x12&\n" +
 	"\x0emessageContent\x18\x03 \x01(\tR\x0emessageContent\"7\n" +
 	"\x1dGetAllMessagesFromChatRequest\x12\x16\n" +
-	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\"R\n" +
+	"\x06chatId\x18\x01 \x01(\tR\x06chatId\"R\n" +
 	"\x1eGetAllMessagesFromChatResponse\x120\n" +
 	"\bmessages\x18\x01 \x03(\v2\x14.base_models.MessageR\bmessages\"4\n" +
 	"\x1aGetAllChatsFromUserRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\"F\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\"F\n" +
 	"\x1bGetAllChatsFromUserResponse\x12'\n" +
 	"\x05chats\x18\x01 \x03(\v2\x11.base_models.ChatR\x05chats2\xd4\x02\n" +
 	"\vChatService\x12C\n" +

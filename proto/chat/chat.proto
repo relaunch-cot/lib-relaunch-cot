@@ -9,20 +9,20 @@ option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/chat";
 
 //////////////////////////////// CREATE NEW CHAT REQUEST
 message CreateNewChatRequest {
-  repeated int64 userIds = 1;
+  repeated string userIds = 1;
   int64 createdBy = 2;
 }
 
 //////////////////////////////// SEND MESSAGE REQUEST
 message SendMessageRequest {
-  int64 senderId = 1;
-  int64 chatId = 2;
+  string senderId = 1;
+  string chatId = 2;
   string messageContent = 3;
 }
 
 //////////////////////////////// GET ALL MESSAGES FROM CHAT REQUEST
 message GetAllMessagesFromChatRequest {
-  int64 chatId = 1;
+  string chatId = 1;
 }
 
 //////////////////////////////// GET ALL MESSAGES FROM CHAT RESPONSE
@@ -32,7 +32,7 @@ message GetAllMessagesFromChatResponse {
 
 //////////////////////////////// GET ALL CHATS FROM USER REQUEST
 message GetAllChatsFromUserRequest {
-  int64 userId = 1;
+  string userId = 1;
 }
 
 //////////////////////////////// GET ALL CHATS FROM USER RESPONSE

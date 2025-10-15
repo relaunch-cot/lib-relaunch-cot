@@ -217,7 +217,7 @@ func (x *LoginUserResponse) GetToken() string {
 // ////////////////////////////// UPDATE USER PASSWORD REQUEST
 type UpdateUserPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	NewPassword   string                 `protobuf:"bytes,3,opt,name=newPassword,proto3" json:"newPassword,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -253,11 +253,11 @@ func (*UpdateUserPasswordRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateUserPasswordRequest) GetUserId() int64 {
+func (x *UpdateUserPasswordRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateUserPasswordRequest) GetNewPassword() string {
@@ -270,7 +270,7 @@ func (x *UpdateUserPasswordRequest) GetNewPassword() string {
 // ////////////////////////////// UPDATE USER REQUEST
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	NewUser       *base_models.User      `protobuf:"bytes,3,opt,name=newUser,proto3" json:"newUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -307,11 +307,11 @@ func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateUserRequest) GetUserId() int64 {
+func (x *UpdateUserRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *UpdateUserRequest) GetPassword() string {
@@ -527,7 +527,7 @@ func (x *SendPasswordRecoveryEmailRequest) GetRecoveryLink() string {
 // ////////////////////////////// GET USER PROFILE REQUEST
 type GetUserProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -562,11 +562,11 @@ func (*GetUserProfileRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GetUserProfileRequest) GetUserId() int64 {
+func (x *GetUserProfileRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 // ////////////////////////////// GET USER PROFILE RESPONSE
@@ -633,10 +633,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11LoginUserResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"U\n" +
 	"\x19UpdateUserPasswordRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12 \n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12 \n" +
 	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"t\n" +
 	"\x11UpdateUserRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12+\n" +
 	"\anewUser\x18\x03 \x01(\v2\x11.base_models.UserR\anewUser\"E\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
@@ -650,7 +650,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
 	"\frecoveryLink\x18\x02 \x01(\tR\frecoveryLink\"/\n" +
 	"\x15GetUserProfileRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\"?\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\"?\n" +
 	"\x16GetUserProfileResponse\x12%\n" +
 	"\x04user\x18\x01 \x01(\v2\x11.base_models.UserR\x04user2\xd6\x04\n" +
 	"\vUserService\x12=\n" +

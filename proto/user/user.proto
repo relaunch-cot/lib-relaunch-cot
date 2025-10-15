@@ -31,13 +31,13 @@ message LoginUserResponse{
 
 //////////////////////////////// UPDATE USER PASSWORD REQUEST
 message UpdateUserPasswordRequest {
-  int64 userId = 1;
+  string userId = 1;
   string newPassword = 3;
 }
 
 //////////////////////////////// UPDATE USER REQUEST
 message UpdateUserRequest {
-  int64 userId = 1;
+  string userId = 1;
   string password = 2;
   base_models.User newUser = 3;
 }
@@ -64,7 +64,7 @@ message SendPasswordRecoveryEmailRequest {
 
 //////////////////////////////// GET USER PROFILE REQUEST
 message GetUserProfileRequest {
-  int64 userId = 1;
+  string userId = 1;
 }
 
 //////////////////////////////// GET USER PROFILE RESPONSE
