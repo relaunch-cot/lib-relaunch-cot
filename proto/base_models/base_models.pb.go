@@ -22,13 +22,14 @@ const (
 )
 
 type User struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	UserId         int64                  `protobuf:"varint,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	Name           string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email          string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	HashedPassword string                 `protobuf:"bytes,4,opt,name=hashedPassword,proto3" json:"hashedPassword,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Settings      *UserSettings          `protobuf:"bytes,4,opt,name=settings,proto3" json:"settings,omitempty"`
+	Password      string                 `protobuf:"bytes,5,opt,name=Password,proto3" json:"Password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -61,11 +62,11 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_base_models_base_models_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetUserId() int64 {
+func (x *User) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *User) GetName() string {
@@ -82,18 +83,101 @@ func (x *User) GetEmail() string {
 	return ""
 }
 
-func (x *User) GetHashedPassword() string {
+func (x *User) GetSettings() *UserSettings {
 	if x != nil {
-		return x.HashedPassword
+		return x.Settings
+	}
+	return nil
+}
+
+func (x *User) GetPassword() string {
+	if x != nil {
+		return x.Password
 	}
 	return ""
 }
 
+type UserSettings struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
+	Cpf           string                 `protobuf:"bytes,2,opt,name=cpf,proto3" json:"cpf,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,3,opt,name=dateOfBirth,proto3" json:"dateOfBirth,omitempty"`
+	Biography     string                 `protobuf:"bytes,4,opt,name=biography,proto3" json:"biography,omitempty"`
+	Skills        []string               `protobuf:"bytes,5,rep,name=skills,proto3" json:"skills,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserSettings) Reset() {
+	*x = UserSettings{}
+	mi := &file_base_models_base_models_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserSettings) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserSettings) ProtoMessage() {}
+
+func (x *UserSettings) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserSettings.ProtoReflect.Descriptor instead.
+func (*UserSettings) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UserSettings) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+func (x *UserSettings) GetCpf() string {
+	if x != nil {
+		return x.Cpf
+	}
+	return ""
+}
+
+func (x *UserSettings) GetDateOfBirth() string {
+	if x != nil {
+		return x.DateOfBirth
+	}
+	return ""
+}
+
+func (x *UserSettings) GetBiography() string {
+	if x != nil {
+		return x.Biography
+	}
+	return ""
+}
+
+func (x *UserSettings) GetSkills() []string {
+	if x != nil {
+		return x.Skills
+	}
+	return nil
+}
+
 type Message struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	MessageId      int64                  `protobuf:"varint,1,opt,name=messageId,proto3" json:"messageId,omitempty"`
-	ChatId         int64                  `protobuf:"varint,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	SenderId       int64                  `protobuf:"varint,3,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	MessageId      string                 `protobuf:"bytes,1,opt,name=messageId,proto3" json:"messageId,omitempty"`
+	ChatId         string                 `protobuf:"bytes,2,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	SenderId       string                 `protobuf:"bytes,3,opt,name=senderId,proto3" json:"senderId,omitempty"`
 	MessageContent string                 `protobuf:"bytes,4,opt,name=messageContent,proto3" json:"messageContent,omitempty"`
 	CreatedAt      string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields  protoimpl.UnknownFields
@@ -102,7 +186,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_base_models_base_models_proto_msgTypes[1]
+	mi := &file_base_models_base_models_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -114,7 +198,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_base_models_base_models_proto_msgTypes[1]
+	mi := &file_base_models_base_models_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -127,28 +211,28 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_base_models_base_models_proto_rawDescGZIP(), []int{1}
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Message) GetMessageId() int64 {
+func (x *Message) GetMessageId() string {
 	if x != nil {
 		return x.MessageId
 	}
-	return 0
+	return ""
 }
 
-func (x *Message) GetChatId() int64 {
+func (x *Message) GetChatId() string {
 	if x != nil {
 		return x.ChatId
 	}
-	return 0
+	return ""
 }
 
-func (x *Message) GetSenderId() int64 {
+func (x *Message) GetSenderId() string {
 	if x != nil {
 		return x.SenderId
 	}
-	return 0
+	return ""
 }
 
 func (x *Message) GetMessageContent() string {
@@ -167,18 +251,18 @@ func (x *Message) GetCreatedAt() string {
 
 type Chat struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	ChatId        string                 `protobuf:"bytes,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
 	User1         *User                  `protobuf:"bytes,2,opt,name=user1,proto3" json:"user1,omitempty"`
 	User2         *User                  `protobuf:"bytes,3,opt,name=user2,proto3" json:"user2,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy     int64                  `protobuf:"varint,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Chat) Reset() {
 	*x = Chat{}
-	mi := &file_base_models_base_models_proto_msgTypes[2]
+	mi := &file_base_models_base_models_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -190,7 +274,7 @@ func (x *Chat) String() string {
 func (*Chat) ProtoMessage() {}
 
 func (x *Chat) ProtoReflect() protoreflect.Message {
-	mi := &file_base_models_base_models_proto_msgTypes[2]
+	mi := &file_base_models_base_models_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -203,14 +287,14 @@ func (x *Chat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Chat.ProtoReflect.Descriptor instead.
 func (*Chat) Descriptor() ([]byte, []int) {
-	return file_base_models_base_models_proto_rawDescGZIP(), []int{2}
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *Chat) GetChatId() int64 {
+func (x *Chat) GetChatId() string {
 	if x != nil {
 		return x.ChatId
 	}
-	return 0
+	return ""
 }
 
 func (x *Chat) GetUser1() *User {
@@ -234,35 +318,42 @@ func (x *Chat) GetCreatedAt() string {
 	return ""
 }
 
-func (x *Chat) GetCreatedBy() int64 {
+func (x *Chat) GetCreatedBy() string {
 	if x != nil {
 		return x.CreatedBy
 	}
-	return 0
+	return ""
 }
 
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
-	"\x1dbase_models/base_models.proto\x12\vbase_models\"p\n" +
+	"\x1dbase_models/base_models.proto\x12\vbase_models\"\x9b\x01\n" +
 	"\x04User\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12&\n" +
-	"\x0ehashedPassword\x18\x04 \x01(\tR\x0ehashedPassword\"\xa1\x01\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x125\n" +
+	"\bsettings\x18\x04 \x01(\v2\x19.base_models.UserSettingsR\bsettings\x12\x1a\n" +
+	"\bPassword\x18\x05 \x01(\tR\bPassword\"\x8e\x01\n" +
+	"\fUserSettings\x12\x14\n" +
+	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x10\n" +
+	"\x03cpf\x18\x02 \x01(\tR\x03cpf\x12 \n" +
+	"\vdateOfBirth\x18\x03 \x01(\tR\vdateOfBirth\x12\x1c\n" +
+	"\tbiography\x18\x04 \x01(\tR\tbiography\x12\x16\n" +
+	"\x06skills\x18\x05 \x03(\tR\x06skills\"\xa1\x01\n" +
 	"\aMessage\x12\x1c\n" +
-	"\tmessageId\x18\x01 \x01(\x03R\tmessageId\x12\x16\n" +
-	"\x06chatId\x18\x02 \x01(\x03R\x06chatId\x12\x1a\n" +
-	"\bsenderId\x18\x03 \x01(\x03R\bsenderId\x12&\n" +
+	"\tmessageId\x18\x01 \x01(\tR\tmessageId\x12\x16\n" +
+	"\x06chatId\x18\x02 \x01(\tR\x06chatId\x12\x1a\n" +
+	"\bsenderId\x18\x03 \x01(\tR\bsenderId\x12&\n" +
 	"\x0emessageContent\x18\x04 \x01(\tR\x0emessageContent\x12\x1c\n" +
 	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\xac\x01\n" +
 	"\x04Chat\x12\x16\n" +
-	"\x06chatId\x18\x01 \x01(\x03R\x06chatId\x12'\n" +
+	"\x06chatId\x18\x01 \x01(\tR\x06chatId\x12'\n" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\x03R\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -276,20 +367,22 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_base_models_base_models_proto_goTypes = []any{
-	(*User)(nil),    // 0: base_models.User
-	(*Message)(nil), // 1: base_models.Message
-	(*Chat)(nil),    // 2: base_models.Chat
+	(*User)(nil),         // 0: base_models.User
+	(*UserSettings)(nil), // 1: base_models.UserSettings
+	(*Message)(nil),      // 2: base_models.Message
+	(*Chat)(nil),         // 3: base_models.Chat
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
-	0, // 0: base_models.Chat.user1:type_name -> base_models.User
-	0, // 1: base_models.Chat.user2:type_name -> base_models.User
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 0: base_models.User.settings:type_name -> base_models.UserSettings
+	0, // 1: base_models.Chat.user1:type_name -> base_models.User
+	0, // 2: base_models.Chat.user2:type_name -> base_models.User
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_base_models_base_models_proto_init() }
@@ -303,7 +396,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

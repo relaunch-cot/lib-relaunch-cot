@@ -12,6 +12,10 @@ message CreateUserRequest{
   string name = 1;
   string email = 2;
   string password = 3;
+  string phone = 4;
+  string cpf = 5;
+  string dateOfBirth = 6;
+  string type = 7;
 }
 
 //////////////////////////////// LOGIN USER REQUEST
