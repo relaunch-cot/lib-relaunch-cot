@@ -25,14 +25,12 @@ const (
 
 // ////////////////////////////// CREATE USER REQUEST
 type CreateUserRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
-	Phone         string                 `protobuf:"bytes,4,opt,name=phone,proto3" json:"phone,omitempty"`
-	Cpf           string                 `protobuf:"bytes,5,opt,name=cpf,proto3" json:"cpf,omitempty"`
-	DateOfBirth   string                 `protobuf:"bytes,6,opt,name=dateOfBirth,proto3" json:"dateOfBirth,omitempty"`
-	Type          string                 `protobuf:"bytes,7,opt,name=type,proto3" json:"type,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Name          string                    `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                    `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                    `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Settings      *base_models.UserSettings `protobuf:"bytes,4,opt,name=settings,proto3" json:"settings,omitempty"`
+	Type          string                    `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -88,25 +86,11 @@ func (x *CreateUserRequest) GetPassword() string {
 	return ""
 }
 
-func (x *CreateUserRequest) GetPhone() string {
+func (x *CreateUserRequest) GetSettings() *base_models.UserSettings {
 	if x != nil {
-		return x.Phone
+		return x.Settings
 	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetCpf() string {
-	if x != nil {
-		return x.Cpf
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetDateOfBirth() string {
-	if x != nil {
-		return x.DateOfBirth
-	}
-	return ""
+	return nil
 }
 
 func (x *CreateUserRequest) GetType() string {
@@ -618,15 +602,13 @@ var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0fuser/user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xb7\x01\n" +
+	"\x0fuser/user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xa4\x01\n" +
 	"\x11CreateUserRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone\x12\x10\n" +
-	"\x03cpf\x18\x05 \x01(\tR\x03cpf\x12 \n" +
-	"\vdateOfBirth\x18\x06 \x01(\tR\vdateOfBirth\x12\x12\n" +
-	"\x04type\x18\a \x01(\tR\x04type\"D\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x125\n" +
+	"\bsettings\x18\x04 \x01(\v2\x19.base_models.UserSettingsR\bsettings\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\"D\n" +
 	"\x10LoginUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\")\n" +
@@ -691,33 +673,35 @@ var file_user_user_proto_goTypes = []any{
 	(*SendPasswordRecoveryEmailRequest)(nil), // 8: user.SendPasswordRecoveryEmailRequest
 	(*GetUserProfileRequest)(nil),            // 9: user.GetUserProfileRequest
 	(*GetUserProfileResponse)(nil),           // 10: user.GetUserProfileResponse
-	(*base_models.User)(nil),                 // 11: base_models.User
-	(*emptypb.Empty)(nil),                    // 12: google.protobuf.Empty
+	(*base_models.UserSettings)(nil),         // 11: base_models.UserSettings
+	(*base_models.User)(nil),                 // 12: base_models.User
+	(*emptypb.Empty)(nil),                    // 13: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
-	11, // 0: user.UpdateUserRequest.newUser:type_name -> base_models.User
-	11, // 1: user.GetUserProfileResponse.user:type_name -> base_models.User
-	0,  // 2: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	1,  // 3: user.UserService.LoginUser:input_type -> user.LoginUserRequest
-	3,  // 4: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
-	4,  // 5: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
-	5,  // 6: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
-	6,  // 7: user.UserService.GenerateReportFromJSON:input_type -> user.GenerateReportRequest
-	8,  // 8: user.UserService.SendPasswordRecoveryEmail:input_type -> user.SendPasswordRecoveryEmailRequest
-	9,  // 9: user.UserService.GetUserProfile:input_type -> user.GetUserProfileRequest
-	12, // 10: user.UserService.CreateUser:output_type -> google.protobuf.Empty
-	2,  // 11: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	12, // 12: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
-	12, // 13: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
-	12, // 14: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
-	7,  // 15: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
-	12, // 16: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
-	10, // 17: user.UserService.GetUserProfile:output_type -> user.GetUserProfileResponse
-	10, // [10:18] is the sub-list for method output_type
-	2,  // [2:10] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	11, // 0: user.CreateUserRequest.settings:type_name -> base_models.UserSettings
+	12, // 1: user.UpdateUserRequest.newUser:type_name -> base_models.User
+	12, // 2: user.GetUserProfileResponse.user:type_name -> base_models.User
+	0,  // 3: user.UserService.CreateUser:input_type -> user.CreateUserRequest
+	1,  // 4: user.UserService.LoginUser:input_type -> user.LoginUserRequest
+	3,  // 5: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
+	4,  // 6: user.UserService.UpdateUser:input_type -> user.UpdateUserRequest
+	5,  // 7: user.UserService.DeleteUser:input_type -> user.DeleteUserRequest
+	6,  // 8: user.UserService.GenerateReportFromJSON:input_type -> user.GenerateReportRequest
+	8,  // 9: user.UserService.SendPasswordRecoveryEmail:input_type -> user.SendPasswordRecoveryEmailRequest
+	9,  // 10: user.UserService.GetUserProfile:input_type -> user.GetUserProfileRequest
+	13, // 11: user.UserService.CreateUser:output_type -> google.protobuf.Empty
+	2,  // 12: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	13, // 13: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
+	13, // 14: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
+	13, // 15: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
+	7,  // 16: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
+	13, // 17: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
+	10, // 18: user.UserService.GetUserProfile:output_type -> user.GetUserProfileResponse
+	11, // [11:19] is the sub-list for method output_type
+	3,  // [3:11] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_user_user_proto_init() }
