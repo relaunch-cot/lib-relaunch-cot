@@ -27,6 +27,7 @@ const (
 	UserService_DeleteUser_FullMethodName                = "/user.UserService/DeleteUser"
 	UserService_GenerateReportFromJSON_FullMethodName    = "/user.UserService/GenerateReportFromJSON"
 	UserService_SendPasswordRecoveryEmail_FullMethodName = "/user.UserService/SendPasswordRecoveryEmail"
+	UserService_GetUserProfile_FullMethodName            = "/user.UserService/GetUserProfile"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -40,6 +41,7 @@ type UserServiceClient interface {
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GenerateReportFromJSON(ctx context.Context, in *GenerateReportRequest, opts ...grpc.CallOption) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(ctx context.Context, in *SendPasswordRecoveryEmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetUserProfile(ctx context.Context, in *GetUserProfileRequest, opts ...grpc.CallOption) (*GetUserProfileResponse, error)
 }
 
 type userServiceClient struct {
@@ -120,6 +122,16 @@ func (c *userServiceClient) SendPasswordRecoveryEmail(ctx context.Context, in *S
 	return out, nil
 }
 
+func (c *userServiceClient) GetUserProfile(ctx context.Context, in *GetUserProfileRequest, opts ...grpc.CallOption) (*GetUserProfileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserProfileResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -131,6 +143,7 @@ type UserServiceServer interface {
 	DeleteUser(context.Context, *DeleteUserRequest) (*emptypb.Empty, error)
 	GenerateReportFromJSON(context.Context, *GenerateReportRequest) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error)
+	GetUserProfile(context.Context, *GetUserProfileRequest) (*GetUserProfileResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -161,6 +174,9 @@ func (UnimplementedUserServiceServer) GenerateReportFromJSON(context.Context, *G
 }
 func (UnimplementedUserServiceServer) SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendPasswordRecoveryEmail not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserProfile(context.Context, *GetUserProfileRequest) (*GetUserProfileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserProfile not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -309,6 +325,24 @@ func _UserService_SendPasswordRecoveryEmail_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetUserProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserProfile(ctx, req.(*GetUserProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -343,6 +377,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendPasswordRecoveryEmail",
 			Handler:    _UserService_SendPasswordRecoveryEmail_Handler,
+		},
+		{
+			MethodName: "GetUserProfile",
+			Handler:    _UserService_GetUserProfile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

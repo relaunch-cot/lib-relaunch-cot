@@ -58,6 +58,16 @@ message SendPasswordRecoveryEmailRequest {
   string recoveryLink = 2;
 }
 
+//////////////////////////////// GET USER PROFILE REQUEST
+message GetUserProfileRequest {
+  int64 userId = 1;
+}
+
+//////////////////////////////// GET USER PROFILE RESPONSE
+message GetUserProfileResponse {
+  base_models.User user = 1;
+}
+
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
@@ -66,4 +76,5 @@ service UserService {
   rpc DeleteUser(DeleteUserRequest) returns(google.protobuf.Empty);
   rpc GenerateReportFromJSON(GenerateReportRequest) returns(GenerateReportResponse);
   rpc SendPasswordRecoveryEmail(SendPasswordRecoveryEmailRequest) returns(google.protobuf.Empty);
+  rpc GetUserProfile(GetUserProfileRequest) returns(GetUserProfileResponse);
 }
