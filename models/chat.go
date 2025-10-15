@@ -5,17 +5,17 @@ import (
 )
 
 type Chat struct {
-	ChatId    int64
+	ChatId    string
 	User1     User
 	User2     User
 	CreatedAt time.Time
-	CreatedBy int64
+	CreatedBy string
 }
 
 type Message struct {
-	MessageId      int64
-	ChatId         int64
-	SenderId       int64
+	MessageId      string
+	ChatId         string
+	SenderId       string
 	MessageContent string
 	CreatedAt      time.Time
 }
