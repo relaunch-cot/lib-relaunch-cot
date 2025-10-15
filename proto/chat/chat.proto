@@ -10,7 +10,7 @@ option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/chat";
 //////////////////////////////// CREATE NEW CHAT REQUEST
 message CreateNewChatRequest {
   repeated string userIds = 1;
-  int64 createdBy = 2;
+  string createdBy = 2;
 }
 
 //////////////////////////////// SEND MESSAGE REQUEST

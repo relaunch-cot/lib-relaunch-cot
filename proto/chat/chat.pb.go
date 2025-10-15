@@ -27,7 +27,7 @@ const (
 type CreateNewChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserIds       []string               `protobuf:"bytes,1,rep,name=userIds,proto3" json:"userIds,omitempty"`
-	CreatedBy     int64                  `protobuf:"varint,2,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,2,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -69,11 +69,11 @@ func (x *CreateNewChatRequest) GetUserIds() []string {
 	return nil
 }
 
-func (x *CreateNewChatRequest) GetCreatedBy() int64 {
+func (x *CreateNewChatRequest) GetCreatedBy() string {
 	if x != nil {
 		return x.CreatedBy
 	}
-	return 0
+	return ""
 }
 
 // ////////////////////////////// SEND MESSAGE REQUEST
@@ -324,7 +324,7 @@ const file_chat_chat_proto_rawDesc = "" +
 	"\x0fchat/chat.proto\x12\x04chat\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"N\n" +
 	"\x14CreateNewChatRequest\x12\x18\n" +
 	"\auserIds\x18\x01 \x03(\tR\auserIds\x12\x1c\n" +
-	"\tcreatedBy\x18\x02 \x01(\x03R\tcreatedBy\"p\n" +
+	"\tcreatedBy\x18\x02 \x01(\tR\tcreatedBy\"p\n" +
 	"\x12SendMessageRequest\x12\x1a\n" +
 	"\bsenderId\x18\x01 \x01(\tR\bsenderId\x12\x16\n" +
 	"\x06chatId\x18\x02 \x01(\tR\x06chatId\x12&\n" +
