@@ -6,7 +6,7 @@ type Project struct {
 	DeveloperId             string
 	Category                string
 	ProjectDeliveryDeadline string
-	Amount                  float64
+	Amount                  float32
 	RemainingTime           string
 	CreatedAt               string
 	CreatedBy               string
