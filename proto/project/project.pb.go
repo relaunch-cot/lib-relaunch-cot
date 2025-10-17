@@ -26,9 +26,7 @@ const (
 // ////////////////////////////// CREATE PROJECT REQUEST
 type CreateProjectRequest struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
-	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
 	UserId                  string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	ClientId                string                 `protobuf:"bytes,3,opt,name=clientId,proto3" json:"clientId,omitempty"`
 	DeveloperId             string                 `protobuf:"bytes,4,opt,name=developerId,proto3" json:"developerId,omitempty"`
 	Category                string                 `protobuf:"bytes,5,opt,name=category,proto3" json:"category,omitempty"`
 	ProjectDeliveryDeadline string                 `protobuf:"bytes,6,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
@@ -67,23 +65,9 @@ func (*CreateProjectRequest) Descriptor() ([]byte, []int) {
 	return file_project_project_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateProjectRequest) GetProjectId() string {
-	if x != nil {
-		return x.ProjectId
-	}
-	return ""
-}
-
 func (x *CreateProjectRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetClientId() string {
-	if x != nil {
-		return x.ClientId
 	}
 	return ""
 }
@@ -300,11 +284,9 @@ var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
 	"\n" +
-	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xf8\x01\n" +
-	"\x14CreateProjectRequest\x12\x1c\n" +
-	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
-	"\bclientId\x18\x03 \x01(\tR\bclientId\x12 \n" +
+	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xbe\x01\n" +
+	"\x14CreateProjectRequest\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12 \n" +
 	"\vdeveloperId\x18\x04 \x01(\tR\vdeveloperId\x12\x1a\n" +
 	"\bcategory\x18\x05 \x01(\tR\bcategory\x128\n" +
 	"\x17projectDeliveryDeadline\x18\x06 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
