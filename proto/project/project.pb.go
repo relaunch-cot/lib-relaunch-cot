@@ -27,7 +27,7 @@ const (
 type CreateProjectRequest struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	UserId                  string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	DeveloperId             string                 `protobuf:"bytes,4,opt,name=developerId,proto3" json:"developerId,omitempty"`
+	FreelancerId            string                 `protobuf:"bytes,4,opt,name=freelancerId,proto3" json:"freelancerId,omitempty"`
 	Name                    string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	Description             string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	Category                string                 `protobuf:"bytes,7,opt,name=category,proto3" json:"category,omitempty"`
@@ -74,9 +74,9 @@ func (x *CreateProjectRequest) GetUserId() string {
 	return ""
 }
 
-func (x *CreateProjectRequest) GetDeveloperId() string {
+func (x *CreateProjectRequest) GetFreelancerId() string {
 	if x != nil {
-		return x.DeveloperId
+		return x.FreelancerId
 	}
 	return ""
 }
@@ -300,10 +300,10 @@ var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
 	"\n" +
-	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xf4\x01\n" +
+	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xf6\x01\n" +
 	"\x14CreateProjectRequest\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\x12 \n" +
-	"\vdeveloperId\x18\x04 \x01(\tR\vdeveloperId\x12\x12\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\"\n" +
+	"\ffreelancerId\x18\x04 \x01(\tR\ffreelancerId\x12\x12\n" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1a\n" +
 	"\bcategory\x18\a \x01(\tR\bcategory\x128\n" +

@@ -329,7 +329,7 @@ type Project struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
 	ClientId                string                 `protobuf:"bytes,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
-	DeveloperId             string                 `protobuf:"bytes,3,opt,name=developerId,proto3" json:"developerId,omitempty"`
+	FreelancerId            string                 `protobuf:"bytes,3,opt,name=freelancerId,proto3" json:"freelancerId,omitempty"`
 	Name                    string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	Description             string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	Category                string                 `protobuf:"bytes,6,opt,name=category,proto3" json:"category,omitempty"`
@@ -386,9 +386,9 @@ func (x *Project) GetClientId() string {
 	return ""
 }
 
-func (x *Project) GetDeveloperId() string {
+func (x *Project) GetFreelancerId() string {
 	if x != nil {
-		return x.DeveloperId
+		return x.FreelancerId
 	}
 	return ""
 }
@@ -477,11 +477,11 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xeb\x02\n" +
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xed\x02\n" +
 	"\aProject\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
-	"\bclientId\x18\x02 \x01(\tR\bclientId\x12 \n" +
-	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x12\n" +
+	"\bclientId\x18\x02 \x01(\tR\bclientId\x12\"\n" +
+	"\ffreelancerId\x18\x03 \x01(\tR\ffreelancerId\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x1a\n" +
 	"\bcategory\x18\x06 \x01(\tR\bcategory\x128\n" +

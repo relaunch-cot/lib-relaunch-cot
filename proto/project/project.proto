@@ -10,7 +10,7 @@ option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/project";
 //////////////////////////////// CREATE PROJECT REQUEST
 message CreateProjectRequest {
   string userId = 2;
-  string developerId = 4;
+  string freelancerId = 4;
   string name = 5;
   string description = 6;
   string category = 7;

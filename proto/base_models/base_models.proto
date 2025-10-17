@@ -39,7 +39,7 @@ message Chat {
 message Project {
   string projectId = 1;
   string clientId = 2;
-  string developerId = 3;
+  string freelancerId = 3;
   string name = 4;
   string description = 5;
   string category = 6;

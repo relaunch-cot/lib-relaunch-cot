@@ -3,7 +3,7 @@ package models
 type Project struct {
 	ProjectId               string
 	ClientId                string
-	DeveloperId             string
+	FreelancerId            string
 	Name                    string
 	Description             string
 	Category                string
