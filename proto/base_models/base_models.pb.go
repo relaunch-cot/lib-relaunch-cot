@@ -325,6 +325,114 @@ func (x *Chat) GetCreatedBy() string {
 	return ""
 }
 
+type Project struct {
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
+	ClientId                string                 `protobuf:"bytes,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
+	DeveloperId             string                 `protobuf:"bytes,3,opt,name=developerId,proto3" json:"developerId,omitempty"`
+	Category                string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
+	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
+	RemainingTime           string                 `protobuf:"bytes,7,opt,name=remainingTime,proto3" json:"remainingTime,omitempty"`
+	CreatedAt               string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy               string                 `protobuf:"bytes,9,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
+func (x *Project) Reset() {
+	*x = Project{}
+	mi := &file_base_models_base_models_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Project) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Project) ProtoMessage() {}
+
+func (x *Project) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Project.ProtoReflect.Descriptor instead.
+func (*Project) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Project) GetProjectId() string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return ""
+}
+
+func (x *Project) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *Project) GetDeveloperId() string {
+	if x != nil {
+		return x.DeveloperId
+	}
+	return ""
+}
+
+func (x *Project) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+func (x *Project) GetProjectDeliveryDeadline() string {
+	if x != nil {
+		return x.ProjectDeliveryDeadline
+	}
+	return ""
+}
+
+func (x *Project) GetAmount() float32 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *Project) GetRemainingTime() string {
+	if x != nil {
+		return x.RemainingTime
+	}
+	return ""
+}
+
+func (x *Project) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Project) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
@@ -353,7 +461,17 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xb5\x02\n" +
+	"\aProject\x12\x1c\n" +
+	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
+	"\bclientId\x18\x02 \x01(\tR\bclientId\x12 \n" +
+	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x1a\n" +
+	"\bcategory\x18\x04 \x01(\tR\bcategory\x128\n" +
+	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
+	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12$\n" +
+	"\rremainingTime\x18\a \x01(\tR\rremainingTime\x12\x1c\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tcreatedBy\x18\t \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -367,12 +485,13 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_base_models_base_models_proto_goTypes = []any{
 	(*User)(nil),         // 0: base_models.User
 	(*UserSettings)(nil), // 1: base_models.UserSettings
 	(*Message)(nil),      // 2: base_models.Message
 	(*Chat)(nil),         // 3: base_models.Chat
+	(*Project)(nil),      // 4: base_models.Project
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
 	1, // 0: base_models.User.settings:type_name -> base_models.UserSettings
@@ -396,7 +515,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
