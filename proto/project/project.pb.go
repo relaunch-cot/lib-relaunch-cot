@@ -27,13 +27,12 @@ const (
 type CreateProjectRequest struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
-	ClientId                string                 `protobuf:"bytes,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
-	DeveloperId             string                 `protobuf:"bytes,3,opt,name=developerId,proto3" json:"developerId,omitempty"`
-	Category                string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
-	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
-	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	CreatedAt               string                 `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy               string                 `protobuf:"bytes,8,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	UserId                  string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	ClientId                string                 `protobuf:"bytes,3,opt,name=clientId,proto3" json:"clientId,omitempty"`
+	DeveloperId             string                 `protobuf:"bytes,4,opt,name=developerId,proto3" json:"developerId,omitempty"`
+	Category                string                 `protobuf:"bytes,5,opt,name=category,proto3" json:"category,omitempty"`
+	ProjectDeliveryDeadline string                 `protobuf:"bytes,6,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,7,opt,name=amount,proto3" json:"amount,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -75,6 +74,13 @@ func (x *CreateProjectRequest) GetProjectId() string {
 	return ""
 }
 
+func (x *CreateProjectRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
 func (x *CreateProjectRequest) GetClientId() string {
 	if x != nil {
 		return x.ClientId
@@ -108,20 +114,6 @@ func (x *CreateProjectRequest) GetAmount() float32 {
 		return x.Amount
 	}
 	return 0
-}
-
-func (x *CreateProjectRequest) GetCreatedAt() string {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return ""
-}
-
-func (x *CreateProjectRequest) GetCreatedBy() string {
-	if x != nil {
-		return x.CreatedBy
-	}
-	return ""
 }
 
 // ////////////////////////////// GET PROJECT REQUEST
@@ -308,16 +300,15 @@ var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
 	"\n" +
-	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\x9c\x02\n" +
+	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xf8\x01\n" +
 	"\x14CreateProjectRequest\x12\x1c\n" +
-	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
-	"\bclientId\x18\x02 \x01(\tR\bclientId\x12 \n" +
-	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x1a\n" +
-	"\bcategory\x18\x04 \x01(\tR\bcategory\x128\n" +
-	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
-	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12\x1c\n" +
-	"\tcreatedAt\x18\a \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\b \x01(\tR\tcreatedBy\"1\n" +
+	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
+	"\bclientId\x18\x03 \x01(\tR\bclientId\x12 \n" +
+	"\vdeveloperId\x18\x04 \x01(\tR\vdeveloperId\x12\x1a\n" +
+	"\bcategory\x18\x05 \x01(\tR\bcategory\x128\n" +
+	"\x17projectDeliveryDeadline\x18\x06 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
+	"\x06amount\x18\a \x01(\x02R\x06amount\"1\n" +
 	"\x11GetProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\"D\n" +
 	"\x12GetProjectResponse\x12.\n" +
