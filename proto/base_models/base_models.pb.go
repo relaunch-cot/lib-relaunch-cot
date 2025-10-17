@@ -330,12 +330,14 @@ type Project struct {
 	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
 	ClientId                string                 `protobuf:"bytes,2,opt,name=clientId,proto3" json:"clientId,omitempty"`
 	DeveloperId             string                 `protobuf:"bytes,3,opt,name=developerId,proto3" json:"developerId,omitempty"`
-	Category                string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
-	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
-	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	RemainingTime           string                 `protobuf:"bytes,7,opt,name=remainingTime,proto3" json:"remainingTime,omitempty"`
-	CreatedAt               string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy               string                 `protobuf:"bytes,9,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	Name                    string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Description             string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	Category                string                 `protobuf:"bytes,6,opt,name=category,proto3" json:"category,omitempty"`
+	ProjectDeliveryDeadline string                 `protobuf:"bytes,7,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,8,opt,name=amount,proto3" json:"amount,omitempty"`
+	RemainingTime           string                 `protobuf:"bytes,9,opt,name=remainingTime,proto3" json:"remainingTime,omitempty"`
+	CreatedAt               string                 `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy               string                 `protobuf:"bytes,11,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -387,6 +389,20 @@ func (x *Project) GetClientId() string {
 func (x *Project) GetDeveloperId() string {
 	if x != nil {
 		return x.DeveloperId
+	}
+	return ""
+}
+
+func (x *Project) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Project) GetDescription() string {
+	if x != nil {
+		return x.Description
 	}
 	return ""
 }
@@ -461,17 +477,20 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xb5\x02\n" +
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xeb\x02\n" +
 	"\aProject\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
 	"\bclientId\x18\x02 \x01(\tR\bclientId\x12 \n" +
-	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x1a\n" +
-	"\bcategory\x18\x04 \x01(\tR\bcategory\x128\n" +
-	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
-	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12$\n" +
-	"\rremainingTime\x18\a \x01(\tR\rremainingTime\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\t \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x1a\n" +
+	"\bcategory\x18\x06 \x01(\tR\bcategory\x128\n" +
+	"\x17projectDeliveryDeadline\x18\a \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
+	"\x06amount\x18\b \x01(\x02R\x06amount\x12$\n" +
+	"\rremainingTime\x18\t \x01(\tR\rremainingTime\x12\x1c\n" +
+	"\tcreatedAt\x18\n" +
+	" \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tcreatedBy\x18\v \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once

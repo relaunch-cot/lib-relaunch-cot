@@ -40,10 +40,12 @@ message Project {
   string projectId = 1;
   string clientId = 2;
   string developerId = 3;
-  string category = 4;
-  string projectDeliveryDeadline = 5;
-  float amount = 6;
-  string remainingTime = 7;
-  string createdAt = 8;
-  string createdBy = 9;
+  string name = 4;
+  string description = 5;
+  string category = 6;
+  string projectDeliveryDeadline = 7;
+  float amount = 8;
+  string remainingTime = 9;
+  string createdAt = 10;
+  string createdBy = 11;
 }

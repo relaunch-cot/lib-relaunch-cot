@@ -28,9 +28,11 @@ type CreateProjectRequest struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	UserId                  string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	DeveloperId             string                 `protobuf:"bytes,4,opt,name=developerId,proto3" json:"developerId,omitempty"`
-	Category                string                 `protobuf:"bytes,5,opt,name=category,proto3" json:"category,omitempty"`
-	ProjectDeliveryDeadline string                 `protobuf:"bytes,6,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
-	Amount                  float32                `protobuf:"fixed32,7,opt,name=amount,proto3" json:"amount,omitempty"`
+	Name                    string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Description             string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
+	Category                string                 `protobuf:"bytes,7,opt,name=category,proto3" json:"category,omitempty"`
+	ProjectDeliveryDeadline string                 `protobuf:"bytes,8,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,9,opt,name=amount,proto3" json:"amount,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -75,6 +77,20 @@ func (x *CreateProjectRequest) GetUserId() string {
 func (x *CreateProjectRequest) GetDeveloperId() string {
 	if x != nil {
 		return x.DeveloperId
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateProjectRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
 	}
 	return ""
 }
@@ -284,13 +300,15 @@ var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
 	"\n" +
-	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xbe\x01\n" +
+	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xf4\x01\n" +
 	"\x14CreateProjectRequest\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12 \n" +
-	"\vdeveloperId\x18\x04 \x01(\tR\vdeveloperId\x12\x1a\n" +
-	"\bcategory\x18\x05 \x01(\tR\bcategory\x128\n" +
-	"\x17projectDeliveryDeadline\x18\x06 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
-	"\x06amount\x18\a \x01(\x02R\x06amount\"1\n" +
+	"\vdeveloperId\x18\x04 \x01(\tR\vdeveloperId\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1a\n" +
+	"\bcategory\x18\a \x01(\tR\bcategory\x128\n" +
+	"\x17projectDeliveryDeadline\x18\b \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
+	"\x06amount\x18\t \x01(\x02R\x06amount\"1\n" +
 	"\x11GetProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\"D\n" +
 	"\x12GetProjectResponse\x12.\n" +
