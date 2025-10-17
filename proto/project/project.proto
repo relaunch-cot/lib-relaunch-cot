@@ -31,7 +31,7 @@ message GetProjectResponse {
 
 //////////////////////////////// GET ALL PROJECTS FROM USER REQUEST
 message GetAllProjectsFromUserRequest {
-  string projectId = 1;
+  string userId = 1;
 }
 
 //////////////////////////////// GET ALL PROJECTS FROM USER RESPONSE

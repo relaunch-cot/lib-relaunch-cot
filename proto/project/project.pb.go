@@ -217,7 +217,7 @@ func (x *GetProjectResponse) GetProject() *base_models.Project {
 // ////////////////////////////// GET ALL PROJECTS FROM USER REQUEST
 type GetAllProjectsFromUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProjectId     string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -252,9 +252,9 @@ func (*GetAllProjectsFromUserRequest) Descriptor() ([]byte, []int) {
 	return file_project_project_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetAllProjectsFromUserRequest) GetProjectId() string {
+func (x *GetAllProjectsFromUserRequest) GetUserId() string {
 	if x != nil {
-		return x.ProjectId
+		return x.UserId
 	}
 	return ""
 }
@@ -321,9 +321,9 @@ const file_project_project_proto_rawDesc = "" +
 	"\x11GetProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\"D\n" +
 	"\x12GetProjectResponse\x12.\n" +
-	"\aproject\x18\x01 \x01(\v2\x14.base_models.ProjectR\aproject\"=\n" +
-	"\x1dGetAllProjectsFromUserRequest\x12\x1c\n" +
-	"\tprojectId\x18\x01 \x01(\tR\tprojectId\"R\n" +
+	"\aproject\x18\x01 \x01(\v2\x14.base_models.ProjectR\aproject\"7\n" +
+	"\x1dGetAllProjectsFromUserRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\"R\n" +
 	"\x1eGetAllProjectsFromUserResponse\x120\n" +
 	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects2\x8a\x02\n" +
 	"\x0eProjectService\x12F\n" +
