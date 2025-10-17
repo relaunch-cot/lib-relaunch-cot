@@ -32,9 +32,8 @@ type CreateProjectRequest struct {
 	Category                string                 `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
 	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
 	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	RemainingTime           string                 `protobuf:"bytes,7,opt,name=remainingTime,proto3" json:"remainingTime,omitempty"`
-	CreatedAt               string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy               string                 `protobuf:"bytes,9,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	CreatedAt               string                 `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy               string                 `protobuf:"bytes,8,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -109,13 +108,6 @@ func (x *CreateProjectRequest) GetAmount() float32 {
 		return x.Amount
 	}
 	return 0
-}
-
-func (x *CreateProjectRequest) GetRemainingTime() string {
-	if x != nil {
-		return x.RemainingTime
-	}
-	return ""
 }
 
 func (x *CreateProjectRequest) GetCreatedAt() string {
@@ -316,17 +308,16 @@ var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
 	"\n" +
-	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\xc2\x02\n" +
+	"\x15project/project.proto\x12\aproject\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\x9c\x02\n" +
 	"\x14CreateProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
 	"\bclientId\x18\x02 \x01(\tR\bclientId\x12 \n" +
 	"\vdeveloperId\x18\x03 \x01(\tR\vdeveloperId\x12\x1a\n" +
 	"\bcategory\x18\x04 \x01(\tR\bcategory\x128\n" +
 	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
-	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12$\n" +
-	"\rremainingTime\x18\a \x01(\tR\rremainingTime\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\t \x01(\tR\tcreatedBy\"1\n" +
+	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12\x1c\n" +
+	"\tcreatedAt\x18\a \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tcreatedBy\x18\b \x01(\tR\tcreatedBy\"1\n" +
 	"\x11GetProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\"D\n" +
 	"\x12GetProjectResponse\x12.\n" +
