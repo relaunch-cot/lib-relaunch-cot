@@ -28,6 +28,7 @@ const (
 	UserService_GenerateReportFromJSON_FullMethodName    = "/user.UserService/GenerateReportFromJSON"
 	UserService_SendPasswordRecoveryEmail_FullMethodName = "/user.UserService/SendPasswordRecoveryEmail"
 	UserService_GetUserProfile_FullMethodName            = "/user.UserService/GetUserProfile"
+	UserService_GetUserType_FullMethodName               = "/user.UserService/GetUserType"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -42,6 +43,7 @@ type UserServiceClient interface {
 	GenerateReportFromJSON(ctx context.Context, in *GenerateReportRequest, opts ...grpc.CallOption) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(ctx context.Context, in *SendPasswordRecoveryEmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetUserProfile(ctx context.Context, in *GetUserProfileRequest, opts ...grpc.CallOption) (*GetUserProfileResponse, error)
+	GetUserType(ctx context.Context, in *GetUserTypeRequest, opts ...grpc.CallOption) (*GetUserTypeResponse, error)
 }
 
 type userServiceClient struct {
@@ -132,6 +134,16 @@ func (c *userServiceClient) GetUserProfile(ctx context.Context, in *GetUserProfi
 	return out, nil
 }
 
+func (c *userServiceClient) GetUserType(ctx context.Context, in *GetUserTypeRequest, opts ...grpc.CallOption) (*GetUserTypeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserTypeResponse)
+	err := c.cc.Invoke(ctx, UserService_GetUserType_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -144,6 +156,7 @@ type UserServiceServer interface {
 	GenerateReportFromJSON(context.Context, *GenerateReportRequest) (*GenerateReportResponse, error)
 	SendPasswordRecoveryEmail(context.Context, *SendPasswordRecoveryEmailRequest) (*emptypb.Empty, error)
 	GetUserProfile(context.Context, *GetUserProfileRequest) (*GetUserProfileResponse, error)
+	GetUserType(context.Context, *GetUserTypeRequest) (*GetUserTypeResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -177,6 +190,9 @@ func (UnimplementedUserServiceServer) SendPasswordRecoveryEmail(context.Context,
 }
 func (UnimplementedUserServiceServer) GetUserProfile(context.Context, *GetUserProfileRequest) (*GetUserProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserProfile not implemented")
+}
+func (UnimplementedUserServiceServer) GetUserType(context.Context, *GetUserTypeRequest) (*GetUserTypeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserType not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -343,6 +359,24 @@ func _UserService_GetUserProfile_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetUserType_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserTypeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetUserType(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetUserType_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetUserType(ctx, req.(*GetUserTypeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -381,6 +415,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserProfile",
 			Handler:    _UserService_GetUserProfile_Handler,
+		},
+		{
+			MethodName: "GetUserType",
+			Handler:    _UserService_GetUserType_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
