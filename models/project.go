@@ -10,6 +10,8 @@ type Project struct {
 	ProjectDeliveryDeadline string
 	Amount                  float32
 	RemainingTime           string
+	ClientName              string
+	FreelancerName          string
 	CreatedAt               string
 	CreatedBy               string
 }

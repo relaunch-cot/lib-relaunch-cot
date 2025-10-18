@@ -46,6 +46,8 @@ message Project {
   string projectDeliveryDeadline = 7;
   float amount = 8;
   string remainingTime = 9;
-  string createdAt = 10;
-  string createdBy = 11;
+  string clientName = 10;
+  string freelancerName = 11;
+  string createdAt = 12;
+  string createdBy = 13;
 }
