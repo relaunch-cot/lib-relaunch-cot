@@ -12,7 +12,8 @@ type Project struct {
 	RemainingTime           string
 	ClientName              string
 	FreelancerName          string
-	status                  string
+	UrlImageProject         string
+	Status                  string
 	CreatedAt               string
 	CreatedBy               string
 }

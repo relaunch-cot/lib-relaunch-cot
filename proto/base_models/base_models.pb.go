@@ -338,9 +338,10 @@ type Project struct {
 	RemainingTime           string                 `protobuf:"bytes,9,opt,name=remainingTime,proto3" json:"remainingTime,omitempty"`
 	ClientName              string                 `protobuf:"bytes,10,opt,name=clientName,proto3" json:"clientName,omitempty"`
 	FreelancerName          string                 `protobuf:"bytes,11,opt,name=freelancerName,proto3" json:"freelancerName,omitempty"`
-	Status                  string                 `protobuf:"bytes,12,opt,name=status,proto3" json:"status,omitempty"`
-	CreatedAt               string                 `protobuf:"bytes,13,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy               string                 `protobuf:"bytes,14,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	UrlImageProject         string                 `protobuf:"bytes,12,opt,name=urlImageProject,proto3" json:"urlImageProject,omitempty"`
+	Status                  string                 `protobuf:"bytes,13,opt,name=status,proto3" json:"status,omitempty"`
+	CreatedAt               string                 `protobuf:"bytes,14,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy               string                 `protobuf:"bytes,15,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -452,6 +453,13 @@ func (x *Project) GetFreelancerName() string {
 	return ""
 }
 
+func (x *Project) GetUrlImageProject() string {
+	if x != nil {
+		return x.UrlImageProject
+	}
+	return ""
+}
+
 func (x *Project) GetStatus() string {
 	if x != nil {
 		return x.Status
@@ -501,7 +509,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xcd\x03\n" +
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\xf7\x03\n" +
 	"\aProject\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
 	"\bclientId\x18\x02 \x01(\tR\bclientId\x12\"\n" +
@@ -516,10 +524,11 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"clientName\x18\n" +
 	" \x01(\tR\n" +
 	"clientName\x12&\n" +
-	"\x0efreelancerName\x18\v \x01(\tR\x0efreelancerName\x12\x16\n" +
-	"\x06status\x18\f \x01(\tR\x06status\x12\x1c\n" +
-	"\tcreatedAt\x18\r \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x0e \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\x0efreelancerName\x18\v \x01(\tR\x0efreelancerName\x12(\n" +
+	"\x0furlImageProject\x18\f \x01(\tR\x0furlImageProject\x12\x16\n" +
+	"\x06status\x18\r \x01(\tR\x06status\x12\x1c\n" +
+	"\tcreatedAt\x18\x0e \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tcreatedBy\x18\x0f \x01(\tR\tcreatedByB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
