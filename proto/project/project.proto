@@ -39,8 +39,26 @@ message GetAllProjectsFromUserResponse {
   repeated base_models.Project projects = 1;
 }
 
+//////////////////////////////// UPDATE PROJECT REQUEST
+message UpdateProjectRequest {
+  string projectId = 1;
+  string userId = 2;
+  string name = 3;
+  string description = 4;
+  string projectDeliveryDeadline = 5;
+  float amount = 6;
+  string urlImageProject = 7;
+  string status = 8;
+}
+
+//////////////////////////////// UPDATE PROJECT RESPONSE
+message UpdateProjectResponse {
+  base_models.Project project = 1;
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns(google.protobuf.Empty);
   rpc GetProject(GetProjectRequest) returns(GetProjectResponse);
   rpc GetAllProjectsFromUser(GetAllProjectsFromUserRequest) returns(GetAllProjectsFromUserResponse);
+  rpc UpdateProject(UpdateProjectRequest) returns(UpdateProjectResponse);
 }

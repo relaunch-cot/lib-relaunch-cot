@@ -48,6 +48,7 @@ message Project {
   string remainingTime = 9;
   string clientName = 10;
   string freelancerName = 11;
-  string createdAt = 12;
-  string createdBy = 13;
+  string status = 12;
+  string createdAt = 13;
+  string createdBy = 14;
 }

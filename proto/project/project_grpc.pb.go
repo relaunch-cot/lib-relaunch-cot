@@ -23,6 +23,7 @@ const (
 	ProjectService_CreateProject_FullMethodName          = "/project.ProjectService/CreateProject"
 	ProjectService_GetProject_FullMethodName             = "/project.ProjectService/GetProject"
 	ProjectService_GetAllProjectsFromUser_FullMethodName = "/project.ProjectService/GetAllProjectsFromUser"
+	ProjectService_UpdateProject_FullMethodName          = "/project.ProjectService/UpdateProject"
 )
 
 // ProjectServiceClient is the client API for ProjectService service.
@@ -32,6 +33,7 @@ type ProjectServiceClient interface {
 	CreateProject(ctx context.Context, in *CreateProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetProject(ctx context.Context, in *GetProjectRequest, opts ...grpc.CallOption) (*GetProjectResponse, error)
 	GetAllProjectsFromUser(ctx context.Context, in *GetAllProjectsFromUserRequest, opts ...grpc.CallOption) (*GetAllProjectsFromUserResponse, error)
+	UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*UpdateProjectResponse, error)
 }
 
 type projectServiceClient struct {
@@ -72,6 +74,16 @@ func (c *projectServiceClient) GetAllProjectsFromUser(ctx context.Context, in *G
 	return out, nil
 }
 
+func (c *projectServiceClient) UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*UpdateProjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProjectResponse)
+	err := c.cc.Invoke(ctx, ProjectService_UpdateProject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectServiceServer is the server API for ProjectService service.
 // All implementations must embed UnimplementedProjectServiceServer
 // for forward compatibility.
@@ -79,6 +91,7 @@ type ProjectServiceServer interface {
 	CreateProject(context.Context, *CreateProjectRequest) (*emptypb.Empty, error)
 	GetProject(context.Context, *GetProjectRequest) (*GetProjectResponse, error)
 	GetAllProjectsFromUser(context.Context, *GetAllProjectsFromUserRequest) (*GetAllProjectsFromUserResponse, error)
+	UpdateProject(context.Context, *UpdateProjectRequest) (*UpdateProjectResponse, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
 
@@ -97,6 +110,9 @@ func (UnimplementedProjectServiceServer) GetProject(context.Context, *GetProject
 }
 func (UnimplementedProjectServiceServer) GetAllProjectsFromUser(context.Context, *GetAllProjectsFromUserRequest) (*GetAllProjectsFromUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllProjectsFromUser not implemented")
+}
+func (UnimplementedProjectServiceServer) UpdateProject(context.Context, *UpdateProjectRequest) (*UpdateProjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProject not implemented")
 }
 func (UnimplementedProjectServiceServer) mustEmbedUnimplementedProjectServiceServer() {}
 func (UnimplementedProjectServiceServer) testEmbeddedByValue()                        {}
@@ -173,6 +189,24 @@ func _ProjectService_GetAllProjectsFromUser_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectService_UpdateProject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).UpdateProject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_UpdateProject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).UpdateProject(ctx, req.(*UpdateProjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectService_ServiceDesc is the grpc.ServiceDesc for ProjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -191,6 +225,10 @@ var ProjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllProjectsFromUser",
 			Handler:    _ProjectService_GetAllProjectsFromUser_Handler,
+		},
+		{
+			MethodName: "UpdateProject",
+			Handler:    _ProjectService_UpdateProject_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -12,6 +12,7 @@ type Project struct {
 	RemainingTime           string
 	ClientName              string
 	FreelancerName          string
+	status                  string
 	CreatedAt               string
 	CreatedBy               string
 }

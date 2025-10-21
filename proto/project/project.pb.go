@@ -304,6 +304,152 @@ func (x *GetAllProjectsFromUserResponse) GetProjects() []*base_models.Project {
 	return nil
 }
 
+// ////////////////////////////// UPDATE PROJECT REQUEST
+type UpdateProjectRequest struct {
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	ProjectId               string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
+	UserId                  string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Name                    string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Description             string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
+	UrlImageProject         string                 `protobuf:"bytes,7,opt,name=urlImageProject,proto3" json:"urlImageProject,omitempty"`
+	Status                  string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
+func (x *UpdateProjectRequest) Reset() {
+	*x = UpdateProjectRequest{}
+	mi := &file_project_project_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectRequest) ProtoMessage() {}
+
+func (x *UpdateProjectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectRequest.ProtoReflect.Descriptor instead.
+func (*UpdateProjectRequest) Descriptor() ([]byte, []int) {
+	return file_project_project_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateProjectRequest) GetProjectId() string {
+	if x != nil {
+		return x.ProjectId
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetProjectDeliveryDeadline() string {
+	if x != nil {
+		return x.ProjectDeliveryDeadline
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetAmount() float32 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *UpdateProjectRequest) GetUrlImageProject() string {
+	if x != nil {
+		return x.UrlImageProject
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+// ////////////////////////////// UPDATE PROJECT RESPONSE
+type UpdateProjectResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Project       *base_models.Project   `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProjectResponse) Reset() {
+	*x = UpdateProjectResponse{}
+	mi := &file_project_project_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProjectResponse) ProtoMessage() {}
+
+func (x *UpdateProjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProjectResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProjectResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdateProjectResponse) GetProject() *base_models.Project {
+	if x != nil {
+		return x.Project
+	}
+	return nil
+}
+
 var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
@@ -325,12 +471,24 @@ const file_project_project_proto_rawDesc = "" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
 	"\buserType\x18\x02 \x01(\tR\buserType\"R\n" +
 	"\x1eGetAllProjectsFromUserResponse\x120\n" +
-	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects2\x8a\x02\n" +
+	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects\"\x96\x02\n" +
+	"\x14UpdateProjectRequest\x12\x1c\n" +
+	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x128\n" +
+	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
+	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12(\n" +
+	"\x0furlImageProject\x18\a \x01(\tR\x0furlImageProject\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\"G\n" +
+	"\x15UpdateProjectResponse\x12.\n" +
+	"\aproject\x18\x01 \x01(\v2\x14.base_models.ProjectR\aproject2\xda\x02\n" +
 	"\x0eProjectService\x12F\n" +
 	"\rCreateProject\x12\x1d.project.CreateProjectRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
 	"\n" +
 	"GetProject\x12\x1a.project.GetProjectRequest\x1a\x1b.project.GetProjectResponse\x12i\n" +
-	"\x16GetAllProjectsFromUser\x12&.project.GetAllProjectsFromUserRequest\x1a'.project.GetAllProjectsFromUserResponseB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
+	"\x16GetAllProjectsFromUser\x12&.project.GetAllProjectsFromUserRequest\x1a'.project.GetAllProjectsFromUserResponse\x12N\n" +
+	"\rUpdateProject\x12\x1d.project.UpdateProjectRequest\x1a\x1e.project.UpdateProjectResponseB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
 
 var (
 	file_project_project_proto_rawDescOnce sync.Once
@@ -344,30 +502,35 @@ func file_project_project_proto_rawDescGZIP() []byte {
 	return file_project_project_proto_rawDescData
 }
 
-var file_project_project_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_project_project_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_project_project_proto_goTypes = []any{
 	(*CreateProjectRequest)(nil),           // 0: project.CreateProjectRequest
 	(*GetProjectRequest)(nil),              // 1: project.GetProjectRequest
 	(*GetProjectResponse)(nil),             // 2: project.GetProjectResponse
 	(*GetAllProjectsFromUserRequest)(nil),  // 3: project.GetAllProjectsFromUserRequest
 	(*GetAllProjectsFromUserResponse)(nil), // 4: project.GetAllProjectsFromUserResponse
-	(*base_models.Project)(nil),            // 5: base_models.Project
-	(*emptypb.Empty)(nil),                  // 6: google.protobuf.Empty
+	(*UpdateProjectRequest)(nil),           // 5: project.UpdateProjectRequest
+	(*UpdateProjectResponse)(nil),          // 6: project.UpdateProjectResponse
+	(*base_models.Project)(nil),            // 7: base_models.Project
+	(*emptypb.Empty)(nil),                  // 8: google.protobuf.Empty
 }
 var file_project_project_proto_depIdxs = []int32{
-	5, // 0: project.GetProjectResponse.project:type_name -> base_models.Project
-	5, // 1: project.GetAllProjectsFromUserResponse.projects:type_name -> base_models.Project
-	0, // 2: project.ProjectService.CreateProject:input_type -> project.CreateProjectRequest
-	1, // 3: project.ProjectService.GetProject:input_type -> project.GetProjectRequest
-	3, // 4: project.ProjectService.GetAllProjectsFromUser:input_type -> project.GetAllProjectsFromUserRequest
-	6, // 5: project.ProjectService.CreateProject:output_type -> google.protobuf.Empty
-	2, // 6: project.ProjectService.GetProject:output_type -> project.GetProjectResponse
-	4, // 7: project.ProjectService.GetAllProjectsFromUser:output_type -> project.GetAllProjectsFromUserResponse
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	7, // 0: project.GetProjectResponse.project:type_name -> base_models.Project
+	7, // 1: project.GetAllProjectsFromUserResponse.projects:type_name -> base_models.Project
+	7, // 2: project.UpdateProjectResponse.project:type_name -> base_models.Project
+	0, // 3: project.ProjectService.CreateProject:input_type -> project.CreateProjectRequest
+	1, // 4: project.ProjectService.GetProject:input_type -> project.GetProjectRequest
+	3, // 5: project.ProjectService.GetAllProjectsFromUser:input_type -> project.GetAllProjectsFromUserRequest
+	5, // 6: project.ProjectService.UpdateProject:input_type -> project.UpdateProjectRequest
+	8, // 7: project.ProjectService.CreateProject:output_type -> google.protobuf.Empty
+	2, // 8: project.ProjectService.GetProject:output_type -> project.GetProjectResponse
+	4, // 9: project.ProjectService.GetAllProjectsFromUser:output_type -> project.GetAllProjectsFromUserResponse
+	6, // 10: project.ProjectService.UpdateProject:output_type -> project.UpdateProjectResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_project_project_proto_init() }
@@ -381,7 +544,7 @@ func file_project_project_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_project_project_proto_rawDesc), len(file_project_project_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
