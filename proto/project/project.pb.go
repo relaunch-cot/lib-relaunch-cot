@@ -312,9 +312,10 @@ type UpdateProjectRequest struct {
 	Name                    string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description             string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	ProjectDeliveryDeadline string                 `protobuf:"bytes,5,opt,name=projectDeliveryDeadline,proto3" json:"projectDeliveryDeadline,omitempty"`
-	Amount                  float32                `protobuf:"fixed32,6,opt,name=amount,proto3" json:"amount,omitempty"`
-	UrlImageProject         string                 `protobuf:"bytes,7,opt,name=urlImageProject,proto3" json:"urlImageProject,omitempty"`
-	Status                  string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	Category                string                 `protobuf:"bytes,6,opt,name=category,proto3" json:"category,omitempty"`
+	Amount                  float32                `protobuf:"fixed32,7,opt,name=amount,proto3" json:"amount,omitempty"`
+	UrlImageProject         string                 `protobuf:"bytes,8,opt,name=urlImageProject,proto3" json:"urlImageProject,omitempty"`
+	Status                  string                 `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -380,6 +381,13 @@ func (x *UpdateProjectRequest) GetDescription() string {
 func (x *UpdateProjectRequest) GetProjectDeliveryDeadline() string {
 	if x != nil {
 		return x.ProjectDeliveryDeadline
+	}
+	return ""
+}
+
+func (x *UpdateProjectRequest) GetCategory() string {
+	if x != nil {
+		return x.Category
 	}
 	return ""
 }
@@ -471,16 +479,17 @@ const file_project_project_proto_rawDesc = "" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
 	"\buserType\x18\x02 \x01(\tR\buserType\"R\n" +
 	"\x1eGetAllProjectsFromUserResponse\x120\n" +
-	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects\"\x96\x02\n" +
+	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects\"\xb2\x02\n" +
 	"\x14UpdateProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x128\n" +
-	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x16\n" +
-	"\x06amount\x18\x06 \x01(\x02R\x06amount\x12(\n" +
-	"\x0furlImageProject\x18\a \x01(\tR\x0furlImageProject\x12\x16\n" +
-	"\x06status\x18\b \x01(\tR\x06status\"G\n" +
+	"\x17projectDeliveryDeadline\x18\x05 \x01(\tR\x17projectDeliveryDeadline\x12\x1a\n" +
+	"\bcategory\x18\x06 \x01(\tR\bcategory\x12\x16\n" +
+	"\x06amount\x18\a \x01(\x02R\x06amount\x12(\n" +
+	"\x0furlImageProject\x18\b \x01(\tR\x0furlImageProject\x12\x16\n" +
+	"\x06status\x18\t \x01(\tR\x06status\"G\n" +
 	"\x15UpdateProjectResponse\x12.\n" +
 	"\aproject\x18\x01 \x01(\v2\x14.base_models.ProjectR\aproject2\xda\x02\n" +
 	"\x0eProjectService\x12F\n" +

@@ -52,4 +52,5 @@ message Project {
   string status = 13;
   string createdAt = 14;
   string createdBy = 15;
+  string updatedAt = 16;
 }

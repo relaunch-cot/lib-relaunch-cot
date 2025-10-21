@@ -16,4 +16,5 @@ type Project struct {
 	Status                  string
 	CreatedAt               string
 	CreatedBy               string
+	UpdatedAt               string
 }
