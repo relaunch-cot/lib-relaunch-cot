@@ -57,9 +57,16 @@ message UpdateProjectResponse {
   base_models.Project project = 1;
 }
 
+//////////////////////////////// ADD FREELANCER TO PROJECT REQUEST
+message AddFreelancerToProjectRequest {
+  string projectId = 1;
+  string freelancerId = 2;
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns(google.protobuf.Empty);
   rpc GetProject(GetProjectRequest) returns(GetProjectResponse);
   rpc GetAllProjectsFromUser(GetAllProjectsFromUserRequest) returns(GetAllProjectsFromUserResponse);
   rpc UpdateProject(UpdateProjectRequest) returns(UpdateProjectResponse);
+  rpc AddFreelancerToProject(AddFreelancerToProjectRequest) returns(google.protobuf.Empty);
 }
