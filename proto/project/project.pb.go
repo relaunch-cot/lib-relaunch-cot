@@ -572,6 +572,51 @@ func (x *RemoveFreelancerFromProjectRequest) GetFreelancerId() string {
 	return ""
 }
 
+// ////////////////////////////// GET ALL PROJECTS RESPONSE
+type GetAllProjectsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Projects      []*base_models.Project `protobuf:"bytes,1,rep,name=projects,proto3" json:"projects,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllProjectsResponse) Reset() {
+	*x = GetAllProjectsResponse{}
+	mi := &file_project_project_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllProjectsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllProjectsResponse) ProtoMessage() {}
+
+func (x *GetAllProjectsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_project_project_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllProjectsResponse.ProtoReflect.Descriptor instead.
+func (*GetAllProjectsResponse) Descriptor() ([]byte, []int) {
+	return file_project_project_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetAllProjectsResponse) GetProjects() []*base_models.Project {
+	if x != nil {
+		return x.Projects
+	}
+	return nil
+}
+
 var File_project_project_proto protoreflect.FileDescriptor
 
 const file_project_project_proto_rawDesc = "" +
@@ -612,7 +657,9 @@ const file_project_project_proto_rawDesc = "" +
 	"\"RemoveFreelancerFromProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\"\n" +
-	"\ffreelancerId\x18\x03 \x01(\tR\ffreelancerId2\x98\x04\n" +
+	"\ffreelancerId\x18\x03 \x01(\tR\ffreelancerId\"J\n" +
+	"\x16GetAllProjectsResponse\x120\n" +
+	"\bprojects\x18\x01 \x03(\v2\x14.base_models.ProjectR\bprojects2\xe3\x04\n" +
 	"\x0eProjectService\x12F\n" +
 	"\rCreateProject\x12\x1d.project.CreateProjectRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
 	"\n" +
@@ -620,7 +667,8 @@ const file_project_project_proto_rawDesc = "" +
 	"\x16GetAllProjectsFromUser\x12&.project.GetAllProjectsFromUserRequest\x1a'.project.GetAllProjectsFromUserResponse\x12N\n" +
 	"\rUpdateProject\x12\x1d.project.UpdateProjectRequest\x1a\x1e.project.UpdateProjectResponse\x12X\n" +
 	"\x16AddFreelancerToProject\x12&.project.AddFreelancerToProjectRequest\x1a\x16.google.protobuf.Empty\x12b\n" +
-	"\x1bRemoveFreelancerFromProject\x12+.project.RemoveFreelancerFromProjectRequest\x1a\x16.google.protobuf.EmptyB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
+	"\x1bRemoveFreelancerFromProject\x12+.project.RemoveFreelancerFromProjectRequest\x1a\x16.google.protobuf.Empty\x12I\n" +
+	"\x0eGetAllProjects\x12\x16.google.protobuf.Empty\x1a\x1f.project.GetAllProjectsResponseB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
 
 var (
 	file_project_project_proto_rawDescOnce sync.Once
@@ -634,7 +682,7 @@ func file_project_project_proto_rawDescGZIP() []byte {
 	return file_project_project_proto_rawDescData
 }
 
-var file_project_project_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_project_project_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_project_project_proto_goTypes = []any{
 	(*CreateProjectRequest)(nil),               // 0: project.CreateProjectRequest
 	(*GetProjectRequest)(nil),                  // 1: project.GetProjectRequest
@@ -645,30 +693,34 @@ var file_project_project_proto_goTypes = []any{
 	(*UpdateProjectResponse)(nil),              // 6: project.UpdateProjectResponse
 	(*AddFreelancerToProjectRequest)(nil),      // 7: project.AddFreelancerToProjectRequest
 	(*RemoveFreelancerFromProjectRequest)(nil), // 8: project.RemoveFreelancerFromProjectRequest
-	(*base_models.Project)(nil),                // 9: base_models.Project
-	(*emptypb.Empty)(nil),                      // 10: google.protobuf.Empty
+	(*GetAllProjectsResponse)(nil),             // 9: project.GetAllProjectsResponse
+	(*base_models.Project)(nil),                // 10: base_models.Project
+	(*emptypb.Empty)(nil),                      // 11: google.protobuf.Empty
 }
 var file_project_project_proto_depIdxs = []int32{
-	9,  // 0: project.GetProjectResponse.project:type_name -> base_models.Project
-	9,  // 1: project.GetAllProjectsFromUserResponse.projects:type_name -> base_models.Project
-	9,  // 2: project.UpdateProjectResponse.project:type_name -> base_models.Project
-	0,  // 3: project.ProjectService.CreateProject:input_type -> project.CreateProjectRequest
-	1,  // 4: project.ProjectService.GetProject:input_type -> project.GetProjectRequest
-	3,  // 5: project.ProjectService.GetAllProjectsFromUser:input_type -> project.GetAllProjectsFromUserRequest
-	5,  // 6: project.ProjectService.UpdateProject:input_type -> project.UpdateProjectRequest
-	7,  // 7: project.ProjectService.AddFreelancerToProject:input_type -> project.AddFreelancerToProjectRequest
-	8,  // 8: project.ProjectService.RemoveFreelancerFromProject:input_type -> project.RemoveFreelancerFromProjectRequest
-	10, // 9: project.ProjectService.CreateProject:output_type -> google.protobuf.Empty
-	2,  // 10: project.ProjectService.GetProject:output_type -> project.GetProjectResponse
-	4,  // 11: project.ProjectService.GetAllProjectsFromUser:output_type -> project.GetAllProjectsFromUserResponse
-	6,  // 12: project.ProjectService.UpdateProject:output_type -> project.UpdateProjectResponse
-	10, // 13: project.ProjectService.AddFreelancerToProject:output_type -> google.protobuf.Empty
-	10, // 14: project.ProjectService.RemoveFreelancerFromProject:output_type -> google.protobuf.Empty
-	9,  // [9:15] is the sub-list for method output_type
-	3,  // [3:9] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	10, // 0: project.GetProjectResponse.project:type_name -> base_models.Project
+	10, // 1: project.GetAllProjectsFromUserResponse.projects:type_name -> base_models.Project
+	10, // 2: project.UpdateProjectResponse.project:type_name -> base_models.Project
+	10, // 3: project.GetAllProjectsResponse.projects:type_name -> base_models.Project
+	0,  // 4: project.ProjectService.CreateProject:input_type -> project.CreateProjectRequest
+	1,  // 5: project.ProjectService.GetProject:input_type -> project.GetProjectRequest
+	3,  // 6: project.ProjectService.GetAllProjectsFromUser:input_type -> project.GetAllProjectsFromUserRequest
+	5,  // 7: project.ProjectService.UpdateProject:input_type -> project.UpdateProjectRequest
+	7,  // 8: project.ProjectService.AddFreelancerToProject:input_type -> project.AddFreelancerToProjectRequest
+	8,  // 9: project.ProjectService.RemoveFreelancerFromProject:input_type -> project.RemoveFreelancerFromProjectRequest
+	11, // 10: project.ProjectService.GetAllProjects:input_type -> google.protobuf.Empty
+	11, // 11: project.ProjectService.CreateProject:output_type -> google.protobuf.Empty
+	2,  // 12: project.ProjectService.GetProject:output_type -> project.GetProjectResponse
+	4,  // 13: project.ProjectService.GetAllProjectsFromUser:output_type -> project.GetAllProjectsFromUserResponse
+	6,  // 14: project.ProjectService.UpdateProject:output_type -> project.UpdateProjectResponse
+	11, // 15: project.ProjectService.AddFreelancerToProject:output_type -> google.protobuf.Empty
+	11, // 16: project.ProjectService.RemoveFreelancerFromProject:output_type -> google.protobuf.Empty
+	9,  // 17: project.ProjectService.GetAllProjects:output_type -> project.GetAllProjectsResponse
+	11, // [11:18] is the sub-list for method output_type
+	4,  // [4:11] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_project_project_proto_init() }
@@ -682,7 +734,7 @@ func file_project_project_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_project_project_proto_rawDesc), len(file_project_project_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -26,6 +26,7 @@ const (
 	ProjectService_UpdateProject_FullMethodName               = "/project.ProjectService/UpdateProject"
 	ProjectService_AddFreelancerToProject_FullMethodName      = "/project.ProjectService/AddFreelancerToProject"
 	ProjectService_RemoveFreelancerFromProject_FullMethodName = "/project.ProjectService/RemoveFreelancerFromProject"
+	ProjectService_GetAllProjects_FullMethodName              = "/project.ProjectService/GetAllProjects"
 )
 
 // ProjectServiceClient is the client API for ProjectService service.
@@ -38,6 +39,7 @@ type ProjectServiceClient interface {
 	UpdateProject(ctx context.Context, in *UpdateProjectRequest, opts ...grpc.CallOption) (*UpdateProjectResponse, error)
 	AddFreelancerToProject(ctx context.Context, in *AddFreelancerToProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	RemoveFreelancerFromProject(ctx context.Context, in *RemoveFreelancerFromProjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetAllProjects(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllProjectsResponse, error)
 }
 
 type projectServiceClient struct {
@@ -108,6 +110,16 @@ func (c *projectServiceClient) RemoveFreelancerFromProject(ctx context.Context, 
 	return out, nil
 }
 
+func (c *projectServiceClient) GetAllProjects(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllProjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllProjectsResponse)
+	err := c.cc.Invoke(ctx, ProjectService_GetAllProjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectServiceServer is the server API for ProjectService service.
 // All implementations must embed UnimplementedProjectServiceServer
 // for forward compatibility.
@@ -118,6 +130,7 @@ type ProjectServiceServer interface {
 	UpdateProject(context.Context, *UpdateProjectRequest) (*UpdateProjectResponse, error)
 	AddFreelancerToProject(context.Context, *AddFreelancerToProjectRequest) (*emptypb.Empty, error)
 	RemoveFreelancerFromProject(context.Context, *RemoveFreelancerFromProjectRequest) (*emptypb.Empty, error)
+	GetAllProjects(context.Context, *emptypb.Empty) (*GetAllProjectsResponse, error)
 	mustEmbedUnimplementedProjectServiceServer()
 }
 
@@ -145,6 +158,9 @@ func (UnimplementedProjectServiceServer) AddFreelancerToProject(context.Context,
 }
 func (UnimplementedProjectServiceServer) RemoveFreelancerFromProject(context.Context, *RemoveFreelancerFromProjectRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveFreelancerFromProject not implemented")
+}
+func (UnimplementedProjectServiceServer) GetAllProjects(context.Context, *emptypb.Empty) (*GetAllProjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllProjects not implemented")
 }
 func (UnimplementedProjectServiceServer) mustEmbedUnimplementedProjectServiceServer() {}
 func (UnimplementedProjectServiceServer) testEmbeddedByValue()                        {}
@@ -275,6 +291,24 @@ func _ProjectService_RemoveFreelancerFromProject_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectService_GetAllProjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectServiceServer).GetAllProjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectService_GetAllProjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectServiceServer).GetAllProjects(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectService_ServiceDesc is the grpc.ServiceDesc for ProjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -305,6 +339,10 @@ var ProjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveFreelancerFromProject",
 			Handler:    _ProjectService_RemoveFreelancerFromProject_Handler,
+		},
+		{
+			MethodName: "GetAllProjects",
+			Handler:    _ProjectService_GetAllProjects_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

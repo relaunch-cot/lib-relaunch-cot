@@ -70,6 +70,11 @@ message RemoveFreelancerFromProjectRequest {
   string freelancerId = 3;
 }
 
+//////////////////////////////// GET ALL PROJECTS RESPONSE
+message GetAllProjectsResponse {
+  repeated base_models.Project projects = 1;
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns(google.protobuf.Empty);
   rpc GetProject(GetProjectRequest) returns(GetProjectResponse);
@@ -77,4 +82,5 @@ service ProjectService {
   rpc UpdateProject(UpdateProjectRequest) returns(UpdateProjectResponse);
   rpc AddFreelancerToProject(AddFreelancerToProjectRequest) returns(google.protobuf.Empty);
   rpc RemoveFreelancerFromProject(RemoveFreelancerFromProjectRequest) returns(google.protobuf.Empty);
+  rpc GetAllProjects(google.protobuf.Empty) returns(GetAllProjectsResponse);
 }
