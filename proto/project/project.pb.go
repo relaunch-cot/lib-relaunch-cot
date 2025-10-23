@@ -515,7 +515,8 @@ func (x *AddFreelancerToProjectRequest) GetFreelancerId() string {
 type RemoveFreelancerFromProjectRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProjectId     string                 `protobuf:"bytes,1,opt,name=projectId,proto3" json:"projectId,omitempty"`
-	FreelancerId  string                 `protobuf:"bytes,2,opt,name=freelancerId,proto3" json:"freelancerId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	FreelancerId  string                 `protobuf:"bytes,3,opt,name=freelancerId,proto3" json:"freelancerId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -553,6 +554,13 @@ func (*RemoveFreelancerFromProjectRequest) Descriptor() ([]byte, []int) {
 func (x *RemoveFreelancerFromProjectRequest) GetProjectId() string {
 	if x != nil {
 		return x.ProjectId
+	}
+	return ""
+}
+
+func (x *RemoveFreelancerFromProjectRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
 	}
 	return ""
 }
@@ -600,10 +608,11 @@ const file_project_project_proto_rawDesc = "" +
 	"\aproject\x18\x01 \x01(\v2\x14.base_models.ProjectR\aproject\"a\n" +
 	"\x1dAddFreelancerToProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\"\n" +
-	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId\"f\n" +
+	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId\"~\n" +
 	"\"RemoveFreelancerFromProjectRequest\x12\x1c\n" +
-	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\"\n" +
-	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId2\x98\x04\n" +
+	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\"\n" +
+	"\ffreelancerId\x18\x03 \x01(\tR\ffreelancerId2\x98\x04\n" +
 	"\x0eProjectService\x12F\n" +
 	"\rCreateProject\x12\x1d.project.CreateProjectRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
 	"\n" +
