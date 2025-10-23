@@ -603,15 +603,15 @@ const file_project_project_proto_rawDesc = "" +
 	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId\"f\n" +
 	"\"RemoveFreelancerFromProjectRequest\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\"\n" +
-	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId2\x94\x04\n" +
+	"\ffreelancerId\x18\x02 \x01(\tR\ffreelancerId2\x98\x04\n" +
 	"\x0eProjectService\x12F\n" +
 	"\rCreateProject\x12\x1d.project.CreateProjectRequest\x1a\x16.google.protobuf.Empty\x12E\n" +
 	"\n" +
 	"GetProject\x12\x1a.project.GetProjectRequest\x1a\x1b.project.GetProjectResponse\x12i\n" +
 	"\x16GetAllProjectsFromUser\x12&.project.GetAllProjectsFromUserRequest\x1a'.project.GetAllProjectsFromUserResponse\x12N\n" +
 	"\rUpdateProject\x12\x1d.project.UpdateProjectRequest\x1a\x1e.project.UpdateProjectResponse\x12X\n" +
-	"\x16AddFreelancerToProject\x12&.project.AddFreelancerToProjectRequest\x1a\x16.google.protobuf.Empty\x12^\n" +
-	"\x17RemoveClientFromProject\x12+.project.RemoveFreelancerFromProjectRequest\x1a\x16.google.protobuf.EmptyB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
+	"\x16AddFreelancerToProject\x12&.project.AddFreelancerToProjectRequest\x1a\x16.google.protobuf.Empty\x12b\n" +
+	"\x1bRemoveFreelancerFromProject\x12+.project.RemoveFreelancerFromProjectRequest\x1a\x16.google.protobuf.EmptyB8Z6github.com/relaunch-cot/lib-relaunch-cot/proto/projectb\x06proto3"
 
 var (
 	file_project_project_proto_rawDescOnce sync.Once
@@ -648,13 +648,13 @@ var file_project_project_proto_depIdxs = []int32{
 	3,  // 5: project.ProjectService.GetAllProjectsFromUser:input_type -> project.GetAllProjectsFromUserRequest
 	5,  // 6: project.ProjectService.UpdateProject:input_type -> project.UpdateProjectRequest
 	7,  // 7: project.ProjectService.AddFreelancerToProject:input_type -> project.AddFreelancerToProjectRequest
-	8,  // 8: project.ProjectService.RemoveClientFromProject:input_type -> project.RemoveFreelancerFromProjectRequest
+	8,  // 8: project.ProjectService.RemoveFreelancerFromProject:input_type -> project.RemoveFreelancerFromProjectRequest
 	10, // 9: project.ProjectService.CreateProject:output_type -> google.protobuf.Empty
 	2,  // 10: project.ProjectService.GetProject:output_type -> project.GetProjectResponse
 	4,  // 11: project.ProjectService.GetAllProjectsFromUser:output_type -> project.GetAllProjectsFromUserResponse
 	6,  // 12: project.ProjectService.UpdateProject:output_type -> project.UpdateProjectResponse
 	10, // 13: project.ProjectService.AddFreelancerToProject:output_type -> google.protobuf.Empty
-	10, // 14: project.ProjectService.RemoveClientFromProject:output_type -> google.protobuf.Empty
+	10, // 14: project.ProjectService.RemoveFreelancerFromProject:output_type -> google.protobuf.Empty
 	9,  // [9:15] is the sub-list for method output_type
 	3,  // [3:9] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name

@@ -75,5 +75,5 @@ service ProjectService {
   rpc GetAllProjectsFromUser(GetAllProjectsFromUserRequest) returns(GetAllProjectsFromUserResponse);
   rpc UpdateProject(UpdateProjectRequest) returns(UpdateProjectResponse);
   rpc AddFreelancerToProject(AddFreelancerToProjectRequest) returns(google.protobuf.Empty);
-  rpc RemoveClientFromProject(RemoveFreelancerFromProjectRequest) returns(google.protobuf.Empty);
+  rpc RemoveFreelancerFromProject(RemoveFreelancerFromProjectRequest) returns(google.protobuf.Empty);
 }
