@@ -63,10 +63,17 @@ message AddFreelancerToProjectRequest {
   string freelancerId = 2;
 }
 
+//////////////////////////////// REMOVE FREELANCER FROM PROJECT REQUEST
+message RemoveFreelancerFromProjectRequest {
+  string projectId = 1;
+  string freelancerId = 2;
+}
+
 service ProjectService {
   rpc CreateProject(CreateProjectRequest) returns(google.protobuf.Empty);
   rpc GetProject(GetProjectRequest) returns(GetProjectResponse);
   rpc GetAllProjectsFromUser(GetAllProjectsFromUserRequest) returns(GetAllProjectsFromUserResponse);
   rpc UpdateProject(UpdateProjectRequest) returns(UpdateProjectResponse);
   rpc AddFreelancerToProject(AddFreelancerToProjectRequest) returns(google.protobuf.Empty);
+  rpc RemoveClientFromProject(RemoveFreelancerFromProjectRequest) returns(google.protobuf.Empty);
 }
