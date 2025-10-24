@@ -2,7 +2,19 @@ syntax= "proto3";
 
 package notification;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/notification";
 
+/////////////////////////////// SEND NOTIFICATION REQUEST
+message SendNotificationRequest {
+  string senderId = 1;
+  string receiverId = 2;
+  string title = 3;
+  string content = 4;
+  string type = 5;
+}
+
 service NotificationService {
+  rpc SendNotification(SendNotificationRequest) returns(google.protobuf.Empty);
 }

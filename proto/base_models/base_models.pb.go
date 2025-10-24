@@ -489,6 +489,98 @@ func (x *Project) GetUpdatedAt() string {
 	return ""
 }
 
+type Notification struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	NotificationId string                 `protobuf:"bytes,1,opt,name=notificationId,proto3" json:"notificationId,omitempty"`
+	SenderId       string                 `protobuf:"bytes,2,opt,name=senderId,proto3" json:"senderId,omitempty"`
+	ReceiverId     string                 `protobuf:"bytes,3,opt,name=receiverId,proto3" json:"receiverId,omitempty"`
+	Title          string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
+	Content        string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
+	Type           string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	CreatedAt      string                 `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Notification) Reset() {
+	*x = Notification{}
+	mi := &file_base_models_base_models_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Notification) ProtoMessage() {}
+
+func (x *Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Notification.ProtoReflect.Descriptor instead.
+func (*Notification) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Notification) GetNotificationId() string {
+	if x != nil {
+		return x.NotificationId
+	}
+	return ""
+}
+
+func (x *Notification) GetSenderId() string {
+	if x != nil {
+		return x.SenderId
+	}
+	return ""
+}
+
+func (x *Notification) GetReceiverId() string {
+	if x != nil {
+		return x.ReceiverId
+	}
+	return ""
+}
+
+func (x *Notification) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Notification) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *Notification) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *Notification) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
@@ -537,7 +629,17 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06status\x18\r \x01(\tR\x06status\x12\x1c\n" +
 	"\tcreatedAt\x18\x0e \x01(\tR\tcreatedAt\x12\x1c\n" +
 	"\tcreatedBy\x18\x0f \x01(\tR\tcreatedBy\x12\x1c\n" +
-	"\tupdatedAt\x18\x10 \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tupdatedAt\x18\x10 \x01(\tR\tupdatedAt\"\xd4\x01\n" +
+	"\fNotification\x12&\n" +
+	"\x0enotificationId\x18\x01 \x01(\tR\x0enotificationId\x12\x1a\n" +
+	"\bsenderId\x18\x02 \x01(\tR\bsenderId\x12\x1e\n" +
+	"\n" +
+	"receiverId\x18\x03 \x01(\tR\n" +
+	"receiverId\x12\x14\n" +
+	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x05 \x01(\tR\acontent\x12\x12\n" +
+	"\x04type\x18\x06 \x01(\tR\x04type\x12\x1c\n" +
+	"\tcreatedAt\x18\a \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -551,13 +653,14 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_base_models_base_models_proto_goTypes = []any{
 	(*User)(nil),         // 0: base_models.User
 	(*UserSettings)(nil), // 1: base_models.UserSettings
 	(*Message)(nil),      // 2: base_models.Message
 	(*Chat)(nil),         // 3: base_models.Chat
 	(*Project)(nil),      // 4: base_models.Project
+	(*Notification)(nil), // 5: base_models.Notification
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
 	1, // 0: base_models.User.settings:type_name -> base_models.UserSettings
@@ -581,7 +684,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

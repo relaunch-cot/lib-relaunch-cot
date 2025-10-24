@@ -54,3 +54,13 @@ message Project {
   string createdBy = 15;
   string updatedAt = 16;
 }
+
+message Notification {
+  string notificationId = 1;
+  string senderId = 2;
+  string receiverId = 3;
+  string title = 4;
+  string content = 5;
+  string type = 6;
+  string createdAt = 7;
+}
