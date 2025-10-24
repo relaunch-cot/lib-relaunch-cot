@@ -3,6 +3,7 @@ syntax= "proto3";
 package notification;
 
 import "google/protobuf/empty.proto";
+import "base_models/base_models.proto";
 
 option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/notification";
 
@@ -15,6 +16,28 @@ message SendNotificationRequest {
   string type = 5;
 }
 
+/////////////////////////////// GET NOTIFICATION REQUEST
+message GetNotificationRequest {
+  string notificationId = 1;
+}
+
+/////////////////////////////// GET NOTIFICATION RESPONSE
+message GetNotificationResponse {
+  base_models.Notification notification = 1;
+}
+
+/////////////////////////////// GET ALL NOTIFICATIONS FROM USER REQUEST
+message GetAllNotificationsFromUserRequest {
+  string userId = 1;
+}
+
+/////////////////////////////// GET ALL NOTIFICATIONS FROM USER RESPONSE
+message GetAllNotificationsFromUserResponse {
+  repeated base_models.Notification notifications = 1;
+}
+
 service NotificationService {
   rpc SendNotification(SendNotificationRequest) returns(google.protobuf.Empty);
+  rpc GetNotification(GetNotificationRequest) returns(GetNotificationResponse);
+  rpc GetAllNotificationsFromUser(GetAllNotificationsFromUserRequest) returns(GetAllNotificationsFromUserResponse);
 }

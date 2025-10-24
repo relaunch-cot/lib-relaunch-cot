@@ -7,6 +7,7 @@
 package notification
 
 import (
+	base_models "github.com/relaunch-cot/lib-relaunch-cot/proto/base_models"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -99,11 +100,191 @@ func (x *SendNotificationRequest) GetType() string {
 	return ""
 }
 
+// ///////////////////////////// GET NOTIFICATION REQUEST
+type GetNotificationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	NotificationId string                 `protobuf:"bytes,1,opt,name=notificationId,proto3" json:"notificationId,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetNotificationRequest) Reset() {
+	*x = GetNotificationRequest{}
+	mi := &file_notification_notification_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNotificationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNotificationRequest) ProtoMessage() {}
+
+func (x *GetNotificationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_notification_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNotificationRequest.ProtoReflect.Descriptor instead.
+func (*GetNotificationRequest) Descriptor() ([]byte, []int) {
+	return file_notification_notification_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetNotificationRequest) GetNotificationId() string {
+	if x != nil {
+		return x.NotificationId
+	}
+	return ""
+}
+
+// ///////////////////////////// GET NOTIFICATION RESPONSE
+type GetNotificationResponse struct {
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Notification  *base_models.Notification `protobuf:"bytes,1,opt,name=notification,proto3" json:"notification,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetNotificationResponse) Reset() {
+	*x = GetNotificationResponse{}
+	mi := &file_notification_notification_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetNotificationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNotificationResponse) ProtoMessage() {}
+
+func (x *GetNotificationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_notification_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNotificationResponse.ProtoReflect.Descriptor instead.
+func (*GetNotificationResponse) Descriptor() ([]byte, []int) {
+	return file_notification_notification_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetNotificationResponse) GetNotification() *base_models.Notification {
+	if x != nil {
+		return x.Notification
+	}
+	return nil
+}
+
+// ///////////////////////////// GET ALL NOTIFICATIONS FROM USER REQUEST
+type GetAllNotificationsFromUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllNotificationsFromUserRequest) Reset() {
+	*x = GetAllNotificationsFromUserRequest{}
+	mi := &file_notification_notification_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllNotificationsFromUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllNotificationsFromUserRequest) ProtoMessage() {}
+
+func (x *GetAllNotificationsFromUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_notification_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllNotificationsFromUserRequest.ProtoReflect.Descriptor instead.
+func (*GetAllNotificationsFromUserRequest) Descriptor() ([]byte, []int) {
+	return file_notification_notification_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetAllNotificationsFromUserRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+// ///////////////////////////// GET ALL NOTIFICATIONS FROM USER RESPONSE
+type GetAllNotificationsFromUserResponse struct {
+	state         protoimpl.MessageState      `protogen:"open.v1"`
+	Notifications []*base_models.Notification `protobuf:"bytes,1,rep,name=notifications,proto3" json:"notifications,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllNotificationsFromUserResponse) Reset() {
+	*x = GetAllNotificationsFromUserResponse{}
+	mi := &file_notification_notification_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllNotificationsFromUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllNotificationsFromUserResponse) ProtoMessage() {}
+
+func (x *GetAllNotificationsFromUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_notification_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllNotificationsFromUserResponse.ProtoReflect.Descriptor instead.
+func (*GetAllNotificationsFromUserResponse) Descriptor() ([]byte, []int) {
+	return file_notification_notification_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetAllNotificationsFromUserResponse) GetNotifications() []*base_models.Notification {
+	if x != nil {
+		return x.Notifications
+	}
+	return nil
+}
+
 var File_notification_notification_proto protoreflect.FileDescriptor
 
 const file_notification_notification_proto_rawDesc = "" +
 	"\n" +
-	"\x1fnotification/notification.proto\x12\fnotification\x1a\x1bgoogle/protobuf/empty.proto\"\x99\x01\n" +
+	"\x1fnotification/notification.proto\x12\fnotification\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\x99\x01\n" +
 	"\x17SendNotificationRequest\x12\x1a\n" +
 	"\bsenderId\x18\x01 \x01(\tR\bsenderId\x12\x1e\n" +
 	"\n" +
@@ -111,9 +292,19 @@ const file_notification_notification_proto_rawDesc = "" +
 	"receiverId\x12\x14\n" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x04 \x01(\tR\acontent\x12\x12\n" +
-	"\x04type\x18\x05 \x01(\tR\x04type2h\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\"@\n" +
+	"\x16GetNotificationRequest\x12&\n" +
+	"\x0enotificationId\x18\x01 \x01(\tR\x0enotificationId\"X\n" +
+	"\x17GetNotificationResponse\x12=\n" +
+	"\fnotification\x18\x01 \x01(\v2\x19.base_models.NotificationR\fnotification\"<\n" +
+	"\"GetAllNotificationsFromUserRequest\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\"f\n" +
+	"#GetAllNotificationsFromUserResponse\x12?\n" +
+	"\rnotifications\x18\x01 \x03(\v2\x19.base_models.NotificationR\rnotifications2\xcd\x02\n" +
 	"\x13NotificationService\x12Q\n" +
-	"\x10SendNotification\x12%.notification.SendNotificationRequest\x1a\x16.google.protobuf.EmptyB=Z;github.com/relaunch-cot/lib-relaunch-cot/proto/notificationb\x06proto3"
+	"\x10SendNotification\x12%.notification.SendNotificationRequest\x1a\x16.google.protobuf.Empty\x12^\n" +
+	"\x0fGetNotification\x12$.notification.GetNotificationRequest\x1a%.notification.GetNotificationResponse\x12\x82\x01\n" +
+	"\x1bGetAllNotificationsFromUser\x120.notification.GetAllNotificationsFromUserRequest\x1a1.notification.GetAllNotificationsFromUserResponseB=Z;github.com/relaunch-cot/lib-relaunch-cot/proto/notificationb\x06proto3"
 
 var (
 	file_notification_notification_proto_rawDescOnce sync.Once
@@ -127,19 +318,30 @@ func file_notification_notification_proto_rawDescGZIP() []byte {
 	return file_notification_notification_proto_rawDescData
 }
 
-var file_notification_notification_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_notification_notification_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_notification_notification_proto_goTypes = []any{
-	(*SendNotificationRequest)(nil), // 0: notification.SendNotificationRequest
-	(*emptypb.Empty)(nil),           // 1: google.protobuf.Empty
+	(*SendNotificationRequest)(nil),             // 0: notification.SendNotificationRequest
+	(*GetNotificationRequest)(nil),              // 1: notification.GetNotificationRequest
+	(*GetNotificationResponse)(nil),             // 2: notification.GetNotificationResponse
+	(*GetAllNotificationsFromUserRequest)(nil),  // 3: notification.GetAllNotificationsFromUserRequest
+	(*GetAllNotificationsFromUserResponse)(nil), // 4: notification.GetAllNotificationsFromUserResponse
+	(*base_models.Notification)(nil),            // 5: base_models.Notification
+	(*emptypb.Empty)(nil),                       // 6: google.protobuf.Empty
 }
 var file_notification_notification_proto_depIdxs = []int32{
-	0, // 0: notification.NotificationService.SendNotification:input_type -> notification.SendNotificationRequest
-	1, // 1: notification.NotificationService.SendNotification:output_type -> google.protobuf.Empty
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	5, // 0: notification.GetNotificationResponse.notification:type_name -> base_models.Notification
+	5, // 1: notification.GetAllNotificationsFromUserResponse.notifications:type_name -> base_models.Notification
+	0, // 2: notification.NotificationService.SendNotification:input_type -> notification.SendNotificationRequest
+	1, // 3: notification.NotificationService.GetNotification:input_type -> notification.GetNotificationRequest
+	3, // 4: notification.NotificationService.GetAllNotificationsFromUser:input_type -> notification.GetAllNotificationsFromUserRequest
+	6, // 5: notification.NotificationService.SendNotification:output_type -> google.protobuf.Empty
+	2, // 6: notification.NotificationService.GetNotification:output_type -> notification.GetNotificationResponse
+	4, // 7: notification.NotificationService.GetAllNotificationsFromUser:output_type -> notification.GetAllNotificationsFromUserResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_notification_notification_proto_init() }
@@ -153,7 +355,7 @@ func file_notification_notification_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_notification_notification_proto_rawDesc), len(file_notification_notification_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
