@@ -497,7 +497,8 @@ type Notification struct {
 	Title          string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
 	Content        string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
 	Type           string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	CreatedAt      string                 `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	SenderName     string                 `protobuf:"bytes,7,opt,name=senderName,proto3" json:"senderName,omitempty"`
+	CreatedAt      string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -574,6 +575,13 @@ func (x *Notification) GetType() string {
 	return ""
 }
 
+func (x *Notification) GetSenderName() string {
+	if x != nil {
+		return x.SenderName
+	}
+	return ""
+}
+
 func (x *Notification) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
@@ -629,7 +637,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06status\x18\r \x01(\tR\x06status\x12\x1c\n" +
 	"\tcreatedAt\x18\x0e \x01(\tR\tcreatedAt\x12\x1c\n" +
 	"\tcreatedBy\x18\x0f \x01(\tR\tcreatedBy\x12\x1c\n" +
-	"\tupdatedAt\x18\x10 \x01(\tR\tupdatedAt\"\xd4\x01\n" +
+	"\tupdatedAt\x18\x10 \x01(\tR\tupdatedAt\"\xf4\x01\n" +
 	"\fNotification\x12&\n" +
 	"\x0enotificationId\x18\x01 \x01(\tR\x0enotificationId\x12\x1a\n" +
 	"\bsenderId\x18\x02 \x01(\tR\bsenderId\x12\x1e\n" +
@@ -638,8 +646,11 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"receiverId\x12\x14\n" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x05 \x01(\tR\acontent\x12\x12\n" +
-	"\x04type\x18\x06 \x01(\tR\x04type\x12\x1c\n" +
-	"\tcreatedAt\x18\a \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\x04type\x18\x06 \x01(\tR\x04type\x12\x1e\n" +
+	"\n" +
+	"senderName\x18\a \x01(\tR\n" +
+	"senderName\x12\x1c\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once

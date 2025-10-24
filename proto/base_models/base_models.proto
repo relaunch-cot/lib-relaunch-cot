@@ -62,5 +62,6 @@ message Notification {
   string title = 4;
   string content = 5;
   string type = 6;
-  string createdAt = 7;
+  string senderName = 7;
+  string createdAt = 8;
 }
