@@ -1,0 +1,8 @@
+syntax= "proto3";
+
+package notification;
+
+option go_package = "github.com/relaunch-cot/lib-relaunch-cot/proto/notification";
+
+service NotificationService {
+}
