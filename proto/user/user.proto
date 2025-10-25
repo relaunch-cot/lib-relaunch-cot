@@ -36,7 +36,6 @@ message UpdateUserPasswordRequest {
 //////////////////////////////// UPDATE USER REQUEST
 message UpdateUserRequest {
   string userId = 1;
-  string password = 2;
   base_models.User newUser = 3;
 }
 
