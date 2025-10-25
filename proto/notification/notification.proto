@@ -36,8 +36,20 @@ message GetAllNotificationsFromUserResponse {
   repeated base_models.Notification notifications = 1;
 }
 
+//////////////////////////////// DELETE NOTIFICATION REQUEST
+message DeleteNotificationRequest {
+  string notificationId = 1;
+}
+
+//////////////////////////////// DELETE ALL NOTIFICATIONS FROM USER REQUEST
+message DeleteAllNotificationsFromUserRequest {
+  string userId = 1;
+}
+
 service NotificationService {
   rpc SendNotification(SendNotificationRequest) returns(google.protobuf.Empty);
   rpc GetNotification(GetNotificationRequest) returns(GetNotificationResponse);
   rpc GetAllNotificationsFromUser(GetAllNotificationsFromUserRequest) returns(GetAllNotificationsFromUserResponse);
+  rpc DeleteNotification(DeleteNotificationRequest) returns(google.protobuf.Empty);
+  rpc DeleteAllNotificationsFromUser(DeleteAllNotificationsFromUserRequest) returns(google.protobuf.Empty);
 }
