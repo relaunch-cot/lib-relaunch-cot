@@ -40,9 +40,18 @@ message GetAllChatsFromUserResponse {
   repeated base_models.Chat chats = 1;
 }
 
+message GetChatFromUsersRequest {
+  repeated string userIds = 1;
+}
+
+message GetChatFromUsersResponse {
+  base_models.Chat chat = 1;
+}
+
 service ChatService {
   rpc CreateNewChat(CreateNewChatRequest) returns(google.protobuf.Empty);
   rpc SendMessage(SendMessageRequest) returns(google.protobuf.Empty);
   rpc GetAllMessagesFromChat(GetAllMessagesFromChatRequest) returns(GetAllMessagesFromChatResponse);
   rpc GetAllChatsFromUser(GetAllChatsFromUserRequest) returns(GetAllChatsFromUserResponse);
+  rpc GetChatFromUsers(GetChatFromUsersRequest) returns(GetChatFromUsersResponse);
 }

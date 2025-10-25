@@ -24,6 +24,7 @@ const (
 	ChatService_SendMessage_FullMethodName            = "/chat.ChatService/SendMessage"
 	ChatService_GetAllMessagesFromChat_FullMethodName = "/chat.ChatService/GetAllMessagesFromChat"
 	ChatService_GetAllChatsFromUser_FullMethodName    = "/chat.ChatService/GetAllChatsFromUser"
+	ChatService_GetChatFromUsers_FullMethodName       = "/chat.ChatService/GetChatFromUsers"
 )
 
 // ChatServiceClient is the client API for ChatService service.
@@ -34,6 +35,7 @@ type ChatServiceClient interface {
 	SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllMessagesFromChat(ctx context.Context, in *GetAllMessagesFromChatRequest, opts ...grpc.CallOption) (*GetAllMessagesFromChatResponse, error)
 	GetAllChatsFromUser(ctx context.Context, in *GetAllChatsFromUserRequest, opts ...grpc.CallOption) (*GetAllChatsFromUserResponse, error)
+	GetChatFromUsers(ctx context.Context, in *GetChatFromUsersRequest, opts ...grpc.CallOption) (*GetChatFromUsersResponse, error)
 }
 
 type chatServiceClient struct {
@@ -84,6 +86,16 @@ func (c *chatServiceClient) GetAllChatsFromUser(ctx context.Context, in *GetAllC
 	return out, nil
 }
 
+func (c *chatServiceClient) GetChatFromUsers(ctx context.Context, in *GetChatFromUsersRequest, opts ...grpc.CallOption) (*GetChatFromUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetChatFromUsersResponse)
+	err := c.cc.Invoke(ctx, ChatService_GetChatFromUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ChatServiceServer is the server API for ChatService service.
 // All implementations must embed UnimplementedChatServiceServer
 // for forward compatibility.
@@ -92,6 +104,7 @@ type ChatServiceServer interface {
 	SendMessage(context.Context, *SendMessageRequest) (*emptypb.Empty, error)
 	GetAllMessagesFromChat(context.Context, *GetAllMessagesFromChatRequest) (*GetAllMessagesFromChatResponse, error)
 	GetAllChatsFromUser(context.Context, *GetAllChatsFromUserRequest) (*GetAllChatsFromUserResponse, error)
+	GetChatFromUsers(context.Context, *GetChatFromUsersRequest) (*GetChatFromUsersResponse, error)
 	mustEmbedUnimplementedChatServiceServer()
 }
 
@@ -113,6 +126,9 @@ func (UnimplementedChatServiceServer) GetAllMessagesFromChat(context.Context, *G
 }
 func (UnimplementedChatServiceServer) GetAllChatsFromUser(context.Context, *GetAllChatsFromUserRequest) (*GetAllChatsFromUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllChatsFromUser not implemented")
+}
+func (UnimplementedChatServiceServer) GetChatFromUsers(context.Context, *GetChatFromUsersRequest) (*GetChatFromUsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetChatFromUsers not implemented")
 }
 func (UnimplementedChatServiceServer) mustEmbedUnimplementedChatServiceServer() {}
 func (UnimplementedChatServiceServer) testEmbeddedByValue()                     {}
@@ -207,6 +223,24 @@ func _ChatService_GetAllChatsFromUser_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ChatService_GetChatFromUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetChatFromUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ChatServiceServer).GetChatFromUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ChatService_GetChatFromUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ChatServiceServer).GetChatFromUsers(ctx, req.(*GetChatFromUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ChatService_ServiceDesc is the grpc.ServiceDesc for ChatService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -229,6 +263,10 @@ var ChatService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllChatsFromUser",
 			Handler:    _ChatService_GetAllChatsFromUser_Handler,
+		},
+		{
+			MethodName: "GetChatFromUsers",
+			Handler:    _ChatService_GetChatFromUsers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
