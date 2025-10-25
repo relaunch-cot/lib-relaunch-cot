@@ -590,96 +590,6 @@ func (x *GetUserProfileResponse) GetUser() *base_models.User {
 	return nil
 }
 
-// ////////////////////////////// GET USER TYPE REQUEST
-type GetUserTypeRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetUserTypeRequest) Reset() {
-	*x = GetUserTypeRequest{}
-	mi := &file_user_user_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetUserTypeRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUserTypeRequest) ProtoMessage() {}
-
-func (x *GetUserTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUserTypeRequest.ProtoReflect.Descriptor instead.
-func (*GetUserTypeRequest) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *GetUserTypeRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
-}
-
-// ////////////////////////////// GET USER TYPE RESPONSE
-type GetUserTypeResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserType      string                 `protobuf:"bytes,1,opt,name=userType,proto3" json:"userType,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetUserTypeResponse) Reset() {
-	*x = GetUserTypeResponse{}
-	mi := &file_user_user_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetUserTypeResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUserTypeResponse) ProtoMessage() {}
-
-func (x *GetUserTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_user_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUserTypeResponse.ProtoReflect.Descriptor instead.
-func (*GetUserTypeResponse) Descriptor() ([]byte, []int) {
-	return file_user_user_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *GetUserTypeResponse) GetUserType() string {
-	if x != nil {
-		return x.UserType
-	}
-	return ""
-}
-
 var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
@@ -715,11 +625,7 @@ const file_user_user_proto_rawDesc = "" +
 	"\x15GetUserProfileRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\"?\n" +
 	"\x16GetUserProfileResponse\x12%\n" +
-	"\x04user\x18\x01 \x01(\v2\x11.base_models.UserR\x04user\",\n" +
-	"\x12GetUserTypeRequest\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\tR\x06userId\"1\n" +
-	"\x13GetUserTypeResponse\x12\x1a\n" +
-	"\buserType\x18\x01 \x01(\tR\buserType2\x9a\x05\n" +
+	"\x04user\x18\x01 \x01(\v2\x11.base_models.UserR\x04user2\xd6\x04\n" +
 	"\vUserService\x12=\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.Empty\x12<\n" +
@@ -731,8 +637,7 @@ const file_user_user_proto_rawDesc = "" +
 	"DeleteUser\x12\x17.user.DeleteUserRequest\x1a\x16.google.protobuf.Empty\x12S\n" +
 	"\x16GenerateReportFromJSON\x12\x1b.user.GenerateReportRequest\x1a\x1c.user.GenerateReportResponse\x12[\n" +
 	"\x19SendPasswordRecoveryEmail\x12&.user.SendPasswordRecoveryEmailRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
-	"\x0eGetUserProfile\x12\x1b.user.GetUserProfileRequest\x1a\x1c.user.GetUserProfileResponse\x12B\n" +
-	"\vGetUserType\x12\x18.user.GetUserTypeRequest\x1a\x19.user.GetUserTypeResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/userb\x06proto3"
+	"\x0eGetUserProfile\x12\x1b.user.GetUserProfileRequest\x1a\x1c.user.GetUserProfileResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/userb\x06proto3"
 
 var (
 	file_user_user_proto_rawDescOnce sync.Once
@@ -746,7 +651,7 @@ func file_user_user_proto_rawDescGZIP() []byte {
 	return file_user_user_proto_rawDescData
 }
 
-var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_user_user_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),                // 0: user.CreateUserRequest
 	(*LoginUserRequest)(nil),                 // 1: user.LoginUserRequest
@@ -759,16 +664,14 @@ var file_user_user_proto_goTypes = []any{
 	(*SendPasswordRecoveryEmailRequest)(nil), // 8: user.SendPasswordRecoveryEmailRequest
 	(*GetUserProfileRequest)(nil),            // 9: user.GetUserProfileRequest
 	(*GetUserProfileResponse)(nil),           // 10: user.GetUserProfileResponse
-	(*GetUserTypeRequest)(nil),               // 11: user.GetUserTypeRequest
-	(*GetUserTypeResponse)(nil),              // 12: user.GetUserTypeResponse
-	(*base_models.UserSettings)(nil),         // 13: base_models.UserSettings
-	(*base_models.User)(nil),                 // 14: base_models.User
-	(*emptypb.Empty)(nil),                    // 15: google.protobuf.Empty
+	(*base_models.UserSettings)(nil),         // 11: base_models.UserSettings
+	(*base_models.User)(nil),                 // 12: base_models.User
+	(*emptypb.Empty)(nil),                    // 13: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
-	13, // 0: user.CreateUserRequest.settings:type_name -> base_models.UserSettings
-	14, // 1: user.UpdateUserRequest.newUser:type_name -> base_models.User
-	14, // 2: user.GetUserProfileResponse.user:type_name -> base_models.User
+	11, // 0: user.CreateUserRequest.settings:type_name -> base_models.UserSettings
+	12, // 1: user.UpdateUserRequest.newUser:type_name -> base_models.User
+	12, // 2: user.GetUserProfileResponse.user:type_name -> base_models.User
 	0,  // 3: user.UserService.CreateUser:input_type -> user.CreateUserRequest
 	1,  // 4: user.UserService.LoginUser:input_type -> user.LoginUserRequest
 	3,  // 5: user.UserService.UpdateUserPassword:input_type -> user.UpdateUserPasswordRequest
@@ -777,18 +680,16 @@ var file_user_user_proto_depIdxs = []int32{
 	6,  // 8: user.UserService.GenerateReportFromJSON:input_type -> user.GenerateReportRequest
 	8,  // 9: user.UserService.SendPasswordRecoveryEmail:input_type -> user.SendPasswordRecoveryEmailRequest
 	9,  // 10: user.UserService.GetUserProfile:input_type -> user.GetUserProfileRequest
-	11, // 11: user.UserService.GetUserType:input_type -> user.GetUserTypeRequest
-	15, // 12: user.UserService.CreateUser:output_type -> google.protobuf.Empty
-	2,  // 13: user.UserService.LoginUser:output_type -> user.LoginUserResponse
-	15, // 14: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
-	15, // 15: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
-	15, // 16: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
-	7,  // 17: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
-	15, // 18: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
-	10, // 19: user.UserService.GetUserProfile:output_type -> user.GetUserProfileResponse
-	12, // 20: user.UserService.GetUserType:output_type -> user.GetUserTypeResponse
-	12, // [12:21] is the sub-list for method output_type
-	3,  // [3:12] is the sub-list for method input_type
+	13, // 11: user.UserService.CreateUser:output_type -> google.protobuf.Empty
+	2,  // 12: user.UserService.LoginUser:output_type -> user.LoginUserResponse
+	13, // 13: user.UserService.UpdateUserPassword:output_type -> google.protobuf.Empty
+	13, // 14: user.UserService.UpdateUser:output_type -> google.protobuf.Empty
+	13, // 15: user.UserService.DeleteUser:output_type -> google.protobuf.Empty
+	7,  // 16: user.UserService.GenerateReportFromJSON:output_type -> user.GenerateReportResponse
+	13, // 17: user.UserService.SendPasswordRecoveryEmail:output_type -> google.protobuf.Empty
+	10, // 18: user.UserService.GetUserProfile:output_type -> user.GetUserProfileResponse
+	11, // [11:19] is the sub-list for method output_type
+	3,  // [3:11] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
 	3,  // [3:3] is the sub-list for extension extendee
 	0,  // [0:3] is the sub-list for field type_name
@@ -805,7 +706,7 @@ func file_user_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_user_proto_rawDesc), len(file_user_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
