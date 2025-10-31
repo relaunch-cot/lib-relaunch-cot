@@ -40,11 +40,23 @@ message GetAllChatsFromUserResponse {
   repeated base_models.Chat chats = 1;
 }
 
+//////////////////////////////// GET CHAT FROM USERS REQUEST
 message GetChatFromUsersRequest {
   repeated string userIds = 1;
 }
 
+//////////////////////////////// GET CHAT FROM USERS RESPONSE
 message GetChatFromUsersResponse {
+  base_models.Chat chat = 1;
+}
+
+//////////////////////////////// GET CHAT BY ID REQUEST
+message GetChatByIdRequest {
+  string chatId = 1;
+}
+
+//////////////////////////////// GET CHAT BY ID RESPONSE
+message GetChatByIdResponse {
   base_models.Chat chat = 1;
 }
 
@@ -54,4 +66,5 @@ service ChatService {
   rpc GetAllMessagesFromChat(GetAllMessagesFromChatRequest) returns(GetAllMessagesFromChatResponse);
   rpc GetAllChatsFromUser(GetAllChatsFromUserRequest) returns(GetAllChatsFromUserResponse);
   rpc GetChatFromUsers(GetChatFromUsersRequest) returns(GetChatFromUsersResponse);
+  rpc GetChatById(GetChatByIdRequest) returns(GetChatByIdResponse);
 }
