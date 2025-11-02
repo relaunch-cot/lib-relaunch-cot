@@ -522,7 +522,7 @@ const file_post_post_proto_rawDesc = "" +
 	"\x12GetAllPostsRequest\x12,\n" +
 	"\x05empty\x18\x01 \x01(\v2\x16.google.protobuf.EmptyR\x05empty\">\n" +
 	"\x13GetAllPostsResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts2\xde\x02\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts2\xa2\x03\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -531,7 +531,8 @@ const file_post_post_proto_rawDesc = "" +
 	"\n" +
 	"UpdatePost\x12\x17.post.UpdatePostRequest\x1a\x16.google.protobuf.Empty\x12=\n" +
 	"\n" +
-	"DeletePost\x12\x17.post.DeletePostRequest\x1a\x16.google.protobuf.EmptyB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
+	"DeletePost\x12\x17.post.DeletePostRequest\x1a\x16.google.protobuf.Empty\x12B\n" +
+	"\vGetAllPosts\x12\x18.post.GetAllPostsRequest\x1a\x19.post.GetAllPostsResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
 
 var (
 	file_post_post_proto_rawDescOnce sync.Once
@@ -569,13 +570,15 @@ var file_post_post_proto_depIdxs = []int32{
 	3,  // 6: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
 	5,  // 7: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
 	6,  // 8: post.PostService.DeletePost:input_type -> post.DeletePostRequest
-	10, // 9: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2,  // 10: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4,  // 11: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	10, // 12: post.PostService.UpdatePost:output_type -> google.protobuf.Empty
-	10, // 13: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	9,  // [9:14] is the sub-list for method output_type
-	4,  // [4:9] is the sub-list for method input_type
+	7,  // 9: post.PostService.GetAllPosts:input_type -> post.GetAllPostsRequest
+	10, // 10: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 11: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 12: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	10, // 13: post.PostService.UpdatePost:output_type -> google.protobuf.Empty
+	10, // 14: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	8,  // 15: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
+	10, // [10:16] is the sub-list for method output_type
+	4,  // [4:10] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name

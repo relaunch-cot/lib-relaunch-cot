@@ -25,6 +25,7 @@ const (
 	PostService_GetAllPostsFromUser_FullMethodName = "/post.PostService/GetAllPostsFromUser"
 	PostService_UpdatePost_FullMethodName          = "/post.PostService/UpdatePost"
 	PostService_DeletePost_FullMethodName          = "/post.PostService/DeletePost"
+	PostService_GetAllPosts_FullMethodName         = "/post.PostService/GetAllPosts"
 )
 
 // PostServiceClient is the client API for PostService service.
@@ -36,6 +37,7 @@ type PostServiceClient interface {
 	GetAllPostsFromUser(ctx context.Context, in *GetAllPostsFromUserRequest, opts ...grpc.CallOption) (*GetAllPostsFromUserResponse, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetAllPosts(ctx context.Context, in *GetAllPostsRequest, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
 }
 
 type postServiceClient struct {
@@ -96,6 +98,16 @@ func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostReques
 	return out, nil
 }
 
+func (c *postServiceClient) GetAllPosts(ctx context.Context, in *GetAllPostsRequest, opts ...grpc.CallOption) (*GetAllPostsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllPostsResponse)
+	err := c.cc.Invoke(ctx, PostService_GetAllPosts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostServiceServer is the server API for PostService service.
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility.
@@ -105,6 +117,7 @@ type PostServiceServer interface {
 	GetAllPostsFromUser(context.Context, *GetAllPostsFromUserRequest) (*GetAllPostsFromUserResponse, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*emptypb.Empty, error)
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
+	GetAllPosts(context.Context, *GetAllPostsRequest) (*GetAllPostsResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -129,6 +142,9 @@ func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostReq
 }
 func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
+}
+func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *GetAllPostsRequest) (*GetAllPostsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllPosts not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 func (UnimplementedPostServiceServer) testEmbeddedByValue()                     {}
@@ -241,6 +257,24 @@ func _PostService_DeletePost_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostService_GetAllPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllPostsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).GetAllPosts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_GetAllPosts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).GetAllPosts(ctx, req.(*GetAllPostsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,6 +301,10 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeletePost",
 			Handler:    _PostService_DeletePost_Handler,
+		},
+		{
+			MethodName: "GetAllPosts",
+			Handler:    _PostService_GetAllPosts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
