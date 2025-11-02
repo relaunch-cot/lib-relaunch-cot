@@ -50,11 +50,6 @@ message DeletePostRequest {
   string userId = 2;
 }
 
-////////////////////////////// GET ALL POSTS REQUEST
-message GetAllPostsRequest {
-  google.protobuf.Empty empty = 1;
-}
-
 ////////////////////////////// GET ALL POSTS RESPONSE
 message GetAllPostsResponse {
   repeated base_models.Post posts = 1;
@@ -66,5 +61,5 @@ service PostService {
   rpc GetAllPostsFromUser(GetAllPostsFromUserRequest) returns(GetAllPostsFromUserResponse);
   rpc UpdatePost(UpdatePostRequest) returns(google.protobuf.Empty);
   rpc DeletePost(DeletePostRequest) returns(google.protobuf.Empty);
-  rpc GetAllPosts(GetAllPostsRequest) returns(GetAllPostsResponse);
+  rpc GetAllPosts(google.protobuf.Empty) returns(GetAllPostsResponse);
 }

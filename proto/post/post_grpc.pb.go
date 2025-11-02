@@ -37,7 +37,7 @@ type PostServiceClient interface {
 	GetAllPostsFromUser(ctx context.Context, in *GetAllPostsFromUserRequest, opts ...grpc.CallOption) (*GetAllPostsFromUserResponse, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	GetAllPosts(ctx context.Context, in *GetAllPostsRequest, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
+	GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
 }
 
 type postServiceClient struct {
@@ -98,7 +98,7 @@ func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostReques
 	return out, nil
 }
 
-func (c *postServiceClient) GetAllPosts(ctx context.Context, in *GetAllPostsRequest, opts ...grpc.CallOption) (*GetAllPostsResponse, error) {
+func (c *postServiceClient) GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAllPostsResponse)
 	err := c.cc.Invoke(ctx, PostService_GetAllPosts_FullMethodName, in, out, cOpts...)
@@ -117,7 +117,7 @@ type PostServiceServer interface {
 	GetAllPostsFromUser(context.Context, *GetAllPostsFromUserRequest) (*GetAllPostsFromUserResponse, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*emptypb.Empty, error)
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
-	GetAllPosts(context.Context, *GetAllPostsRequest) (*GetAllPostsResponse, error)
+	GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -143,7 +143,7 @@ func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostReq
 func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
 }
-func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *GetAllPostsRequest) (*GetAllPostsResponse, error) {
+func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPosts not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
@@ -258,7 +258,7 @@ func _PostService_DeletePost_Handler(srv interface{}, ctx context.Context, dec f
 }
 
 func _PostService_GetAllPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllPostsRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -270,7 +270,7 @@ func _PostService_GetAllPosts_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: PostService_GetAllPosts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).GetAllPosts(ctx, req.(*GetAllPostsRequest))
+		return srv.(PostServiceServer).GetAllPosts(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
