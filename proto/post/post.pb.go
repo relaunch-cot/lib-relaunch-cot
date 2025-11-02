@@ -386,6 +386,96 @@ func (x *DeletePostRequest) GetUserId() string {
 	return ""
 }
 
+// //////////////////////////// GET ALL POSTS REQUEST
+type GetAllPostsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Empty         *emptypb.Empty         `protobuf:"bytes,1,opt,name=empty,proto3" json:"empty,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllPostsRequest) Reset() {
+	*x = GetAllPostsRequest{}
+	mi := &file_post_post_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllPostsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllPostsRequest) ProtoMessage() {}
+
+func (x *GetAllPostsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllPostsRequest.ProtoReflect.Descriptor instead.
+func (*GetAllPostsRequest) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllPostsRequest) GetEmpty() *emptypb.Empty {
+	if x != nil {
+		return x.Empty
+	}
+	return nil
+}
+
+// //////////////////////////// GET ALL POSTS RESPONSE
+type GetAllPostsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Posts         []*base_models.Post    `protobuf:"bytes,1,rep,name=posts,proto3" json:"posts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllPostsResponse) Reset() {
+	*x = GetAllPostsResponse{}
+	mi := &file_post_post_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllPostsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllPostsResponse) ProtoMessage() {}
+
+func (x *GetAllPostsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllPostsResponse.ProtoReflect.Descriptor instead.
+func (*GetAllPostsResponse) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllPostsResponse) GetPosts() []*base_models.Post {
+	if x != nil {
+		return x.Posts
+	}
+	return nil
+}
+
 var File_post_post_proto protoreflect.FileDescriptor
 
 const file_post_post_proto_rawDesc = "" +
@@ -410,7 +500,11 @@ const file_post_post_proto_rawDesc = "" +
 	"\acontent\x18\x04 \x01(\tR\acontent\"C\n" +
 	"\x11DeletePostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId2\xde\x02\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"B\n" +
+	"\x12GetAllPostsRequest\x12,\n" +
+	"\x05empty\x18\x01 \x01(\v2\x16.google.protobuf.EmptyR\x05empty\">\n" +
+	"\x13GetAllPostsResponse\x12'\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts2\xde\x02\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -433,7 +527,7 @@ func file_post_post_proto_rawDescGZIP() []byte {
 	return file_post_post_proto_rawDescData
 }
 
-var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_post_post_proto_goTypes = []any{
 	(*CreatePostRequest)(nil),           // 0: post.CreatePostRequest
 	(*GetPostRequest)(nil),              // 1: post.GetPostRequest
@@ -442,27 +536,31 @@ var file_post_post_proto_goTypes = []any{
 	(*GetAllPostsFromUserResponse)(nil), // 4: post.GetAllPostsFromUserResponse
 	(*UpdatePostRequest)(nil),           // 5: post.UpdatePostRequest
 	(*DeletePostRequest)(nil),           // 6: post.DeletePostRequest
-	(*base_models.Post)(nil),            // 7: base_models.Post
-	(*emptypb.Empty)(nil),               // 8: google.protobuf.Empty
+	(*GetAllPostsRequest)(nil),          // 7: post.GetAllPostsRequest
+	(*GetAllPostsResponse)(nil),         // 8: post.GetAllPostsResponse
+	(*base_models.Post)(nil),            // 9: base_models.Post
+	(*emptypb.Empty)(nil),               // 10: google.protobuf.Empty
 }
 var file_post_post_proto_depIdxs = []int32{
-	7, // 0: post.GetPostResponse.post:type_name -> base_models.Post
-	7, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
-	0, // 2: post.PostService.CreatePost:input_type -> post.CreatePostRequest
-	1, // 3: post.PostService.GetPost:input_type -> post.GetPostRequest
-	3, // 4: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
-	5, // 5: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
-	6, // 6: post.PostService.DeletePost:input_type -> post.DeletePostRequest
-	8, // 7: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2, // 8: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4, // 9: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	8, // 10: post.PostService.UpdatePost:output_type -> google.protobuf.Empty
-	8, // 11: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	9,  // 0: post.GetPostResponse.post:type_name -> base_models.Post
+	9,  // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
+	10, // 2: post.GetAllPostsRequest.empty:type_name -> google.protobuf.Empty
+	9,  // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
+	0,  // 4: post.PostService.CreatePost:input_type -> post.CreatePostRequest
+	1,  // 5: post.PostService.GetPost:input_type -> post.GetPostRequest
+	3,  // 6: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
+	5,  // 7: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
+	6,  // 8: post.PostService.DeletePost:input_type -> post.DeletePostRequest
+	10, // 9: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 10: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 11: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	10, // 12: post.PostService.UpdatePost:output_type -> google.protobuf.Empty
+	10, // 13: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_post_post_proto_init() }
@@ -476,7 +574,7 @@ func file_post_post_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_post_post_proto_rawDesc), len(file_post_post_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
