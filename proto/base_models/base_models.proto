@@ -65,3 +65,13 @@ message Notification {
   string senderName = 7;
   string createdAt = 8;
 }
+
+message Post {
+  string postId = 1;
+  string authorId = 2;
+  string authorName = 3;
+  string title = 4;
+  string content = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+}

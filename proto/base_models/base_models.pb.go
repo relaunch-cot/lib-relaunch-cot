@@ -589,6 +589,98 @@ func (x *Notification) GetCreatedAt() string {
 	return ""
 }
 
+type Post struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	AuthorId      string                 `protobuf:"bytes,2,opt,name=authorId,proto3" json:"authorId,omitempty"`
+	AuthorName    string                 `protobuf:"bytes,3,opt,name=authorName,proto3" json:"authorName,omitempty"`
+	Title         string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
+	Content       string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Post) Reset() {
+	*x = Post{}
+	mi := &file_base_models_base_models_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Post) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Post) ProtoMessage() {}
+
+func (x *Post) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Post.ProtoReflect.Descriptor instead.
+func (*Post) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Post) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+func (x *Post) GetAuthorId() string {
+	if x != nil {
+		return x.AuthorId
+	}
+	return ""
+}
+
+func (x *Post) GetAuthorName() string {
+	if x != nil {
+		return x.AuthorName
+	}
+	return ""
+}
+
+func (x *Post) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Post) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *Post) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Post) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
@@ -650,7 +742,17 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"senderName\x18\a \x01(\tR\n" +
 	"senderName\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xc6\x01\n" +
+	"\x04Post\x12\x16\n" +
+	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1a\n" +
+	"\bauthorId\x18\x02 \x01(\tR\bauthorId\x12\x1e\n" +
+	"\n" +
+	"authorName\x18\x03 \x01(\tR\n" +
+	"authorName\x12\x14\n" +
+	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x05 \x01(\tR\acontent\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\a \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -664,7 +766,7 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_base_models_base_models_proto_goTypes = []any{
 	(*User)(nil),         // 0: base_models.User
 	(*UserSettings)(nil), // 1: base_models.UserSettings
@@ -672,6 +774,7 @@ var file_base_models_base_models_proto_goTypes = []any{
 	(*Chat)(nil),         // 3: base_models.Chat
 	(*Project)(nil),      // 4: base_models.Project
 	(*Notification)(nil), // 5: base_models.Notification
+	(*Post)(nil),         // 6: base_models.Post
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
 	1, // 0: base_models.User.settings:type_name -> base_models.UserSettings
@@ -695,7 +798,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
