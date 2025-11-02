@@ -596,8 +596,10 @@ type Post struct {
 	AuthorName    string                 `protobuf:"bytes,3,opt,name=authorName,proto3" json:"authorName,omitempty"`
 	Title         string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
 	Content       string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	Type          string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	UrlImagePost  string                 `protobuf:"bytes,7,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -663,6 +665,20 @@ func (x *Post) GetTitle() string {
 func (x *Post) GetContent() string {
 	if x != nil {
 		return x.Content
+	}
+	return ""
+}
+
+func (x *Post) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *Post) GetUrlImagePost() string {
+	if x != nil {
+		return x.UrlImagePost
 	}
 	return ""
 }
@@ -742,7 +758,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"senderName\x18\a \x01(\tR\n" +
 	"senderName\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xc6\x01\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xfe\x01\n" +
 	"\x04Post\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1a\n" +
 	"\bauthorId\x18\x02 \x01(\tR\bauthorId\x12\x1e\n" +
@@ -750,9 +766,11 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"authorName\x18\x03 \x01(\tR\n" +
 	"authorName\x12\x14\n" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x05 \x01(\tR\acontent\x12\x1c\n" +
-	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\a \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\acontent\x18\x05 \x01(\tR\acontent\x12\x12\n" +
+	"\x04type\x18\x06 \x01(\tR\x04type\x12\"\n" +
+	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12\x1c\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\t \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once

@@ -72,6 +72,8 @@ message Post {
   string authorName = 3;
   string title = 4;
   string content = 5;
-  string createdAt = 6;
-  string updatedAt = 7;
+  string type = 6;
+  string urlImagePost = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
 }

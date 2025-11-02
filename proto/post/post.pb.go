@@ -29,6 +29,8 @@ type CreatePostRequest struct {
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	UrlImagePost  string                 `protobuf:"bytes,5,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -80,6 +82,20 @@ func (x *CreatePostRequest) GetTitle() string {
 func (x *CreatePostRequest) GetContent() string {
 	if x != nil {
 		return x.Content
+	}
+	return ""
+}
+
+func (x *CreatePostRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *CreatePostRequest) GetUrlImagePost() string {
+	if x != nil {
+		return x.UrlImagePost
 	}
 	return ""
 }
@@ -480,11 +496,13 @@ var File_post_post_proto protoreflect.FileDescriptor
 
 const file_post_post_proto_rawDesc = "" +
 	"\n" +
-	"\x0fpost/post.proto\x12\x04post\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"[\n" +
+	"\x0fpost/post.proto\x12\x04post\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1dbase_models/base_models.proto\"\x93\x01\n" +
 	"\x11CreatePostRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x03 \x01(\tR\acontent\"(\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12\"\n" +
+	"\furlImagePost\x18\x05 \x01(\tR\furlImagePost\"(\n" +
 	"\x0eGetPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\"8\n" +
 	"\x0fGetPostResponse\x12%\n" +
