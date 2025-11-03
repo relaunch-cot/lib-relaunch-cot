@@ -42,6 +42,7 @@ message UpdatePostRequest {
   string userId = 2;
   string title = 3;
   string content = 4;
+  string urlImagePost = 5;
 }
 
 ////////////////////////////// DELETE POST REQUEST

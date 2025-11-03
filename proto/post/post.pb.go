@@ -287,6 +287,7 @@ type UpdatePostRequest struct {
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
 	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	UrlImagePost  string                 `protobuf:"bytes,5,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -345,6 +346,13 @@ func (x *UpdatePostRequest) GetTitle() string {
 func (x *UpdatePostRequest) GetContent() string {
 	if x != nil {
 		return x.Content
+	}
+	return ""
+}
+
+func (x *UpdatePostRequest) GetUrlImagePost() string {
+	if x != nil {
+		return x.UrlImagePost
 	}
 	return ""
 }
@@ -465,12 +473,13 @@ const file_post_post_proto_rawDesc = "" +
 	"\x1aGetAllPostsFromUserRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\"F\n" +
 	"\x1bGetAllPostsFromUserResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"s\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"\x97\x01\n" +
 	"\x11UpdatePostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x04 \x01(\tR\acontent\"C\n" +
+	"\acontent\x18\x04 \x01(\tR\acontent\x12\"\n" +
+	"\furlImagePost\x18\x05 \x01(\tR\furlImagePost\"C\n" +
 	"\x11DeletePostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\">\n" +
