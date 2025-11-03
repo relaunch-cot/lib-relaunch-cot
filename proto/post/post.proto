@@ -45,6 +45,11 @@ message UpdatePostRequest {
   string urlImagePost = 5;
 }
 
+////////////////////////////// UPDATE POST RESPONSE
+message UpdatePostResponse {
+  base_models.Post post = 1;
+}
+
 ////////////////////////////// DELETE POST REQUEST
 message DeletePostRequest {
   string postId = 1;
@@ -60,7 +65,7 @@ service PostService {
   rpc CreatePost(CreatePostRequest) returns(google.protobuf.Empty);
   rpc GetPost(GetPostRequest) returns(GetPostResponse);
   rpc GetAllPostsFromUser(GetAllPostsFromUserRequest) returns(GetAllPostsFromUserResponse);
-  rpc UpdatePost(UpdatePostRequest) returns(google.protobuf.Empty);
+  rpc UpdatePost(UpdatePostRequest) returns(UpdatePostResponse);
   rpc DeletePost(DeletePostRequest) returns(google.protobuf.Empty);
   rpc GetAllPosts(google.protobuf.Empty) returns(GetAllPostsResponse);
 }

@@ -35,7 +35,7 @@ type PostServiceClient interface {
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetPost(ctx context.Context, in *GetPostRequest, opts ...grpc.CallOption) (*GetPostResponse, error)
 	GetAllPostsFromUser(ctx context.Context, in *GetAllPostsFromUserRequest, opts ...grpc.CallOption) (*GetAllPostsFromUserResponse, error)
-	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
 }
@@ -78,9 +78,9 @@ func (c *postServiceClient) GetAllPostsFromUser(ctx context.Context, in *GetAllP
 	return out, nil
 }
 
-func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
+	out := new(UpdatePostResponse)
 	err := c.cc.Invoke(ctx, PostService_UpdatePost_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -115,7 +115,7 @@ type PostServiceServer interface {
 	CreatePost(context.Context, *CreatePostRequest) (*emptypb.Empty, error)
 	GetPost(context.Context, *GetPostRequest) (*GetPostResponse, error)
 	GetAllPostsFromUser(context.Context, *GetAllPostsFromUserRequest) (*GetAllPostsFromUserResponse, error)
-	UpdatePost(context.Context, *UpdatePostRequest) (*emptypb.Empty, error)
+	UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error)
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
 	GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
@@ -137,7 +137,7 @@ func (UnimplementedPostServiceServer) GetPost(context.Context, *GetPostRequest) 
 func (UnimplementedPostServiceServer) GetAllPostsFromUser(context.Context, *GetAllPostsFromUserRequest) (*GetAllPostsFromUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPostsFromUser not implemented")
 }
-func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*emptypb.Empty, error) {
+func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
 }
 func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error) {
