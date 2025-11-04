@@ -8,6 +8,8 @@ type Post struct {
 	Content      string
 	Type         string
 	UrlImagePost string
+	Likes        PostLikes
+	Comments     PostComments
 	CreatedAt    string
 	UpdatedAt    string
 }
