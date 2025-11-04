@@ -643,7 +643,7 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05liked\x18\x03 \x01(\bR\x05liked\"[\n" +
 	"\x1bUpdateLikesFromPostResponse\x12<\n" +
-	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost2\xa2\x03\n" +
+	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost2\xfe\x03\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -653,7 +653,8 @@ const file_post_post_proto_rawDesc = "" +
 	"UpdatePost\x12\x17.post.UpdatePostRequest\x1a\x18.post.UpdatePostResponse\x12=\n" +
 	"\n" +
 	"DeletePost\x12\x17.post.DeletePostRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
-	"\vGetAllPosts\x12\x16.google.protobuf.Empty\x1a\x19.post.GetAllPostsResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
+	"\vGetAllPosts\x12\x16.google.protobuf.Empty\x1a\x19.post.GetAllPostsResponse\x12Z\n" +
+	"\x13UpdateLikesFromPost\x12 .post.UpdateLikesFromPostRequest\x1a!.post.UpdateLikesFromPostResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
 
 var (
 	file_post_post_proto_rawDescOnce sync.Once
@@ -696,14 +697,16 @@ var file_post_post_proto_depIdxs = []int32{
 	5,  // 8: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
 	7,  // 9: post.PostService.DeletePost:input_type -> post.DeletePostRequest
 	13, // 10: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
-	13, // 11: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2,  // 12: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4,  // 13: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	6,  // 14: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
-	13, // 15: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	8,  // 16: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
-	11, // [11:17] is the sub-list for method output_type
-	5,  // [5:11] is the sub-list for method input_type
+	9,  // 11: post.PostService.UpdateLikesFromPost:input_type -> post.UpdateLikesFromPostRequest
+	13, // 12: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 13: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 14: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	6,  // 15: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
+	13, // 16: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	8,  // 17: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
+	10, // 18: post.PostService.UpdateLikesFromPost:output_type -> post.UpdateLikesFromPostResponse
+	12, // [12:19] is the sub-list for method output_type
+	5,  // [5:12] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
 	5,  // [5:5] is the sub-list for extension extendee
 	0,  // [0:5] is the sub-list for field type_name

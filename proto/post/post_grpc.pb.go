@@ -26,6 +26,7 @@ const (
 	PostService_UpdatePost_FullMethodName          = "/post.PostService/UpdatePost"
 	PostService_DeletePost_FullMethodName          = "/post.PostService/DeletePost"
 	PostService_GetAllPosts_FullMethodName         = "/post.PostService/GetAllPosts"
+	PostService_UpdateLikesFromPost_FullMethodName = "/post.PostService/UpdateLikesFromPost"
 )
 
 // PostServiceClient is the client API for PostService service.
@@ -38,6 +39,7 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
+	UpdateLikesFromPost(ctx context.Context, in *UpdateLikesFromPostRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostResponse, error)
 }
 
 type postServiceClient struct {
@@ -108,6 +110,16 @@ func (c *postServiceClient) GetAllPosts(ctx context.Context, in *emptypb.Empty, 
 	return out, nil
 }
 
+func (c *postServiceClient) UpdateLikesFromPost(ctx context.Context, in *UpdateLikesFromPostRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateLikesFromPostResponse)
+	err := c.cc.Invoke(ctx, PostService_UpdateLikesFromPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostServiceServer is the server API for PostService service.
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility.
@@ -118,6 +130,7 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error)
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
 	GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error)
+	UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -145,6 +158,9 @@ func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostReq
 }
 func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPosts not implemented")
+}
+func (UnimplementedPostServiceServer) UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLikesFromPost not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 func (UnimplementedPostServiceServer) testEmbeddedByValue()                     {}
@@ -275,6 +291,24 @@ func _PostService_GetAllPosts_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostService_UpdateLikesFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLikesFromPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).UpdateLikesFromPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_UpdateLikesFromPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).UpdateLikesFromPost(ctx, req.(*UpdateLikesFromPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -305,6 +339,10 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllPosts",
 			Handler:    _PostService_GetAllPosts_Handler,
+		},
+		{
+			MethodName: "UpdateLikesFromPost",
+			Handler:    _PostService_UpdateLikesFromPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

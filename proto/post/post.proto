@@ -80,4 +80,5 @@ service PostService {
   rpc UpdatePost(UpdatePostRequest) returns(UpdatePostResponse);
   rpc DeletePost(DeletePostRequest) returns(google.protobuf.Empty);
   rpc GetAllPosts(google.protobuf.Empty) returns(GetAllPostsResponse);
+  rpc UpdateLikesFromPost(UpdateLikesFromPostRequest) returns(UpdateLikesFromPostResponse);
 }
