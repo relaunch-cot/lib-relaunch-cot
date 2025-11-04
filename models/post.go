@@ -1,7 +1,5 @@
 package models
 
-import "time"
-
 type Post struct {
 	PostId       string
 	AuthorId     string
@@ -22,7 +20,7 @@ type PostLikes struct {
 type Like struct {
 	UserId   string
 	UserName string
-	LikedAt  *time.Time
+	LikedAt  string
 }
 
 type PostComments struct {
@@ -35,6 +33,6 @@ type Comment struct {
 	UserId    string
 	UserName  string
 	Content   string
-	CreatedAt *time.Time
-	UpdatedAt *time.Time
+	CreatedAt string
+	UpdatedAt string
 }
