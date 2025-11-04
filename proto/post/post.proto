@@ -61,6 +61,18 @@ message GetAllPostsResponse {
   repeated base_models.Post posts = 1;
 }
 
+////////////////////////////// UPDATE LIKES FROM POST REQUEST
+message UpdateLikesFromPostRequest {
+  string postId = 1;
+  string userId = 2;
+  bool like = 3;
+}
+
+////////////////////////////// UPDATE LIKES FROM POST RESPONSE
+message UpdateLikesFromPostResponse {
+  base_models.PostLikes likesFromPost = 1;
+}
+
 service PostService {
   rpc CreatePost(CreatePostRequest) returns(google.protobuf.Empty);
   rpc GetPost(GetPostRequest) returns(GetPostResponse);

@@ -500,6 +500,112 @@ func (x *GetAllPostsResponse) GetPosts() []*base_models.Post {
 	return nil
 }
 
+// //////////////////////////// UPDATE LIKES FROM POST REQUEST
+type UpdateLikesFromPostRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Like          bool                   `protobuf:"varint,3,opt,name=like,proto3" json:"like,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLikesFromPostRequest) Reset() {
+	*x = UpdateLikesFromPostRequest{}
+	mi := &file_post_post_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLikesFromPostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLikesFromPostRequest) ProtoMessage() {}
+
+func (x *UpdateLikesFromPostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLikesFromPostRequest.ProtoReflect.Descriptor instead.
+func (*UpdateLikesFromPostRequest) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpdateLikesFromPostRequest) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+func (x *UpdateLikesFromPostRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *UpdateLikesFromPostRequest) GetLike() bool {
+	if x != nil {
+		return x.Like
+	}
+	return false
+}
+
+// //////////////////////////// UPDATE LIKES FROM POST RESPONSE
+type UpdateLikesFromPostResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	LikesFromPost *base_models.PostLikes `protobuf:"bytes,1,opt,name=likesFromPost,proto3" json:"likesFromPost,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLikesFromPostResponse) Reset() {
+	*x = UpdateLikesFromPostResponse{}
+	mi := &file_post_post_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLikesFromPostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLikesFromPostResponse) ProtoMessage() {}
+
+func (x *UpdateLikesFromPostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLikesFromPostResponse.ProtoReflect.Descriptor instead.
+func (*UpdateLikesFromPostResponse) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateLikesFromPostResponse) GetLikesFromPost() *base_models.PostLikes {
+	if x != nil {
+		return x.LikesFromPost
+	}
+	return nil
+}
+
 var File_post_post_proto protoreflect.FileDescriptor
 
 const file_post_post_proto_rawDesc = "" +
@@ -531,7 +637,13 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\">\n" +
 	"\x13GetAllPostsResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts2\xa2\x03\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"`\n" +
+	"\x1aUpdateLikesFromPostRequest\x12\x16\n" +
+	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04like\x18\x03 \x01(\bR\x04like\"[\n" +
+	"\x1bUpdateLikesFromPostResponse\x12<\n" +
+	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost2\xa2\x03\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -555,7 +667,7 @@ func file_post_post_proto_rawDescGZIP() []byte {
 	return file_post_post_proto_rawDescData
 }
 
-var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_post_post_proto_goTypes = []any{
 	(*CreatePostRequest)(nil),           // 0: post.CreatePostRequest
 	(*GetPostRequest)(nil),              // 1: post.GetPostRequest
@@ -566,31 +678,35 @@ var file_post_post_proto_goTypes = []any{
 	(*UpdatePostResponse)(nil),          // 6: post.UpdatePostResponse
 	(*DeletePostRequest)(nil),           // 7: post.DeletePostRequest
 	(*GetAllPostsResponse)(nil),         // 8: post.GetAllPostsResponse
-	(*base_models.Post)(nil),            // 9: base_models.Post
-	(*emptypb.Empty)(nil),               // 10: google.protobuf.Empty
+	(*UpdateLikesFromPostRequest)(nil),  // 9: post.UpdateLikesFromPostRequest
+	(*UpdateLikesFromPostResponse)(nil), // 10: post.UpdateLikesFromPostResponse
+	(*base_models.Post)(nil),            // 11: base_models.Post
+	(*base_models.PostLikes)(nil),       // 12: base_models.PostLikes
+	(*emptypb.Empty)(nil),               // 13: google.protobuf.Empty
 }
 var file_post_post_proto_depIdxs = []int32{
-	9,  // 0: post.GetPostResponse.post:type_name -> base_models.Post
-	9,  // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
-	9,  // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
-	9,  // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
-	0,  // 4: post.PostService.CreatePost:input_type -> post.CreatePostRequest
-	1,  // 5: post.PostService.GetPost:input_type -> post.GetPostRequest
-	3,  // 6: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
-	5,  // 7: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
-	7,  // 8: post.PostService.DeletePost:input_type -> post.DeletePostRequest
-	10, // 9: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
-	10, // 10: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2,  // 11: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4,  // 12: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	6,  // 13: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
-	10, // 14: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	8,  // 15: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	11, // 0: post.GetPostResponse.post:type_name -> base_models.Post
+	11, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
+	11, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
+	11, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
+	12, // 4: post.UpdateLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
+	0,  // 5: post.PostService.CreatePost:input_type -> post.CreatePostRequest
+	1,  // 6: post.PostService.GetPost:input_type -> post.GetPostRequest
+	3,  // 7: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
+	5,  // 8: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
+	7,  // 9: post.PostService.DeletePost:input_type -> post.DeletePostRequest
+	13, // 10: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
+	13, // 11: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 12: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 13: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	6,  // 14: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
+	13, // 15: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	8,  // 16: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_post_post_proto_init() }
@@ -604,7 +720,7 @@ func file_post_post_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_post_post_proto_rawDesc), len(file_post_post_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

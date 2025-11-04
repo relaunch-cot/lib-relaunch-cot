@@ -598,8 +598,10 @@ type Post struct {
 	Content       string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
 	Type          string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
 	UrlImagePost  string                 `protobuf:"bytes,7,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	Likes         *PostLikes             `protobuf:"bytes,8,opt,name=likes,proto3" json:"likes,omitempty"`
+	Comments      *PostComments          `protobuf:"bytes,9,opt,name=comments,proto3" json:"comments,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,11,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -683,6 +685,20 @@ func (x *Post) GetUrlImagePost() string {
 	return ""
 }
 
+func (x *Post) GetLikes() *PostLikes {
+	if x != nil {
+		return x.Likes
+	}
+	return nil
+}
+
+func (x *Post) GetComments() *PostComments {
+	if x != nil {
+		return x.Comments
+	}
+	return nil
+}
+
 func (x *Post) GetCreatedAt() string {
 	if x != nil {
 		return x.CreatedAt
@@ -691,6 +707,254 @@ func (x *Post) GetCreatedAt() string {
 }
 
 func (x *Post) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
+type PostLikes struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	LikesCount    int64                  `protobuf:"varint,1,opt,name=likesCount,proto3" json:"likesCount,omitempty"`
+	Likes         []*Like                `protobuf:"bytes,2,rep,name=likes,proto3" json:"likes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PostLikes) Reset() {
+	*x = PostLikes{}
+	mi := &file_base_models_base_models_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PostLikes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PostLikes) ProtoMessage() {}
+
+func (x *PostLikes) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PostLikes.ProtoReflect.Descriptor instead.
+func (*PostLikes) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *PostLikes) GetLikesCount() int64 {
+	if x != nil {
+		return x.LikesCount
+	}
+	return 0
+}
+
+func (x *PostLikes) GetLikes() []*Like {
+	if x != nil {
+		return x.Likes
+	}
+	return nil
+}
+
+type Like struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserName      string                 `protobuf:"bytes,2,opt,name=userName,proto3" json:"userName,omitempty"`
+	LikedAt       string                 `protobuf:"bytes,3,opt,name=likedAt,proto3" json:"likedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Like) Reset() {
+	*x = Like{}
+	mi := &file_base_models_base_models_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Like) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Like) ProtoMessage() {}
+
+func (x *Like) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Like.ProtoReflect.Descriptor instead.
+func (*Like) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *Like) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *Like) GetUserName() string {
+	if x != nil {
+		return x.UserName
+	}
+	return ""
+}
+
+func (x *Like) GetLikedAt() string {
+	if x != nil {
+		return x.LikedAt
+	}
+	return ""
+}
+
+type PostComments struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CommentsCount int64                  `protobuf:"varint,1,opt,name=commentsCount,proto3" json:"commentsCount,omitempty"`
+	Comments      []*Comment             `protobuf:"bytes,2,rep,name=comments,proto3" json:"comments,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PostComments) Reset() {
+	*x = PostComments{}
+	mi := &file_base_models_base_models_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PostComments) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PostComments) ProtoMessage() {}
+
+func (x *PostComments) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PostComments.ProtoReflect.Descriptor instead.
+func (*PostComments) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *PostComments) GetCommentsCount() int64 {
+	if x != nil {
+		return x.CommentsCount
+	}
+	return 0
+}
+
+func (x *PostComments) GetComments() []*Comment {
+	if x != nil {
+		return x.Comments
+	}
+	return nil
+}
+
+type Comment struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CommentId     string                 `protobuf:"bytes,1,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	UserName      string                 `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName,omitempty"`
+	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Comment) Reset() {
+	*x = Comment{}
+	mi := &file_base_models_base_models_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Comment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Comment) ProtoMessage() {}
+
+func (x *Comment) ProtoReflect() protoreflect.Message {
+	mi := &file_base_models_base_models_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Comment.ProtoReflect.Descriptor instead.
+func (*Comment) Descriptor() ([]byte, []int) {
+	return file_base_models_base_models_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Comment) GetCommentId() string {
+	if x != nil {
+		return x.CommentId
+	}
+	return ""
+}
+
+func (x *Comment) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *Comment) GetUserName() string {
+	if x != nil {
+		return x.UserName
+	}
+	return ""
+}
+
+func (x *Comment) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *Comment) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Comment) GetUpdatedAt() string {
 	if x != nil {
 		return x.UpdatedAt
 	}
@@ -758,7 +1022,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"senderName\x18\a \x01(\tR\n" +
 	"senderName\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xfe\x01\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xe3\x02\n" +
 	"\x04Post\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1a\n" +
 	"\bauthorId\x18\x02 \x01(\tR\bauthorId\x12\x1e\n" +
@@ -768,9 +1032,31 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x05 \x01(\tR\acontent\x12\x12\n" +
 	"\x04type\x18\x06 \x01(\tR\x04type\x12\"\n" +
-	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\t \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12,\n" +
+	"\x05likes\x18\b \x01(\v2\x16.base_models.PostLikesR\x05likes\x125\n" +
+	"\bcomments\x18\t \x01(\v2\x19.base_models.PostCommentsR\bcomments\x12\x1c\n" +
+	"\tcreatedAt\x18\n" +
+	" \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\v \x01(\tR\tupdatedAt\"T\n" +
+	"\tPostLikes\x12\x1e\n" +
+	"\n" +
+	"likesCount\x18\x01 \x01(\x03R\n" +
+	"likesCount\x12'\n" +
+	"\x05likes\x18\x02 \x03(\v2\x11.base_models.LikeR\x05likes\"T\n" +
+	"\x04Like\x12\x16\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
+	"\buserName\x18\x02 \x01(\tR\buserName\x12\x18\n" +
+	"\alikedAt\x18\x03 \x01(\tR\alikedAt\"f\n" +
+	"\fPostComments\x12$\n" +
+	"\rcommentsCount\x18\x01 \x01(\x03R\rcommentsCount\x120\n" +
+	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xb1\x01\n" +
+	"\aComment\x12\x1c\n" +
+	"\tcommentId\x18\x01 \x01(\tR\tcommentId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
+	"\buserName\x18\x03 \x01(\tR\buserName\x12\x18\n" +
+	"\acontent\x18\x04 \x01(\tR\acontent\x12\x1c\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -784,7 +1070,7 @@ func file_base_models_base_models_proto_rawDescGZIP() []byte {
 	return file_base_models_base_models_proto_rawDescData
 }
 
-var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_base_models_base_models_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_base_models_base_models_proto_goTypes = []any{
 	(*User)(nil),         // 0: base_models.User
 	(*UserSettings)(nil), // 1: base_models.UserSettings
@@ -793,16 +1079,24 @@ var file_base_models_base_models_proto_goTypes = []any{
 	(*Project)(nil),      // 4: base_models.Project
 	(*Notification)(nil), // 5: base_models.Notification
 	(*Post)(nil),         // 6: base_models.Post
+	(*PostLikes)(nil),    // 7: base_models.PostLikes
+	(*Like)(nil),         // 8: base_models.Like
+	(*PostComments)(nil), // 9: base_models.PostComments
+	(*Comment)(nil),      // 10: base_models.Comment
 }
 var file_base_models_base_models_proto_depIdxs = []int32{
-	1, // 0: base_models.User.settings:type_name -> base_models.UserSettings
-	0, // 1: base_models.Chat.user1:type_name -> base_models.User
-	0, // 2: base_models.Chat.user2:type_name -> base_models.User
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1,  // 0: base_models.User.settings:type_name -> base_models.UserSettings
+	0,  // 1: base_models.Chat.user1:type_name -> base_models.User
+	0,  // 2: base_models.Chat.user2:type_name -> base_models.User
+	7,  // 3: base_models.Post.likes:type_name -> base_models.PostLikes
+	9,  // 4: base_models.Post.comments:type_name -> base_models.PostComments
+	8,  // 5: base_models.PostLikes.likes:type_name -> base_models.Like
+	10, // 6: base_models.PostComments.comments:type_name -> base_models.Comment
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_base_models_base_models_proto_init() }
@@ -816,7 +1110,7 @@ func file_base_models_base_models_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_base_models_base_models_proto_rawDesc), len(file_base_models_base_models_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
