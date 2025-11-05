@@ -20,13 +20,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PostService_CreatePost_FullMethodName          = "/post.PostService/CreatePost"
-	PostService_GetPost_FullMethodName             = "/post.PostService/GetPost"
-	PostService_GetAllPostsFromUser_FullMethodName = "/post.PostService/GetAllPostsFromUser"
-	PostService_UpdatePost_FullMethodName          = "/post.PostService/UpdatePost"
-	PostService_DeletePost_FullMethodName          = "/post.PostService/DeletePost"
-	PostService_GetAllPosts_FullMethodName         = "/post.PostService/GetAllPosts"
-	PostService_UpdateLikesFromPost_FullMethodName = "/post.PostService/UpdateLikesFromPost"
+	PostService_CreatePost_FullMethodName            = "/post.PostService/CreatePost"
+	PostService_GetPost_FullMethodName               = "/post.PostService/GetPost"
+	PostService_GetAllPostsFromUser_FullMethodName   = "/post.PostService/GetAllPostsFromUser"
+	PostService_UpdatePost_FullMethodName            = "/post.PostService/UpdatePost"
+	PostService_DeletePost_FullMethodName            = "/post.PostService/DeletePost"
+	PostService_GetAllPosts_FullMethodName           = "/post.PostService/GetAllPosts"
+	PostService_UpdateLikesFromPost_FullMethodName   = "/post.PostService/UpdateLikesFromPost"
+	PostService_AddCommentToPost_FullMethodName      = "/post.PostService/AddCommentToPost"
+	PostService_RemoveCommentFromPost_FullMethodName = "/post.PostService/RemoveCommentFromPost"
 )
 
 // PostServiceClient is the client API for PostService service.
@@ -40,6 +42,8 @@ type PostServiceClient interface {
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
 	UpdateLikesFromPost(ctx context.Context, in *UpdateLikesFromPostRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostResponse, error)
+	AddCommentToPost(ctx context.Context, in *AddCommentToPostRequest, opts ...grpc.CallOption) (*AddCommentToPostResponse, error)
+	RemoveCommentFromPost(ctx context.Context, in *RemoveCommentFromPostRequest, opts ...grpc.CallOption) (*RemoveCommentFromPostResponse, error)
 }
 
 type postServiceClient struct {
@@ -120,6 +124,26 @@ func (c *postServiceClient) UpdateLikesFromPost(ctx context.Context, in *UpdateL
 	return out, nil
 }
 
+func (c *postServiceClient) AddCommentToPost(ctx context.Context, in *AddCommentToPostRequest, opts ...grpc.CallOption) (*AddCommentToPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddCommentToPostResponse)
+	err := c.cc.Invoke(ctx, PostService_AddCommentToPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) RemoveCommentFromPost(ctx context.Context, in *RemoveCommentFromPostRequest, opts ...grpc.CallOption) (*RemoveCommentFromPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveCommentFromPostResponse)
+	err := c.cc.Invoke(ctx, PostService_RemoveCommentFromPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostServiceServer is the server API for PostService service.
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility.
@@ -131,6 +155,8 @@ type PostServiceServer interface {
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
 	GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error)
 	UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error)
+	AddCommentToPost(context.Context, *AddCommentToPostRequest) (*AddCommentToPostResponse, error)
+	RemoveCommentFromPost(context.Context, *RemoveCommentFromPostRequest) (*RemoveCommentFromPostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -161,6 +187,12 @@ func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *emptypb.Empt
 }
 func (UnimplementedPostServiceServer) UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLikesFromPost not implemented")
+}
+func (UnimplementedPostServiceServer) AddCommentToPost(context.Context, *AddCommentToPostRequest) (*AddCommentToPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCommentToPost not implemented")
+}
+func (UnimplementedPostServiceServer) RemoveCommentFromPost(context.Context, *RemoveCommentFromPostRequest) (*RemoveCommentFromPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveCommentFromPost not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 func (UnimplementedPostServiceServer) testEmbeddedByValue()                     {}
@@ -309,6 +341,42 @@ func _PostService_UpdateLikesFromPost_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostService_AddCommentToPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCommentToPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).AddCommentToPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_AddCommentToPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).AddCommentToPost(ctx, req.(*AddCommentToPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_RemoveCommentFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveCommentFromPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).RemoveCommentFromPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_RemoveCommentFromPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).RemoveCommentFromPost(ctx, req.(*RemoveCommentFromPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -343,6 +411,14 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateLikesFromPost",
 			Handler:    _PostService_UpdateLikesFromPost_Handler,
+		},
+		{
+			MethodName: "AddCommentToPost",
+			Handler:    _PostService_AddCommentToPost_Handler,
+		},
+		{
+			MethodName: "RemoveCommentFromPost",
+			Handler:    _PostService_RemoveCommentFromPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
