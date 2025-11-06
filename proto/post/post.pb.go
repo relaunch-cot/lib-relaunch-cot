@@ -505,7 +505,6 @@ type UpdateLikesFromPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	Liked         bool                   `protobuf:"varint,3,opt,name=liked,proto3" json:"liked,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -552,13 +551,6 @@ func (x *UpdateLikesFromPostRequest) GetUserId() string {
 		return x.UserId
 	}
 	return ""
-}
-
-func (x *UpdateLikesFromPostRequest) GetLiked() bool {
-	if x != nil {
-		return x.Liked
-	}
-	return false
 }
 
 // //////////////////////////// UPDATE LIKES FROM POST RESPONSE
@@ -845,11 +837,10 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\">\n" +
 	"\x13GetAllPostsResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"b\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"L\n" +
 	"\x1aUpdateLikesFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x14\n" +
-	"\x05liked\x18\x03 \x01(\bR\x05liked\"[\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"[\n" +
 	"\x1bUpdateLikesFromPostResponse\x12<\n" +
 	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"c\n" +
 	"\x17AddCommentToPostRequest\x12\x16\n" +

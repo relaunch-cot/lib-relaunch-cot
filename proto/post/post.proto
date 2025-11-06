@@ -65,7 +65,6 @@ message GetAllPostsResponse {
 message UpdateLikesFromPostRequest {
   string postId = 1;
   string userId = 2;
-  bool liked = 3;
 }
 
 ////////////////////////////// UPDATE LIKES FROM POST RESPONSE
