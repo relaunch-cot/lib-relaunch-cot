@@ -74,10 +74,8 @@ message Post {
   string content = 5;
   string type = 6;
   string urlImagePost = 7;
-  PostLikes likes = 8;
-  PostComments comments = 9;
-  string createdAt = 10;
-  string updatedAt = 11;
+  string createdAt = 8;
+  string updatedAt = 9;
 }
 
 message PostLikes {

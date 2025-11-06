@@ -598,6 +598,105 @@ func (x *UpdateLikesFromPostResponse) GetLikesFromPost() *base_models.PostLikes 
 	return nil
 }
 
+// //////////////////////////// GET ALL LIKES FROM POST REQUEST
+type GetLikesFromPostRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetLikesFromPostRequest) Reset() {
+	*x = GetLikesFromPostRequest{}
+	mi := &file_post_post_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetLikesFromPostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetLikesFromPostRequest) ProtoMessage() {}
+
+func (x *GetLikesFromPostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetLikesFromPostRequest.ProtoReflect.Descriptor instead.
+func (*GetLikesFromPostRequest) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetLikesFromPostRequest) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+func (x *GetLikesFromPostRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+// //////////////////////////// GET ALL LIKES FROM POST RESPONSE
+type GetLikesFromPostResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	LikesFromPost *base_models.PostLikes `protobuf:"bytes,1,opt,name=likesFromPost,proto3" json:"likesFromPost,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetLikesFromPostResponse) Reset() {
+	*x = GetLikesFromPostResponse{}
+	mi := &file_post_post_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetLikesFromPostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetLikesFromPostResponse) ProtoMessage() {}
+
+func (x *GetLikesFromPostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetLikesFromPostResponse.ProtoReflect.Descriptor instead.
+func (*GetLikesFromPostResponse) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetLikesFromPostResponse) GetLikesFromPost() *base_models.PostLikes {
+	if x != nil {
+		return x.LikesFromPost
+	}
+	return nil
+}
+
+// //////////////////////////// ADD COMMENT TO POST REQUEST
 type AddCommentToPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
@@ -609,7 +708,7 @@ type AddCommentToPostRequest struct {
 
 func (x *AddCommentToPostRequest) Reset() {
 	*x = AddCommentToPostRequest{}
-	mi := &file_post_post_proto_msgTypes[11]
+	mi := &file_post_post_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -621,7 +720,7 @@ func (x *AddCommentToPostRequest) String() string {
 func (*AddCommentToPostRequest) ProtoMessage() {}
 
 func (x *AddCommentToPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[11]
+	mi := &file_post_post_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -634,7 +733,7 @@ func (x *AddCommentToPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCommentToPostRequest.ProtoReflect.Descriptor instead.
 func (*AddCommentToPostRequest) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{11}
+	return file_post_post_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *AddCommentToPostRequest) GetPostId() string {
@@ -658,6 +757,7 @@ func (x *AddCommentToPostRequest) GetContent() string {
 	return ""
 }
 
+// //////////////////////////// ADD COMMENT TO POST RESPONSE
 type AddCommentToPostResponse struct {
 	state            protoimpl.MessageState    `protogen:"open.v1"`
 	CommentsFromPost *base_models.PostComments `protobuf:"bytes,1,opt,name=commentsFromPost,proto3" json:"commentsFromPost,omitempty"`
@@ -667,7 +767,7 @@ type AddCommentToPostResponse struct {
 
 func (x *AddCommentToPostResponse) Reset() {
 	*x = AddCommentToPostResponse{}
-	mi := &file_post_post_proto_msgTypes[12]
+	mi := &file_post_post_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -679,7 +779,7 @@ func (x *AddCommentToPostResponse) String() string {
 func (*AddCommentToPostResponse) ProtoMessage() {}
 
 func (x *AddCommentToPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[12]
+	mi := &file_post_post_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -692,7 +792,7 @@ func (x *AddCommentToPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCommentToPostResponse.ProtoReflect.Descriptor instead.
 func (*AddCommentToPostResponse) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{12}
+	return file_post_post_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *AddCommentToPostResponse) GetCommentsFromPost() *base_models.PostComments {
@@ -702,6 +802,7 @@ func (x *AddCommentToPostResponse) GetCommentsFromPost() *base_models.PostCommen
 	return nil
 }
 
+// //////////////////////////// REMOVE COMMENT FROM POST REQUEST
 type RemoveCommentFromPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
@@ -713,7 +814,7 @@ type RemoveCommentFromPostRequest struct {
 
 func (x *RemoveCommentFromPostRequest) Reset() {
 	*x = RemoveCommentFromPostRequest{}
-	mi := &file_post_post_proto_msgTypes[13]
+	mi := &file_post_post_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -725,7 +826,7 @@ func (x *RemoveCommentFromPostRequest) String() string {
 func (*RemoveCommentFromPostRequest) ProtoMessage() {}
 
 func (x *RemoveCommentFromPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[13]
+	mi := &file_post_post_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -738,7 +839,7 @@ func (x *RemoveCommentFromPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveCommentFromPostRequest.ProtoReflect.Descriptor instead.
 func (*RemoveCommentFromPostRequest) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{13}
+	return file_post_post_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RemoveCommentFromPostRequest) GetPostId() string {
@@ -762,6 +863,7 @@ func (x *RemoveCommentFromPostRequest) GetCommentId() string {
 	return ""
 }
 
+// //////////////////////////// REMOVE COMMENT FROM POST RESPONSE
 type RemoveCommentFromPostResponse struct {
 	state            protoimpl.MessageState    `protogen:"open.v1"`
 	CommentsFromPost *base_models.PostComments `protobuf:"bytes,1,opt,name=commentsFromPost,proto3" json:"commentsFromPost,omitempty"`
@@ -771,7 +873,7 @@ type RemoveCommentFromPostResponse struct {
 
 func (x *RemoveCommentFromPostResponse) Reset() {
 	*x = RemoveCommentFromPostResponse{}
-	mi := &file_post_post_proto_msgTypes[14]
+	mi := &file_post_post_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -783,7 +885,7 @@ func (x *RemoveCommentFromPostResponse) String() string {
 func (*RemoveCommentFromPostResponse) ProtoMessage() {}
 
 func (x *RemoveCommentFromPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[14]
+	mi := &file_post_post_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,10 +898,106 @@ func (x *RemoveCommentFromPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveCommentFromPostResponse.ProtoReflect.Descriptor instead.
 func (*RemoveCommentFromPostResponse) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{14}
+	return file_post_post_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *RemoveCommentFromPostResponse) GetCommentsFromPost() *base_models.PostComments {
+	if x != nil {
+		return x.CommentsFromPost
+	}
+	return nil
+}
+
+type GetAllCommentsFromPostRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllCommentsFromPostRequest) Reset() {
+	*x = GetAllCommentsFromPostRequest{}
+	mi := &file_post_post_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllCommentsFromPostRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCommentsFromPostRequest) ProtoMessage() {}
+
+func (x *GetAllCommentsFromPostRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCommentsFromPostRequest.ProtoReflect.Descriptor instead.
+func (*GetAllCommentsFromPostRequest) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetAllCommentsFromPostRequest) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
+func (x *GetAllCommentsFromPostRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type GetAllCommentsFromPostResponse struct {
+	state            protoimpl.MessageState    `protogen:"open.v1"`
+	CommentsFromPost *base_models.PostComments `protobuf:"bytes,1,opt,name=commentsFromPost,proto3" json:"commentsFromPost,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GetAllCommentsFromPostResponse) Reset() {
+	*x = GetAllCommentsFromPostResponse{}
+	mi := &file_post_post_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllCommentsFromPostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllCommentsFromPostResponse) ProtoMessage() {}
+
+func (x *GetAllCommentsFromPostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_post_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllCommentsFromPostResponse.ProtoReflect.Descriptor instead.
+func (*GetAllCommentsFromPostResponse) Descriptor() ([]byte, []int) {
+	return file_post_post_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetAllCommentsFromPostResponse) GetCommentsFromPost() *base_models.PostComments {
 	if x != nil {
 		return x.CommentsFromPost
 	}
@@ -842,6 +1040,11 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"[\n" +
 	"\x1bUpdateLikesFromPostResponse\x12<\n" +
+	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"I\n" +
+	"\x17GetLikesFromPostRequest\x12\x16\n" +
+	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"X\n" +
+	"\x18GetLikesFromPostResponse\x12<\n" +
 	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"c\n" +
 	"\x17AddCommentToPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
@@ -854,7 +1057,12 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1c\n" +
 	"\tcommentId\x18\x03 \x01(\tR\tcommentId\"f\n" +
 	"\x1dRemoveCommentFromPostResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost2\xb3\x05\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
+	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +
+	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"g\n" +
+	"\x1eGetAllCommentsFromPostResponse\x12E\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost2\xeb\x06\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -866,8 +1074,10 @@ const file_post_post_proto_rawDesc = "" +
 	"DeletePost\x12\x17.post.DeletePostRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
 	"\vGetAllPosts\x12\x16.google.protobuf.Empty\x1a\x19.post.GetAllPostsResponse\x12Z\n" +
 	"\x13UpdateLikesFromPost\x12 .post.UpdateLikesFromPostRequest\x1a!.post.UpdateLikesFromPostResponse\x12Q\n" +
+	"\x10GetLikesFromPost\x12\x1d.post.GetLikesFromPostRequest\x1a\x1e.post.GetLikesFromPostResponse\x12Q\n" +
 	"\x10AddCommentToPost\x12\x1d.post.AddCommentToPostRequest\x1a\x1e.post.AddCommentToPostResponse\x12`\n" +
-	"\x15RemoveCommentFromPost\x12\".post.RemoveCommentFromPostRequest\x1a#.post.RemoveCommentFromPostResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
+	"\x15RemoveCommentFromPost\x12\".post.RemoveCommentFromPostRequest\x1a#.post.RemoveCommentFromPostResponse\x12c\n" +
+	"\x16GetAllCommentsFromPost\x12#.post.GetAllCommentsFromPostRequest\x1a$.post.GetAllCommentsFromPostResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
 
 var (
 	file_post_post_proto_rawDescOnce sync.Once
@@ -881,59 +1091,69 @@ func file_post_post_proto_rawDescGZIP() []byte {
 	return file_post_post_proto_rawDescData
 }
 
-var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_post_post_proto_goTypes = []any{
-	(*CreatePostRequest)(nil),             // 0: post.CreatePostRequest
-	(*GetPostRequest)(nil),                // 1: post.GetPostRequest
-	(*GetPostResponse)(nil),               // 2: post.GetPostResponse
-	(*GetAllPostsFromUserRequest)(nil),    // 3: post.GetAllPostsFromUserRequest
-	(*GetAllPostsFromUserResponse)(nil),   // 4: post.GetAllPostsFromUserResponse
-	(*UpdatePostRequest)(nil),             // 5: post.UpdatePostRequest
-	(*UpdatePostResponse)(nil),            // 6: post.UpdatePostResponse
-	(*DeletePostRequest)(nil),             // 7: post.DeletePostRequest
-	(*GetAllPostsResponse)(nil),           // 8: post.GetAllPostsResponse
-	(*UpdateLikesFromPostRequest)(nil),    // 9: post.UpdateLikesFromPostRequest
-	(*UpdateLikesFromPostResponse)(nil),   // 10: post.UpdateLikesFromPostResponse
-	(*AddCommentToPostRequest)(nil),       // 11: post.AddCommentToPostRequest
-	(*AddCommentToPostResponse)(nil),      // 12: post.AddCommentToPostResponse
-	(*RemoveCommentFromPostRequest)(nil),  // 13: post.RemoveCommentFromPostRequest
-	(*RemoveCommentFromPostResponse)(nil), // 14: post.RemoveCommentFromPostResponse
-	(*base_models.Post)(nil),              // 15: base_models.Post
-	(*base_models.PostLikes)(nil),         // 16: base_models.PostLikes
-	(*base_models.PostComments)(nil),      // 17: base_models.PostComments
-	(*emptypb.Empty)(nil),                 // 18: google.protobuf.Empty
+	(*CreatePostRequest)(nil),              // 0: post.CreatePostRequest
+	(*GetPostRequest)(nil),                 // 1: post.GetPostRequest
+	(*GetPostResponse)(nil),                // 2: post.GetPostResponse
+	(*GetAllPostsFromUserRequest)(nil),     // 3: post.GetAllPostsFromUserRequest
+	(*GetAllPostsFromUserResponse)(nil),    // 4: post.GetAllPostsFromUserResponse
+	(*UpdatePostRequest)(nil),              // 5: post.UpdatePostRequest
+	(*UpdatePostResponse)(nil),             // 6: post.UpdatePostResponse
+	(*DeletePostRequest)(nil),              // 7: post.DeletePostRequest
+	(*GetAllPostsResponse)(nil),            // 8: post.GetAllPostsResponse
+	(*UpdateLikesFromPostRequest)(nil),     // 9: post.UpdateLikesFromPostRequest
+	(*UpdateLikesFromPostResponse)(nil),    // 10: post.UpdateLikesFromPostResponse
+	(*GetLikesFromPostRequest)(nil),        // 11: post.GetLikesFromPostRequest
+	(*GetLikesFromPostResponse)(nil),       // 12: post.GetLikesFromPostResponse
+	(*AddCommentToPostRequest)(nil),        // 13: post.AddCommentToPostRequest
+	(*AddCommentToPostResponse)(nil),       // 14: post.AddCommentToPostResponse
+	(*RemoveCommentFromPostRequest)(nil),   // 15: post.RemoveCommentFromPostRequest
+	(*RemoveCommentFromPostResponse)(nil),  // 16: post.RemoveCommentFromPostResponse
+	(*GetAllCommentsFromPostRequest)(nil),  // 17: post.GetAllCommentsFromPostRequest
+	(*GetAllCommentsFromPostResponse)(nil), // 18: post.GetAllCommentsFromPostResponse
+	(*base_models.Post)(nil),               // 19: base_models.Post
+	(*base_models.PostLikes)(nil),          // 20: base_models.PostLikes
+	(*base_models.PostComments)(nil),       // 21: base_models.PostComments
+	(*emptypb.Empty)(nil),                  // 22: google.protobuf.Empty
 }
 var file_post_post_proto_depIdxs = []int32{
-	15, // 0: post.GetPostResponse.post:type_name -> base_models.Post
-	15, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
-	15, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
-	15, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
-	16, // 4: post.UpdateLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
-	17, // 5: post.AddCommentToPostResponse.commentsFromPost:type_name -> base_models.PostComments
-	17, // 6: post.RemoveCommentFromPostResponse.commentsFromPost:type_name -> base_models.PostComments
-	0,  // 7: post.PostService.CreatePost:input_type -> post.CreatePostRequest
-	1,  // 8: post.PostService.GetPost:input_type -> post.GetPostRequest
-	3,  // 9: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
-	5,  // 10: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
-	7,  // 11: post.PostService.DeletePost:input_type -> post.DeletePostRequest
-	18, // 12: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
-	9,  // 13: post.PostService.UpdateLikesFromPost:input_type -> post.UpdateLikesFromPostRequest
-	11, // 14: post.PostService.AddCommentToPost:input_type -> post.AddCommentToPostRequest
-	13, // 15: post.PostService.RemoveCommentFromPost:input_type -> post.RemoveCommentFromPostRequest
-	18, // 16: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2,  // 17: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4,  // 18: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	6,  // 19: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
-	18, // 20: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	8,  // 21: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
-	10, // 22: post.PostService.UpdateLikesFromPost:output_type -> post.UpdateLikesFromPostResponse
-	12, // 23: post.PostService.AddCommentToPost:output_type -> post.AddCommentToPostResponse
-	14, // 24: post.PostService.RemoveCommentFromPost:output_type -> post.RemoveCommentFromPostResponse
-	16, // [16:25] is the sub-list for method output_type
-	7,  // [7:16] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	19, // 0: post.GetPostResponse.post:type_name -> base_models.Post
+	19, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
+	19, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
+	19, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
+	20, // 4: post.UpdateLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
+	20, // 5: post.GetLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
+	21, // 6: post.AddCommentToPostResponse.commentsFromPost:type_name -> base_models.PostComments
+	21, // 7: post.RemoveCommentFromPostResponse.commentsFromPost:type_name -> base_models.PostComments
+	21, // 8: post.GetAllCommentsFromPostResponse.commentsFromPost:type_name -> base_models.PostComments
+	0,  // 9: post.PostService.CreatePost:input_type -> post.CreatePostRequest
+	1,  // 10: post.PostService.GetPost:input_type -> post.GetPostRequest
+	3,  // 11: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
+	5,  // 12: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
+	7,  // 13: post.PostService.DeletePost:input_type -> post.DeletePostRequest
+	22, // 14: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
+	9,  // 15: post.PostService.UpdateLikesFromPost:input_type -> post.UpdateLikesFromPostRequest
+	11, // 16: post.PostService.GetLikesFromPost:input_type -> post.GetLikesFromPostRequest
+	13, // 17: post.PostService.AddCommentToPost:input_type -> post.AddCommentToPostRequest
+	15, // 18: post.PostService.RemoveCommentFromPost:input_type -> post.RemoveCommentFromPostRequest
+	17, // 19: post.PostService.GetAllCommentsFromPost:input_type -> post.GetAllCommentsFromPostRequest
+	22, // 20: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 21: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 22: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	6,  // 23: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
+	22, // 24: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	8,  // 25: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
+	10, // 26: post.PostService.UpdateLikesFromPost:output_type -> post.UpdateLikesFromPostResponse
+	12, // 27: post.PostService.GetLikesFromPost:output_type -> post.GetLikesFromPostResponse
+	14, // 28: post.PostService.AddCommentToPost:output_type -> post.AddCommentToPostResponse
+	16, // 29: post.PostService.RemoveCommentFromPost:output_type -> post.RemoveCommentFromPostResponse
+	18, // 30: post.PostService.GetAllCommentsFromPost:output_type -> post.GetAllCommentsFromPostResponse
+	20, // [20:31] is the sub-list for method output_type
+	9,  // [9:20] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_post_post_proto_init() }
@@ -947,7 +1167,7 @@ func file_post_post_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_post_post_proto_rawDesc), len(file_post_post_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

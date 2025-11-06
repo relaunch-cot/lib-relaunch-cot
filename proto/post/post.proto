@@ -72,23 +72,47 @@ message UpdateLikesFromPostResponse {
   base_models.PostLikes likesFromPost = 1;
 }
 
+////////////////////////////// GET ALL LIKES FROM POST REQUEST
+message GetLikesFromPostRequest {
+  string postId = 1;
+  string userId = 2;
+}
+
+////////////////////////////// GET ALL LIKES FROM POST RESPONSE
+message GetLikesFromPostResponse {
+  base_models.PostLikes likesFromPost = 1;
+}
+
+////////////////////////////// ADD COMMENT TO POST REQUEST
 message AddCommentToPostRequest {
   string postId = 1;
   string userId = 2;
   string content = 3;
 }
 
+////////////////////////////// ADD COMMENT TO POST RESPONSE
 message AddCommentToPostResponse {
   base_models.PostComments commentsFromPost = 1;
 }
 
+////////////////////////////// REMOVE COMMENT FROM POST REQUEST
 message RemoveCommentFromPostRequest {
   string postId = 1;
   string userId = 2;
   string commentId = 3;
 }
 
+////////////////////////////// REMOVE COMMENT FROM POST RESPONSE
 message RemoveCommentFromPostResponse {
+  base_models.PostComments commentsFromPost = 1;
+}
+
+message GetAllCommentsFromPostRequest {
+  string postId = 1;
+  string userId = 2;
+}
+
+message GetAllCommentsFromPostResponse {
   base_models.PostComments commentsFromPost = 1;
 }
 
@@ -100,6 +124,8 @@ service PostService {
   rpc DeletePost(DeletePostRequest) returns(google.protobuf.Empty);
   rpc GetAllPosts(google.protobuf.Empty) returns(GetAllPostsResponse);
   rpc UpdateLikesFromPost(UpdateLikesFromPostRequest) returns(UpdateLikesFromPostResponse);
+  rpc GetLikesFromPost(GetLikesFromPostRequest) returns(GetLikesFromPostResponse);
   rpc AddCommentToPost(AddCommentToPostRequest) returns(AddCommentToPostResponse);
   rpc RemoveCommentFromPost(RemoveCommentFromPostRequest) returns(RemoveCommentFromPostResponse);
+  rpc GetAllCommentsFromPost(GetAllCommentsFromPostRequest) returns(GetAllCommentsFromPostResponse);
 }

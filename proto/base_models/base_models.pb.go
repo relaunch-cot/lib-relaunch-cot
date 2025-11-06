@@ -598,10 +598,8 @@ type Post struct {
 	Content       string                 `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
 	Type          string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
 	UrlImagePost  string                 `protobuf:"bytes,7,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
-	Likes         *PostLikes             `protobuf:"bytes,8,opt,name=likes,proto3" json:"likes,omitempty"`
-	Comments      *PostComments          `protobuf:"bytes,9,opt,name=comments,proto3" json:"comments,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,10,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,11,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -683,20 +681,6 @@ func (x *Post) GetUrlImagePost() string {
 		return x.UrlImagePost
 	}
 	return ""
-}
-
-func (x *Post) GetLikes() *PostLikes {
-	if x != nil {
-		return x.Likes
-	}
-	return nil
-}
-
-func (x *Post) GetComments() *PostComments {
-	if x != nil {
-		return x.Comments
-	}
-	return nil
 }
 
 func (x *Post) GetCreatedAt() string {
@@ -1022,7 +1006,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"senderName\x18\a \x01(\tR\n" +
 	"senderName\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xe3\x02\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xfe\x01\n" +
 	"\x04Post\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1a\n" +
 	"\bauthorId\x18\x02 \x01(\tR\bauthorId\x12\x1e\n" +
@@ -1032,12 +1016,9 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x05 \x01(\tR\acontent\x12\x12\n" +
 	"\x04type\x18\x06 \x01(\tR\x04type\x12\"\n" +
-	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12,\n" +
-	"\x05likes\x18\b \x01(\v2\x16.base_models.PostLikesR\x05likes\x125\n" +
-	"\bcomments\x18\t \x01(\v2\x19.base_models.PostCommentsR\bcomments\x12\x1c\n" +
-	"\tcreatedAt\x18\n" +
-	" \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\v \x01(\tR\tupdatedAt\"T\n" +
+	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12\x1c\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\t \x01(\tR\tupdatedAt\"T\n" +
 	"\tPostLikes\x12\x1e\n" +
 	"\n" +
 	"likesCount\x18\x01 \x01(\x03R\n" +
@@ -1088,15 +1069,13 @@ var file_base_models_base_models_proto_depIdxs = []int32{
 	1,  // 0: base_models.User.settings:type_name -> base_models.UserSettings
 	0,  // 1: base_models.Chat.user1:type_name -> base_models.User
 	0,  // 2: base_models.Chat.user2:type_name -> base_models.User
-	7,  // 3: base_models.Post.likes:type_name -> base_models.PostLikes
-	9,  // 4: base_models.Post.comments:type_name -> base_models.PostComments
-	8,  // 5: base_models.PostLikes.likes:type_name -> base_models.Like
-	10, // 6: base_models.PostComments.comments:type_name -> base_models.Comment
-	7,  // [7:7] is the sub-list for method output_type
-	7,  // [7:7] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	8,  // 3: base_models.PostLikes.likes:type_name -> base_models.Like
+	10, // 4: base_models.PostComments.comments:type_name -> base_models.Comment
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_base_models_base_models_proto_init() }
