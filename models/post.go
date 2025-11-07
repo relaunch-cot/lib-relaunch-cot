@@ -35,6 +35,8 @@ type Comment struct {
 	UserName  string
 	Content   string
 	Type      string
+	replies   PostComments
+	likes     PostLikes
 	CreatedAt string
 	UpdatedAt string
 }

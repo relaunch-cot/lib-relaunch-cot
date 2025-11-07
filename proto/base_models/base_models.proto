@@ -101,6 +101,8 @@ message Comment {
   string userName = 3;
   string content = 4;
   string type = 5;
-  string createdAt = 6;
-  string updatedAt = 7;
+  PostComments replies = 6;
+  PostLikes likes = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
 }

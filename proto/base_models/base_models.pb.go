@@ -876,8 +876,10 @@ type Comment struct {
 	UserName      string                 `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName,omitempty"`
 	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
 	Type          string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	Replies       *PostComments          `protobuf:"bytes,6,opt,name=replies,proto3" json:"replies,omitempty"`
+	Likes         *PostLikes             `protobuf:"bytes,7,opt,name=likes,proto3" json:"likes,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -945,6 +947,20 @@ func (x *Comment) GetType() string {
 		return x.Type
 	}
 	return ""
+}
+
+func (x *Comment) GetReplies() *PostComments {
+	if x != nil {
+		return x.Replies
+	}
+	return nil
+}
+
+func (x *Comment) GetLikes() *PostLikes {
+	if x != nil {
+		return x.Likes
+	}
+	return nil
 }
 
 func (x *Comment) GetCreatedAt() string {
@@ -1047,15 +1063,17 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\alikedAt\x18\x04 \x01(\tR\alikedAt\"f\n" +
 	"\fPostComments\x12$\n" +
 	"\rcommentsCount\x18\x01 \x01(\x03R\rcommentsCount\x120\n" +
-	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xc5\x01\n" +
+	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xa8\x02\n" +
 	"\aComment\x12\x1c\n" +
 	"\tcommentId\x18\x01 \x01(\tR\tcommentId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
 	"\buserName\x18\x03 \x01(\tR\buserName\x12\x18\n" +
 	"\acontent\x18\x04 \x01(\tR\acontent\x12\x12\n" +
-	"\x04type\x18\x05 \x01(\tR\x04type\x12\x1c\n" +
-	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\a \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\x04type\x18\x05 \x01(\tR\x04type\x123\n" +
+	"\areplies\x18\x06 \x01(\v2\x19.base_models.PostCommentsR\areplies\x12,\n" +
+	"\x05likes\x18\a \x01(\v2\x16.base_models.PostLikesR\x05likes\x12\x1c\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\t \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once
@@ -1089,11 +1107,13 @@ var file_base_models_base_models_proto_depIdxs = []int32{
 	0,  // 2: base_models.Chat.user2:type_name -> base_models.User
 	8,  // 3: base_models.PostLikes.likes:type_name -> base_models.Like
 	10, // 4: base_models.PostComments.comments:type_name -> base_models.Comment
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	9,  // 5: base_models.Comment.replies:type_name -> base_models.PostComments
+	7,  // 6: base_models.Comment.likes:type_name -> base_models.PostLikes
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_base_models_base_models_proto_init() }
