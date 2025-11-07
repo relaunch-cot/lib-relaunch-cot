@@ -824,6 +824,7 @@ type RemoveCommentFromPostRequest struct {
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	CommentId     string                 `protobuf:"bytes,3,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -875,6 +876,13 @@ func (x *RemoveCommentFromPostRequest) GetUserId() string {
 func (x *RemoveCommentFromPostRequest) GetCommentId() string {
 	if x != nil {
 		return x.CommentId
+	}
+	return ""
+}
+
+func (x *RemoveCommentFromPostRequest) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -1071,11 +1079,12 @@ const file_post_post_proto_rawDesc = "" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\tR\x04type\"a\n" +
 	"\x18AddCommentToPostResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"l\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\x80\x01\n" +
 	"\x1cRemoveCommentFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1c\n" +
-	"\tcommentId\x18\x03 \x01(\tR\tcommentId\"f\n" +
+	"\tcommentId\x18\x03 \x01(\tR\tcommentId\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"f\n" +
 	"\x1dRemoveCommentFromPostResponse\x12E\n" +
 	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
 	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +
