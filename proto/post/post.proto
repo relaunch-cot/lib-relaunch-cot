@@ -64,9 +64,9 @@ message GetAllPostsResponse {
 ////////////////////////////// UPDATE LIKES FROM POST OR COMMENT REQUEST
 message UpdateLikesFromPostOrCommentRequest {
   string postId = 1;
-  string userId = 2;
-  string type = 3;
-  string parentCommentId = 4;
+  string commentId = 2;
+  string userId = 3;
+  string type = 4;
 }
 
 ////////////////////////////// UPDATE LIKES FROM POST OR COMMENT RESPONSE

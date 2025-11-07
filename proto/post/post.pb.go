@@ -502,13 +502,13 @@ func (x *GetAllPostsResponse) GetPosts() []*base_models.Post {
 
 // //////////////////////////// UPDATE LIKES FROM POST OR COMMENT REQUEST
 type UpdateLikesFromPostOrCommentRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	PostId          string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
-	UserId          string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	Type            string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	ParentCommentId string                 `protobuf:"bytes,4,opt,name=parentCommentId,proto3" json:"parentCommentId,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	CommentId     string                 `protobuf:"bytes,2,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	UserId        string                 `protobuf:"bytes,3,opt,name=userId,proto3" json:"userId,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateLikesFromPostOrCommentRequest) Reset() {
@@ -548,6 +548,13 @@ func (x *UpdateLikesFromPostOrCommentRequest) GetPostId() string {
 	return ""
 }
 
+func (x *UpdateLikesFromPostOrCommentRequest) GetCommentId() string {
+	if x != nil {
+		return x.CommentId
+	}
+	return ""
+}
+
 func (x *UpdateLikesFromPostOrCommentRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
@@ -558,13 +565,6 @@ func (x *UpdateLikesFromPostOrCommentRequest) GetUserId() string {
 func (x *UpdateLikesFromPostOrCommentRequest) GetType() string {
 	if x != nil {
 		return x.Type
-	}
-	return ""
-}
-
-func (x *UpdateLikesFromPostOrCommentRequest) GetParentCommentId() string {
-	if x != nil {
-		return x.ParentCommentId
 	}
 	return ""
 }
@@ -1077,12 +1077,12 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\">\n" +
 	"\x13GetAllPostsResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"\x93\x01\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"\x87\x01\n" +
 	"#UpdateLikesFromPostOrCommentRequest\x12\x16\n" +
-	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\x12(\n" +
-	"\x0fparentCommentId\x18\x04 \x01(\tR\x0fparentCommentId\"d\n" +
+	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1c\n" +
+	"\tcommentId\x18\x02 \x01(\tR\tcommentId\x12\x16\n" +
+	"\x06userId\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"d\n" +
 	"$UpdateLikesFromPostOrCommentResponse\x12<\n" +
 	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"L\n" +
 	"\x1aGetAllLikesFromPostRequest\x12\x16\n" +
