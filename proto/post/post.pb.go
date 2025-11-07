@@ -836,14 +836,13 @@ func (x *CreateCommentOrReplyResponse) GetCommentsFromPost() *base_models.PostCo
 
 // //////////////////////////// DELETE COMMENT OR REPLY REQUEST
 type DeleteCommentOrReplyRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	PostId          string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
-	UserId          string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	CommentId       string                 `protobuf:"bytes,3,opt,name=commentId,proto3" json:"commentId,omitempty"`
-	Type            string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	ParentCommentId string                 `protobuf:"bytes,5,opt,name=parentCommentId,proto3" json:"parentCommentId,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
+	CommentId     string                 `protobuf:"bytes,2,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	ReplyId       string                 `protobuf:"bytes,3,opt,name=replyId,proto3" json:"replyId,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DeleteCommentOrReplyRequest) Reset() {
@@ -876,13 +875,6 @@ func (*DeleteCommentOrReplyRequest) Descriptor() ([]byte, []int) {
 	return file_post_post_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *DeleteCommentOrReplyRequest) GetPostId() string {
-	if x != nil {
-		return x.PostId
-	}
-	return ""
-}
-
 func (x *DeleteCommentOrReplyRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
@@ -897,16 +889,16 @@ func (x *DeleteCommentOrReplyRequest) GetCommentId() string {
 	return ""
 }
 
-func (x *DeleteCommentOrReplyRequest) GetType() string {
+func (x *DeleteCommentOrReplyRequest) GetReplyId() string {
 	if x != nil {
-		return x.Type
+		return x.ReplyId
 	}
 	return ""
 }
 
-func (x *DeleteCommentOrReplyRequest) GetParentCommentId() string {
+func (x *DeleteCommentOrReplyRequest) GetType() string {
 	if x != nil {
-		return x.ParentCommentId
+		return x.Type
 	}
 	return ""
 }
@@ -1105,13 +1097,12 @@ const file_post_post_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\tR\x04type\x12(\n" +
 	"\x0fparentCommentId\x18\x05 \x01(\tR\x0fparentCommentId\"e\n" +
 	"\x1cCreateCommentOrReplyResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\xa9\x01\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\x81\x01\n" +
 	"\x1bDeleteCommentOrReplyRequest\x12\x16\n" +
-	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1c\n" +
-	"\tcommentId\x18\x03 \x01(\tR\tcommentId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\x12(\n" +
-	"\x0fparentCommentId\x18\x05 \x01(\tR\x0fparentCommentId\"e\n" +
+	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1c\n" +
+	"\tcommentId\x18\x02 \x01(\tR\tcommentId\x12\x18\n" +
+	"\areplyId\x18\x03 \x01(\tR\areplyId\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"e\n" +
 	"\x1cDeleteCommentOrReplyResponse\x12E\n" +
 	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
 	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +

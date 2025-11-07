@@ -101,11 +101,10 @@ message CreateCommentOrReplyResponse {
 
 ////////////////////////////// DELETE COMMENT OR REPLY REQUEST
 message DeleteCommentOrReplyRequest {
-  string postId = 1;
-  string userId = 2;
-  string commentId = 3;
+  string userId = 1;
+  string commentId = 2;
+  string replyId = 3;
   string type = 4;
-  string parentCommentId = 5;
 }
 
 ////////////////////////////// REMOVE COMMENT OR REPLY RESPONSE
