@@ -706,13 +706,14 @@ func (x *GetLikesFromPostResponse) GetLikesFromPost() *base_models.PostLikes {
 
 // //////////////////////////// ADD COMMENT TO POST REQUEST
 type AddCommentToPostRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
-	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PostId            string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	UserId            string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Content           string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	Type              string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	CommentIdForReply string                 `protobuf:"bytes,5,opt,name=commentIdForReply,proto3" json:"commentIdForReply,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *AddCommentToPostRequest) Reset() {
@@ -769,6 +770,13 @@ func (x *AddCommentToPostRequest) GetContent() string {
 func (x *AddCommentToPostRequest) GetType() string {
 	if x != nil {
 		return x.Type
+	}
+	return ""
+}
+
+func (x *AddCommentToPostRequest) GetCommentIdForReply() string {
+	if x != nil {
+		return x.CommentIdForReply
 	}
 	return ""
 }
@@ -1072,12 +1080,13 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"X\n" +
 	"\x18GetLikesFromPostResponse\x12<\n" +
-	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"w\n" +
+	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"\xa5\x01\n" +
 	"\x17AddCommentToPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x18\n" +
 	"\acontent\x18\x03 \x01(\tR\acontent\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\"a\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12,\n" +
+	"\x11commentIdForReply\x18\x05 \x01(\tR\x11commentIdForReply\"a\n" +
 	"\x18AddCommentToPostResponse\x12E\n" +
 	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\x80\x01\n" +
 	"\x1cRemoveCommentFromPostRequest\x12\x16\n" +

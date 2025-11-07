@@ -90,6 +90,7 @@ message AddCommentToPostRequest {
   string userId = 2;
   string content = 3;
   string type = 4;
+  string commentIdForReply = 5;
 }
 
 ////////////////////////////// ADD COMMENT TO POST RESPONSE
