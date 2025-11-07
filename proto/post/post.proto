@@ -71,7 +71,7 @@ message UpdateLikesFromPostOrCommentRequest {
 
 ////////////////////////////// UPDATE LIKES FROM POST OR COMMENT RESPONSE
 message UpdateLikesFromPostOrCommentResponse {
-  base_models.PostLikes likesFromPost = 1;
+  base_models.PostLikes likesFromPostOrComment = 1;
 }
 
 ////////////////////////////// GET ALL LIKES FROM POST REQUEST

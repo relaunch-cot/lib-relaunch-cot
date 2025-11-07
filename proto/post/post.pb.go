@@ -571,10 +571,10 @@ func (x *UpdateLikesFromPostOrCommentRequest) GetType() string {
 
 // //////////////////////////// UPDATE LIKES FROM POST OR COMMENT RESPONSE
 type UpdateLikesFromPostOrCommentResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	LikesFromPost *base_models.PostLikes `protobuf:"bytes,1,opt,name=likesFromPost,proto3" json:"likesFromPost,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	LikesFromPostOrComment *base_models.PostLikes `protobuf:"bytes,1,opt,name=likesFromPostOrComment,proto3" json:"likesFromPostOrComment,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *UpdateLikesFromPostOrCommentResponse) Reset() {
@@ -607,9 +607,9 @@ func (*UpdateLikesFromPostOrCommentResponse) Descriptor() ([]byte, []int) {
 	return file_post_post_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *UpdateLikesFromPostOrCommentResponse) GetLikesFromPost() *base_models.PostLikes {
+func (x *UpdateLikesFromPostOrCommentResponse) GetLikesFromPostOrComment() *base_models.PostLikes {
 	if x != nil {
-		return x.LikesFromPost
+		return x.LikesFromPostOrComment
 	}
 	return nil
 }
@@ -1082,9 +1082,9 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1c\n" +
 	"\tcommentId\x18\x02 \x01(\tR\tcommentId\x12\x16\n" +
 	"\x06userId\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\"d\n" +
-	"$UpdateLikesFromPostOrCommentResponse\x12<\n" +
-	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"L\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"v\n" +
+	"$UpdateLikesFromPostOrCommentResponse\x12N\n" +
+	"\x16likesFromPostOrComment\x18\x01 \x01(\v2\x16.base_models.PostLikesR\x16likesFromPostOrComment\"L\n" +
 	"\x1aGetAllLikesFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"[\n" +
@@ -1169,7 +1169,7 @@ var file_post_post_proto_depIdxs = []int32{
 	19, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
 	19, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
 	19, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
-	20, // 4: post.UpdateLikesFromPostOrCommentResponse.likesFromPost:type_name -> base_models.PostLikes
+	20, // 4: post.UpdateLikesFromPostOrCommentResponse.likesFromPostOrComment:type_name -> base_models.PostLikes
 	20, // 5: post.GetAllLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
 	21, // 6: post.CreateCommentOrReplyResponse.commentsFromPost:type_name -> base_models.PostComments
 	21, // 7: post.DeleteCommentOrReplyResponse.commentsFromPost:type_name -> base_models.PostComments
