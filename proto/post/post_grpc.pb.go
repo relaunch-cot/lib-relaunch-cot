@@ -20,17 +20,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PostService_CreatePost_FullMethodName             = "/post.PostService/CreatePost"
-	PostService_GetPost_FullMethodName                = "/post.PostService/GetPost"
-	PostService_GetAllPostsFromUser_FullMethodName    = "/post.PostService/GetAllPostsFromUser"
-	PostService_UpdatePost_FullMethodName             = "/post.PostService/UpdatePost"
-	PostService_DeletePost_FullMethodName             = "/post.PostService/DeletePost"
-	PostService_GetAllPosts_FullMethodName            = "/post.PostService/GetAllPosts"
-	PostService_UpdateLikesFromPost_FullMethodName    = "/post.PostService/UpdateLikesFromPost"
-	PostService_GetLikesFromPost_FullMethodName       = "/post.PostService/GetLikesFromPost"
-	PostService_AddCommentToPost_FullMethodName       = "/post.PostService/AddCommentToPost"
-	PostService_RemoveCommentFromPost_FullMethodName  = "/post.PostService/RemoveCommentFromPost"
-	PostService_GetAllCommentsFromPost_FullMethodName = "/post.PostService/GetAllCommentsFromPost"
+	PostService_CreatePost_FullMethodName                   = "/post.PostService/CreatePost"
+	PostService_GetPost_FullMethodName                      = "/post.PostService/GetPost"
+	PostService_GetAllPostsFromUser_FullMethodName          = "/post.PostService/GetAllPostsFromUser"
+	PostService_UpdatePost_FullMethodName                   = "/post.PostService/UpdatePost"
+	PostService_DeletePost_FullMethodName                   = "/post.PostService/DeletePost"
+	PostService_GetAllPosts_FullMethodName                  = "/post.PostService/GetAllPosts"
+	PostService_UpdateLikesFromPostOrComment_FullMethodName = "/post.PostService/UpdateLikesFromPostOrComment"
+	PostService_GetAllLikesFromPost_FullMethodName          = "/post.PostService/GetAllLikesFromPost"
+	PostService_CreateCommentOrReply_FullMethodName         = "/post.PostService/CreateCommentOrReply"
+	PostService_DeleteCommentOrReply_FullMethodName         = "/post.PostService/DeleteCommentOrReply"
+	PostService_GetAllCommentsFromPost_FullMethodName       = "/post.PostService/GetAllCommentsFromPost"
 )
 
 // PostServiceClient is the client API for PostService service.
@@ -43,10 +43,10 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllPosts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPostsResponse, error)
-	UpdateLikesFromPost(ctx context.Context, in *UpdateLikesFromPostRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostResponse, error)
-	GetLikesFromPost(ctx context.Context, in *GetLikesFromPostRequest, opts ...grpc.CallOption) (*GetLikesFromPostResponse, error)
-	AddCommentToPost(ctx context.Context, in *AddCommentToPostRequest, opts ...grpc.CallOption) (*AddCommentToPostResponse, error)
-	RemoveCommentFromPost(ctx context.Context, in *RemoveCommentFromPostRequest, opts ...grpc.CallOption) (*RemoveCommentFromPostResponse, error)
+	UpdateLikesFromPostOrComment(ctx context.Context, in *UpdateLikesFromPostOrCommentRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostOrCommentResponse, error)
+	GetAllLikesFromPost(ctx context.Context, in *GetAllLikesFromPostRequest, opts ...grpc.CallOption) (*GetAllLikesFromPostResponse, error)
+	CreateCommentOrReply(ctx context.Context, in *CreateCommentOrReplyRequest, opts ...grpc.CallOption) (*CreateCommentOrReplyResponse, error)
+	DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*DeleteCommentOrReplyResponse, error)
 	GetAllCommentsFromPost(ctx context.Context, in *GetAllCommentsFromPostRequest, opts ...grpc.CallOption) (*GetAllCommentsFromPostResponse, error)
 }
 
@@ -118,40 +118,40 @@ func (c *postServiceClient) GetAllPosts(ctx context.Context, in *emptypb.Empty, 
 	return out, nil
 }
 
-func (c *postServiceClient) UpdateLikesFromPost(ctx context.Context, in *UpdateLikesFromPostRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostResponse, error) {
+func (c *postServiceClient) UpdateLikesFromPostOrComment(ctx context.Context, in *UpdateLikesFromPostOrCommentRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostOrCommentResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateLikesFromPostResponse)
-	err := c.cc.Invoke(ctx, PostService_UpdateLikesFromPost_FullMethodName, in, out, cOpts...)
+	out := new(UpdateLikesFromPostOrCommentResponse)
+	err := c.cc.Invoke(ctx, PostService_UpdateLikesFromPostOrComment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postServiceClient) GetLikesFromPost(ctx context.Context, in *GetLikesFromPostRequest, opts ...grpc.CallOption) (*GetLikesFromPostResponse, error) {
+func (c *postServiceClient) GetAllLikesFromPost(ctx context.Context, in *GetAllLikesFromPostRequest, opts ...grpc.CallOption) (*GetAllLikesFromPostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetLikesFromPostResponse)
-	err := c.cc.Invoke(ctx, PostService_GetLikesFromPost_FullMethodName, in, out, cOpts...)
+	out := new(GetAllLikesFromPostResponse)
+	err := c.cc.Invoke(ctx, PostService_GetAllLikesFromPost_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postServiceClient) AddCommentToPost(ctx context.Context, in *AddCommentToPostRequest, opts ...grpc.CallOption) (*AddCommentToPostResponse, error) {
+func (c *postServiceClient) CreateCommentOrReply(ctx context.Context, in *CreateCommentOrReplyRequest, opts ...grpc.CallOption) (*CreateCommentOrReplyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddCommentToPostResponse)
-	err := c.cc.Invoke(ctx, PostService_AddCommentToPost_FullMethodName, in, out, cOpts...)
+	out := new(CreateCommentOrReplyResponse)
+	err := c.cc.Invoke(ctx, PostService_CreateCommentOrReply_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postServiceClient) RemoveCommentFromPost(ctx context.Context, in *RemoveCommentFromPostRequest, opts ...grpc.CallOption) (*RemoveCommentFromPostResponse, error) {
+func (c *postServiceClient) DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*DeleteCommentOrReplyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RemoveCommentFromPostResponse)
-	err := c.cc.Invoke(ctx, PostService_RemoveCommentFromPost_FullMethodName, in, out, cOpts...)
+	out := new(DeleteCommentOrReplyResponse)
+	err := c.cc.Invoke(ctx, PostService_DeleteCommentOrReply_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -178,10 +178,10 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error)
 	DeletePost(context.Context, *DeletePostRequest) (*emptypb.Empty, error)
 	GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error)
-	UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error)
-	GetLikesFromPost(context.Context, *GetLikesFromPostRequest) (*GetLikesFromPostResponse, error)
-	AddCommentToPost(context.Context, *AddCommentToPostRequest) (*AddCommentToPostResponse, error)
-	RemoveCommentFromPost(context.Context, *RemoveCommentFromPostRequest) (*RemoveCommentFromPostResponse, error)
+	UpdateLikesFromPostOrComment(context.Context, *UpdateLikesFromPostOrCommentRequest) (*UpdateLikesFromPostOrCommentResponse, error)
+	GetAllLikesFromPost(context.Context, *GetAllLikesFromPostRequest) (*GetAllLikesFromPostResponse, error)
+	CreateCommentOrReply(context.Context, *CreateCommentOrReplyRequest) (*CreateCommentOrReplyResponse, error)
+	DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*DeleteCommentOrReplyResponse, error)
 	GetAllCommentsFromPost(context.Context, *GetAllCommentsFromPostRequest) (*GetAllCommentsFromPostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
@@ -211,17 +211,17 @@ func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostReq
 func (UnimplementedPostServiceServer) GetAllPosts(context.Context, *emptypb.Empty) (*GetAllPostsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPosts not implemented")
 }
-func (UnimplementedPostServiceServer) UpdateLikesFromPost(context.Context, *UpdateLikesFromPostRequest) (*UpdateLikesFromPostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateLikesFromPost not implemented")
+func (UnimplementedPostServiceServer) UpdateLikesFromPostOrComment(context.Context, *UpdateLikesFromPostOrCommentRequest) (*UpdateLikesFromPostOrCommentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLikesFromPostOrComment not implemented")
 }
-func (UnimplementedPostServiceServer) GetLikesFromPost(context.Context, *GetLikesFromPostRequest) (*GetLikesFromPostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetLikesFromPost not implemented")
+func (UnimplementedPostServiceServer) GetAllLikesFromPost(context.Context, *GetAllLikesFromPostRequest) (*GetAllLikesFromPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllLikesFromPost not implemented")
 }
-func (UnimplementedPostServiceServer) AddCommentToPost(context.Context, *AddCommentToPostRequest) (*AddCommentToPostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddCommentToPost not implemented")
+func (UnimplementedPostServiceServer) CreateCommentOrReply(context.Context, *CreateCommentOrReplyRequest) (*CreateCommentOrReplyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCommentOrReply not implemented")
 }
-func (UnimplementedPostServiceServer) RemoveCommentFromPost(context.Context, *RemoveCommentFromPostRequest) (*RemoveCommentFromPostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RemoveCommentFromPost not implemented")
+func (UnimplementedPostServiceServer) DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*DeleteCommentOrReplyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommentOrReply not implemented")
 }
 func (UnimplementedPostServiceServer) GetAllCommentsFromPost(context.Context, *GetAllCommentsFromPostRequest) (*GetAllCommentsFromPostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllCommentsFromPost not implemented")
@@ -355,74 +355,74 @@ func _PostService_GetAllPosts_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostService_UpdateLikesFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateLikesFromPostRequest)
+func _PostService_UpdateLikesFromPostOrComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLikesFromPostOrCommentRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).UpdateLikesFromPost(ctx, in)
+		return srv.(PostServiceServer).UpdateLikesFromPostOrComment(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PostService_UpdateLikesFromPost_FullMethodName,
+		FullMethod: PostService_UpdateLikesFromPostOrComment_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).UpdateLikesFromPost(ctx, req.(*UpdateLikesFromPostRequest))
+		return srv.(PostServiceServer).UpdateLikesFromPostOrComment(ctx, req.(*UpdateLikesFromPostOrCommentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostService_GetLikesFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLikesFromPostRequest)
+func _PostService_GetAllLikesFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllLikesFromPostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).GetLikesFromPost(ctx, in)
+		return srv.(PostServiceServer).GetAllLikesFromPost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PostService_GetLikesFromPost_FullMethodName,
+		FullMethod: PostService_GetAllLikesFromPost_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).GetLikesFromPost(ctx, req.(*GetLikesFromPostRequest))
+		return srv.(PostServiceServer).GetAllLikesFromPost(ctx, req.(*GetAllLikesFromPostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostService_AddCommentToPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddCommentToPostRequest)
+func _PostService_CreateCommentOrReply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCommentOrReplyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).AddCommentToPost(ctx, in)
+		return srv.(PostServiceServer).CreateCommentOrReply(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PostService_AddCommentToPost_FullMethodName,
+		FullMethod: PostService_CreateCommentOrReply_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).AddCommentToPost(ctx, req.(*AddCommentToPostRequest))
+		return srv.(PostServiceServer).CreateCommentOrReply(ctx, req.(*CreateCommentOrReplyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostService_RemoveCommentFromPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveCommentFromPostRequest)
+func _PostService_DeleteCommentOrReply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCommentOrReplyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).RemoveCommentFromPost(ctx, in)
+		return srv.(PostServiceServer).DeleteCommentOrReply(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PostService_RemoveCommentFromPost_FullMethodName,
+		FullMethod: PostService_DeleteCommentOrReply_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).RemoveCommentFromPost(ctx, req.(*RemoveCommentFromPostRequest))
+		return srv.(PostServiceServer).DeleteCommentOrReply(ctx, req.(*DeleteCommentOrReplyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -477,20 +477,20 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PostService_GetAllPosts_Handler,
 		},
 		{
-			MethodName: "UpdateLikesFromPost",
-			Handler:    _PostService_UpdateLikesFromPost_Handler,
+			MethodName: "UpdateLikesFromPostOrComment",
+			Handler:    _PostService_UpdateLikesFromPostOrComment_Handler,
 		},
 		{
-			MethodName: "GetLikesFromPost",
-			Handler:    _PostService_GetLikesFromPost_Handler,
+			MethodName: "GetAllLikesFromPost",
+			Handler:    _PostService_GetAllLikesFromPost_Handler,
 		},
 		{
-			MethodName: "AddCommentToPost",
-			Handler:    _PostService_AddCommentToPost_Handler,
+			MethodName: "CreateCommentOrReply",
+			Handler:    _PostService_CreateCommentOrReply_Handler,
 		},
 		{
-			MethodName: "RemoveCommentFromPost",
-			Handler:    _PostService_RemoveCommentFromPost_Handler,
+			MethodName: "DeleteCommentOrReply",
+			Handler:    _PostService_DeleteCommentOrReply_Handler,
 		},
 		{
 			MethodName: "GetAllCommentsFromPost",

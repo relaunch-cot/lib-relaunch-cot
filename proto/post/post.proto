@@ -61,54 +61,55 @@ message GetAllPostsResponse {
   repeated base_models.Post posts = 1;
 }
 
-////////////////////////////// UPDATE LIKES FROM POST REQUEST
-message UpdateLikesFromPostRequest {
+////////////////////////////// UPDATE LIKES FROM POST OR COMMENT REQUEST
+message UpdateLikesFromPostOrCommentRequest {
   string postId = 1;
   string userId = 2;
   string type = 3;
+  string parentCommentId = 4;
 }
 
-////////////////////////////// UPDATE LIKES FROM POST RESPONSE
-message UpdateLikesFromPostResponse {
+////////////////////////////// UPDATE LIKES FROM POST OR COMMENT RESPONSE
+message UpdateLikesFromPostOrCommentResponse {
   base_models.PostLikes likesFromPost = 1;
 }
 
 ////////////////////////////// GET ALL LIKES FROM POST REQUEST
-message GetLikesFromPostRequest {
+message GetAllLikesFromPostRequest {
   string postId = 1;
   string userId = 2;
 }
 
 ////////////////////////////// GET ALL LIKES FROM POST RESPONSE
-message GetLikesFromPostResponse {
+message GetAllLikesFromPostResponse {
   base_models.PostLikes likesFromPost = 1;
 }
 
-////////////////////////////// ADD COMMENT TO POST REQUEST
-message AddCommentToPostRequest {
+////////////////////////////// CREATE COMMENT OR REPLY REQUEST
+message CreateCommentOrReplyRequest {
   string postId = 1;
   string userId = 2;
   string content = 3;
   string type = 4;
-  string commentIdForReply = 5;
+  string parentCommentId = 5;
 }
 
-////////////////////////////// ADD COMMENT TO POST RESPONSE
-message AddCommentToPostResponse {
+////////////////////////////// CREATE COMMENT OR REPLY TO POST RESPONSE
+message CreateCommentOrReplyResponse {
   base_models.PostComments commentsFromPost = 1;
 }
 
-////////////////////////////// REMOVE COMMENT FROM POST REQUEST
-message RemoveCommentFromPostRequest {
+////////////////////////////// DELETE COMMENT OR REPLY REQUEST
+message DeleteCommentOrReplyRequest {
   string postId = 1;
   string userId = 2;
   string commentId = 3;
   string type = 4;
-  string commentIdForReply = 5;
+  string parentCommentId = 5;
 }
 
-////////////////////////////// REMOVE COMMENT FROM POST RESPONSE
-message RemoveCommentFromPostResponse {
+////////////////////////////// REMOVE COMMENT OR REPLY RESPONSE
+message DeleteCommentOrReplyResponse {
   base_models.PostComments commentsFromPost = 1;
 }
 
@@ -130,9 +131,9 @@ service PostService {
   rpc UpdatePost(UpdatePostRequest) returns(UpdatePostResponse);
   rpc DeletePost(DeletePostRequest) returns(google.protobuf.Empty);
   rpc GetAllPosts(google.protobuf.Empty) returns(GetAllPostsResponse);
-  rpc UpdateLikesFromPost(UpdateLikesFromPostRequest) returns(UpdateLikesFromPostResponse);
-  rpc GetLikesFromPost(GetLikesFromPostRequest) returns(GetLikesFromPostResponse);
-  rpc AddCommentToPost(AddCommentToPostRequest) returns(AddCommentToPostResponse);
-  rpc RemoveCommentFromPost(RemoveCommentFromPostRequest) returns(RemoveCommentFromPostResponse);
+  rpc UpdateLikesFromPostOrComment(UpdateLikesFromPostOrCommentRequest) returns(UpdateLikesFromPostOrCommentResponse);
+  rpc GetAllLikesFromPost(GetAllLikesFromPostRequest) returns(GetAllLikesFromPostResponse);
+  rpc CreateCommentOrReply(CreateCommentOrReplyRequest) returns(CreateCommentOrReplyResponse);
+  rpc DeleteCommentOrReply(DeleteCommentOrReplyRequest) returns(DeleteCommentOrReplyResponse);
   rpc GetAllCommentsFromPost(GetAllCommentsFromPostRequest) returns(GetAllCommentsFromPostResponse);
 }
