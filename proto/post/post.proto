@@ -104,6 +104,7 @@ message RemoveCommentFromPostRequest {
   string userId = 2;
   string commentId = 3;
   string type = 4;
+  string commentIdForReply = 5;
 }
 
 ////////////////////////////// REMOVE COMMENT FROM POST RESPONSE

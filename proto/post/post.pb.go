@@ -828,13 +828,14 @@ func (x *AddCommentToPostResponse) GetCommentsFromPost() *base_models.PostCommen
 
 // //////////////////////////// REMOVE COMMENT FROM POST REQUEST
 type RemoveCommentFromPostRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
-	CommentId     string                 `protobuf:"bytes,3,opt,name=commentId,proto3" json:"commentId,omitempty"`
-	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PostId            string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
+	UserId            string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	CommentId         string                 `protobuf:"bytes,3,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	Type              string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	CommentIdForReply string                 `protobuf:"bytes,5,opt,name=commentIdForReply,proto3" json:"commentIdForReply,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *RemoveCommentFromPostRequest) Reset() {
@@ -891,6 +892,13 @@ func (x *RemoveCommentFromPostRequest) GetCommentId() string {
 func (x *RemoveCommentFromPostRequest) GetType() string {
 	if x != nil {
 		return x.Type
+	}
+	return ""
+}
+
+func (x *RemoveCommentFromPostRequest) GetCommentIdForReply() string {
+	if x != nil {
+		return x.CommentIdForReply
 	}
 	return ""
 }
@@ -1088,12 +1096,13 @@ const file_post_post_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\tR\x04type\x12,\n" +
 	"\x11commentIdForReply\x18\x05 \x01(\tR\x11commentIdForReply\"a\n" +
 	"\x18AddCommentToPostResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\x80\x01\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\xae\x01\n" +
 	"\x1cRemoveCommentFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1c\n" +
 	"\tcommentId\x18\x03 \x01(\tR\tcommentId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\"f\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12,\n" +
+	"\x11commentIdForReply\x18\x05 \x01(\tR\x11commentIdForReply\"f\n" +
 	"\x1dRemoveCommentFromPostResponse\x12E\n" +
 	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
 	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +
