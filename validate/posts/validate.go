@@ -1,12 +1,18 @@
 package posts
 
-func ValidateCommentAndLikeFields(commentType, likeType string) bool {
-	if commentType != "" && (commentType == "comment" || commentType == "replyToComment") {
-		return true
+import (
+	"net/http"
+
+	"google.golang.org/grpc/status"
+)
+
+func ValidateCommentAndLikeFields(commentType, likeType string) error {
+	if commentType != "" && commentType != "comment" && commentType != "replyToComment" {
+		return status.Error(http.StatusBadRequest, "the comment type is invalid. must be 'comment' or 'replyToComment'")
 	}
-	if likeType != "" && (likeType == "likeToPost" || likeType == "likeToComment") {
-		return true
+	if likeType != "" && likeType != "likeToPost" && likeType != "likeToComment" {
+		return status.Error(http.StatusBadRequest, "the like type is invalid. must be 'likeToPost' or 'likeToComment'")
 	}
 
-	return false
+	return nil
 }
