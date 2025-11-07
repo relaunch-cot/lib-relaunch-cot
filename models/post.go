@@ -20,6 +20,7 @@ type PostLikes struct {
 type Like struct {
 	UserId   string
 	UserName string
+	Type     string
 	LikedAt  string
 }
 
@@ -33,6 +34,7 @@ type Comment struct {
 	UserId    string
 	UserName  string
 	Content   string
+	Type      string
 	CreatedAt string
 	UpdatedAt string
 }

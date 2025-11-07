@@ -753,7 +753,8 @@ type Like struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	UserName      string                 `protobuf:"bytes,2,opt,name=userName,proto3" json:"userName,omitempty"`
-	LikedAt       string                 `protobuf:"bytes,3,opt,name=likedAt,proto3" json:"likedAt,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	LikedAt       string                 `protobuf:"bytes,4,opt,name=likedAt,proto3" json:"likedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -798,6 +799,13 @@ func (x *Like) GetUserId() string {
 func (x *Like) GetUserName() string {
 	if x != nil {
 		return x.UserName
+	}
+	return ""
+}
+
+func (x *Like) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -867,8 +875,9 @@ type Comment struct {
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	UserName      string                 `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName,omitempty"`
 	Content       string                 `protobuf:"bytes,4,opt,name=content,proto3" json:"content,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	Type          string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -927,6 +936,13 @@ func (x *Comment) GetUserName() string {
 func (x *Comment) GetContent() string {
 	if x != nil {
 		return x.Content
+	}
+	return ""
+}
+
+func (x *Comment) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -1023,21 +1039,23 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"likesCount\x18\x01 \x01(\x03R\n" +
 	"likesCount\x12'\n" +
-	"\x05likes\x18\x02 \x03(\v2\x11.base_models.LikeR\x05likes\"T\n" +
+	"\x05likes\x18\x02 \x03(\v2\x11.base_models.LikeR\x05likes\"h\n" +
 	"\x04Like\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
-	"\buserName\x18\x02 \x01(\tR\buserName\x12\x18\n" +
-	"\alikedAt\x18\x03 \x01(\tR\alikedAt\"f\n" +
+	"\buserName\x18\x02 \x01(\tR\buserName\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\x12\x18\n" +
+	"\alikedAt\x18\x04 \x01(\tR\alikedAt\"f\n" +
 	"\fPostComments\x12$\n" +
 	"\rcommentsCount\x18\x01 \x01(\x03R\rcommentsCount\x120\n" +
-	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xb1\x01\n" +
+	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xc5\x01\n" +
 	"\aComment\x12\x1c\n" +
 	"\tcommentId\x18\x01 \x01(\tR\tcommentId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
 	"\buserName\x18\x03 \x01(\tR\buserName\x12\x18\n" +
-	"\acontent\x18\x04 \x01(\tR\acontent\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x06 \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\acontent\x18\x04 \x01(\tR\acontent\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\a \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once

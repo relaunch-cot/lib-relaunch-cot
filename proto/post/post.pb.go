@@ -505,6 +505,7 @@ type UpdateLikesFromPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -549,6 +550,13 @@ func (x *UpdateLikesFromPostRequest) GetPostId() string {
 func (x *UpdateLikesFromPostRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
+	}
+	return ""
+}
+
+func (x *UpdateLikesFromPostRequest) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -702,6 +710,7 @@ type AddCommentToPostRequest struct {
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -757,6 +766,13 @@ func (x *AddCommentToPostRequest) GetContent() string {
 	return ""
 }
 
+func (x *AddCommentToPostRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
 // //////////////////////////// ADD COMMENT TO POST RESPONSE
 type AddCommentToPostResponse struct {
 	state            protoimpl.MessageState    `protogen:"open.v1"`
@@ -808,6 +824,7 @@ type RemoveCommentFromPostRequest struct {
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	CommentId     string                 `protobuf:"bytes,3,opt,name=commentId,proto3" json:"commentId,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -863,6 +880,13 @@ func (x *RemoveCommentFromPostRequest) GetCommentId() string {
 	return ""
 }
 
+func (x *RemoveCommentFromPostRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
 // //////////////////////////// REMOVE COMMENT FROM POST RESPONSE
 type RemoveCommentFromPostResponse struct {
 	state            protoimpl.MessageState    `protogen:"open.v1"`
@@ -908,6 +932,7 @@ func (x *RemoveCommentFromPostResponse) GetCommentsFromPost() *base_models.PostC
 	return nil
 }
 
+// //////////////////////////// GET ALL COMMENTS FROM POST REQUEST
 type GetAllCommentsFromPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PostId        string                 `protobuf:"bytes,1,opt,name=postId,proto3" json:"postId,omitempty"`
@@ -960,6 +985,7 @@ func (x *GetAllCommentsFromPostRequest) GetUserId() string {
 	return ""
 }
 
+// //////////////////////////// GET ALL COMMENTS FROM POST RESPONSE
 type GetAllCommentsFromPostResponse struct {
 	state            protoimpl.MessageState    `protogen:"open.v1"`
 	CommentsFromPost *base_models.PostComments `protobuf:"bytes,1,opt,name=commentsFromPost,proto3" json:"commentsFromPost,omitempty"`
@@ -1035,27 +1061,30 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\">\n" +
 	"\x13GetAllPostsResponse\x12'\n" +
-	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"L\n" +
+	"\x05posts\x18\x01 \x03(\v2\x11.base_models.PostR\x05posts\"`\n" +
 	"\x1aUpdateLikesFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\"[\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\"[\n" +
 	"\x1bUpdateLikesFromPostResponse\x12<\n" +
 	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"I\n" +
 	"\x17GetLikesFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"X\n" +
 	"\x18GetLikesFromPostResponse\x12<\n" +
-	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"c\n" +
+	"\rlikesFromPost\x18\x01 \x01(\v2\x16.base_models.PostLikesR\rlikesFromPost\"w\n" +
 	"\x17AddCommentToPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x18\n" +
-	"\acontent\x18\x03 \x01(\tR\acontent\"a\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"a\n" +
 	"\x18AddCommentToPostResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"l\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"\x80\x01\n" +
 	"\x1cRemoveCommentFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1c\n" +
-	"\tcommentId\x18\x03 \x01(\tR\tcommentId\"f\n" +
+	"\tcommentId\x18\x03 \x01(\tR\tcommentId\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"f\n" +
 	"\x1dRemoveCommentFromPostResponse\x12E\n" +
 	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
 	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +

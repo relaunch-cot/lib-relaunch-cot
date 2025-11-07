@@ -65,6 +65,7 @@ message GetAllPostsResponse {
 message UpdateLikesFromPostRequest {
   string postId = 1;
   string userId = 2;
+  string type = 3;
 }
 
 ////////////////////////////// UPDATE LIKES FROM POST RESPONSE
@@ -88,6 +89,7 @@ message AddCommentToPostRequest {
   string postId = 1;
   string userId = 2;
   string content = 3;
+  string type = 4;
 }
 
 ////////////////////////////// ADD COMMENT TO POST RESPONSE
@@ -100,6 +102,7 @@ message RemoveCommentFromPostRequest {
   string postId = 1;
   string userId = 2;
   string commentId = 3;
+  string type = 4;
 }
 
 ////////////////////////////// REMOVE COMMENT FROM POST RESPONSE
@@ -107,11 +110,13 @@ message RemoveCommentFromPostResponse {
   base_models.PostComments commentsFromPost = 1;
 }
 
+////////////////////////////// GET ALL COMMENTS FROM POST REQUEST
 message GetAllCommentsFromPostRequest {
   string postId = 1;
   string userId = 2;
 }
 
+////////////////////////////// GET ALL COMMENTS FROM POST RESPONSE
 message GetAllCommentsFromPostResponse {
   base_models.PostComments commentsFromPost = 1;
 }
