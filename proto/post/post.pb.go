@@ -903,51 +903,6 @@ func (x *DeleteCommentOrReplyRequest) GetType() string {
 	return ""
 }
 
-// //////////////////////////// REMOVE COMMENT OR REPLY RESPONSE
-type DeleteCommentOrReplyResponse struct {
-	state            protoimpl.MessageState    `protogen:"open.v1"`
-	CommentsFromPost *base_models.PostComments `protobuf:"bytes,1,opt,name=commentsFromPost,proto3" json:"commentsFromPost,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
-func (x *DeleteCommentOrReplyResponse) Reset() {
-	*x = DeleteCommentOrReplyResponse{}
-	mi := &file_post_post_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteCommentOrReplyResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteCommentOrReplyResponse) ProtoMessage() {}
-
-func (x *DeleteCommentOrReplyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteCommentOrReplyResponse.ProtoReflect.Descriptor instead.
-func (*DeleteCommentOrReplyResponse) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *DeleteCommentOrReplyResponse) GetCommentsFromPost() *base_models.PostComments {
-	if x != nil {
-		return x.CommentsFromPost
-	}
-	return nil
-}
-
 // //////////////////////////// GET ALL COMMENTS FROM POST REQUEST
 type GetAllCommentsFromPostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -959,7 +914,7 @@ type GetAllCommentsFromPostRequest struct {
 
 func (x *GetAllCommentsFromPostRequest) Reset() {
 	*x = GetAllCommentsFromPostRequest{}
-	mi := &file_post_post_proto_msgTypes[17]
+	mi := &file_post_post_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -971,7 +926,7 @@ func (x *GetAllCommentsFromPostRequest) String() string {
 func (*GetAllCommentsFromPostRequest) ProtoMessage() {}
 
 func (x *GetAllCommentsFromPostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[17]
+	mi := &file_post_post_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -984,7 +939,7 @@ func (x *GetAllCommentsFromPostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllCommentsFromPostRequest.ProtoReflect.Descriptor instead.
 func (*GetAllCommentsFromPostRequest) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{17}
+	return file_post_post_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetAllCommentsFromPostRequest) GetPostId() string {
@@ -1011,7 +966,7 @@ type GetAllCommentsFromPostResponse struct {
 
 func (x *GetAllCommentsFromPostResponse) Reset() {
 	*x = GetAllCommentsFromPostResponse{}
-	mi := &file_post_post_proto_msgTypes[18]
+	mi := &file_post_post_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1023,7 +978,7 @@ func (x *GetAllCommentsFromPostResponse) String() string {
 func (*GetAllCommentsFromPostResponse) ProtoMessage() {}
 
 func (x *GetAllCommentsFromPostResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_post_post_proto_msgTypes[18]
+	mi := &file_post_post_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1036,7 +991,7 @@ func (x *GetAllCommentsFromPostResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllCommentsFromPostResponse.ProtoReflect.Descriptor instead.
 func (*GetAllCommentsFromPostResponse) Descriptor() ([]byte, []int) {
-	return file_post_post_proto_rawDescGZIP(), []int{18}
+	return file_post_post_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetAllCommentsFromPostResponse) GetCommentsFromPost() *base_models.PostComments {
@@ -1102,14 +1057,12 @@ const file_post_post_proto_rawDesc = "" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x1c\n" +
 	"\tcommentId\x18\x02 \x01(\tR\tcommentId\x12\x18\n" +
 	"\areplyId\x18\x03 \x01(\tR\areplyId\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\"e\n" +
-	"\x1cDeleteCommentOrReplyResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost\"O\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"O\n" +
 	"\x1dGetAllCommentsFromPostRequest\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\"g\n" +
 	"\x1eGetAllCommentsFromPostResponse\x12E\n" +
-	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost2\x98\a\n" +
+	"\x10commentsFromPost\x18\x01 \x01(\v2\x19.base_models.PostCommentsR\x10commentsFromPost2\x8c\a\n" +
 	"\vPostService\x12=\n" +
 	"\n" +
 	"CreatePost\x12\x17.post.CreatePostRequest\x1a\x16.google.protobuf.Empty\x126\n" +
@@ -1122,8 +1075,8 @@ const file_post_post_proto_rawDesc = "" +
 	"\vGetAllPosts\x12\x16.google.protobuf.Empty\x1a\x19.post.GetAllPostsResponse\x12u\n" +
 	"\x1cUpdateLikesFromPostOrComment\x12).post.UpdateLikesFromPostOrCommentRequest\x1a*.post.UpdateLikesFromPostOrCommentResponse\x12Z\n" +
 	"\x13GetAllLikesFromPost\x12 .post.GetAllLikesFromPostRequest\x1a!.post.GetAllLikesFromPostResponse\x12]\n" +
-	"\x14CreateCommentOrReply\x12!.post.CreateCommentOrReplyRequest\x1a\".post.CreateCommentOrReplyResponse\x12]\n" +
-	"\x14DeleteCommentOrReply\x12!.post.DeleteCommentOrReplyRequest\x1a\".post.DeleteCommentOrReplyResponse\x12c\n" +
+	"\x14CreateCommentOrReply\x12!.post.CreateCommentOrReplyRequest\x1a\".post.CreateCommentOrReplyResponse\x12Q\n" +
+	"\x14DeleteCommentOrReply\x12!.post.DeleteCommentOrReplyRequest\x1a\x16.google.protobuf.Empty\x12c\n" +
 	"\x16GetAllCommentsFromPost\x12#.post.GetAllCommentsFromPostRequest\x1a$.post.GetAllCommentsFromPostResponseB5Z3github.com/relaunch-cot/lib-relaunch-cot/proto/postb\x06proto3"
 
 var (
@@ -1138,7 +1091,7 @@ func file_post_post_proto_rawDescGZIP() []byte {
 	return file_post_post_proto_rawDescData
 }
 
-var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_post_post_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_post_post_proto_goTypes = []any{
 	(*CreatePostRequest)(nil),                    // 0: post.CreatePostRequest
 	(*GetPostRequest)(nil),                       // 1: post.GetPostRequest
@@ -1156,51 +1109,49 @@ var file_post_post_proto_goTypes = []any{
 	(*CreateCommentOrReplyRequest)(nil),          // 13: post.CreateCommentOrReplyRequest
 	(*CreateCommentOrReplyResponse)(nil),         // 14: post.CreateCommentOrReplyResponse
 	(*DeleteCommentOrReplyRequest)(nil),          // 15: post.DeleteCommentOrReplyRequest
-	(*DeleteCommentOrReplyResponse)(nil),         // 16: post.DeleteCommentOrReplyResponse
-	(*GetAllCommentsFromPostRequest)(nil),        // 17: post.GetAllCommentsFromPostRequest
-	(*GetAllCommentsFromPostResponse)(nil),       // 18: post.GetAllCommentsFromPostResponse
-	(*base_models.Post)(nil),                     // 19: base_models.Post
-	(*base_models.PostLikes)(nil),                // 20: base_models.PostLikes
-	(*base_models.PostComments)(nil),             // 21: base_models.PostComments
-	(*emptypb.Empty)(nil),                        // 22: google.protobuf.Empty
+	(*GetAllCommentsFromPostRequest)(nil),        // 16: post.GetAllCommentsFromPostRequest
+	(*GetAllCommentsFromPostResponse)(nil),       // 17: post.GetAllCommentsFromPostResponse
+	(*base_models.Post)(nil),                     // 18: base_models.Post
+	(*base_models.PostLikes)(nil),                // 19: base_models.PostLikes
+	(*base_models.PostComments)(nil),             // 20: base_models.PostComments
+	(*emptypb.Empty)(nil),                        // 21: google.protobuf.Empty
 }
 var file_post_post_proto_depIdxs = []int32{
-	19, // 0: post.GetPostResponse.post:type_name -> base_models.Post
-	19, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
-	19, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
-	19, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
-	20, // 4: post.UpdateLikesFromPostOrCommentResponse.likesFromPostOrComment:type_name -> base_models.PostLikes
-	20, // 5: post.GetAllLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
-	21, // 6: post.CreateCommentOrReplyResponse.commentsFromPost:type_name -> base_models.PostComments
-	21, // 7: post.DeleteCommentOrReplyResponse.commentsFromPost:type_name -> base_models.PostComments
-	21, // 8: post.GetAllCommentsFromPostResponse.commentsFromPost:type_name -> base_models.PostComments
-	0,  // 9: post.PostService.CreatePost:input_type -> post.CreatePostRequest
-	1,  // 10: post.PostService.GetPost:input_type -> post.GetPostRequest
-	3,  // 11: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
-	5,  // 12: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
-	7,  // 13: post.PostService.DeletePost:input_type -> post.DeletePostRequest
-	22, // 14: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
-	9,  // 15: post.PostService.UpdateLikesFromPostOrComment:input_type -> post.UpdateLikesFromPostOrCommentRequest
-	11, // 16: post.PostService.GetAllLikesFromPost:input_type -> post.GetAllLikesFromPostRequest
-	13, // 17: post.PostService.CreateCommentOrReply:input_type -> post.CreateCommentOrReplyRequest
-	15, // 18: post.PostService.DeleteCommentOrReply:input_type -> post.DeleteCommentOrReplyRequest
-	17, // 19: post.PostService.GetAllCommentsFromPost:input_type -> post.GetAllCommentsFromPostRequest
-	22, // 20: post.PostService.CreatePost:output_type -> google.protobuf.Empty
-	2,  // 21: post.PostService.GetPost:output_type -> post.GetPostResponse
-	4,  // 22: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
-	6,  // 23: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
-	22, // 24: post.PostService.DeletePost:output_type -> google.protobuf.Empty
-	8,  // 25: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
-	10, // 26: post.PostService.UpdateLikesFromPostOrComment:output_type -> post.UpdateLikesFromPostOrCommentResponse
-	12, // 27: post.PostService.GetAllLikesFromPost:output_type -> post.GetAllLikesFromPostResponse
-	14, // 28: post.PostService.CreateCommentOrReply:output_type -> post.CreateCommentOrReplyResponse
-	16, // 29: post.PostService.DeleteCommentOrReply:output_type -> post.DeleteCommentOrReplyResponse
-	18, // 30: post.PostService.GetAllCommentsFromPost:output_type -> post.GetAllCommentsFromPostResponse
-	20, // [20:31] is the sub-list for method output_type
-	9,  // [9:20] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	18, // 0: post.GetPostResponse.post:type_name -> base_models.Post
+	18, // 1: post.GetAllPostsFromUserResponse.posts:type_name -> base_models.Post
+	18, // 2: post.UpdatePostResponse.post:type_name -> base_models.Post
+	18, // 3: post.GetAllPostsResponse.posts:type_name -> base_models.Post
+	19, // 4: post.UpdateLikesFromPostOrCommentResponse.likesFromPostOrComment:type_name -> base_models.PostLikes
+	19, // 5: post.GetAllLikesFromPostResponse.likesFromPost:type_name -> base_models.PostLikes
+	20, // 6: post.CreateCommentOrReplyResponse.commentsFromPost:type_name -> base_models.PostComments
+	20, // 7: post.GetAllCommentsFromPostResponse.commentsFromPost:type_name -> base_models.PostComments
+	0,  // 8: post.PostService.CreatePost:input_type -> post.CreatePostRequest
+	1,  // 9: post.PostService.GetPost:input_type -> post.GetPostRequest
+	3,  // 10: post.PostService.GetAllPostsFromUser:input_type -> post.GetAllPostsFromUserRequest
+	5,  // 11: post.PostService.UpdatePost:input_type -> post.UpdatePostRequest
+	7,  // 12: post.PostService.DeletePost:input_type -> post.DeletePostRequest
+	21, // 13: post.PostService.GetAllPosts:input_type -> google.protobuf.Empty
+	9,  // 14: post.PostService.UpdateLikesFromPostOrComment:input_type -> post.UpdateLikesFromPostOrCommentRequest
+	11, // 15: post.PostService.GetAllLikesFromPost:input_type -> post.GetAllLikesFromPostRequest
+	13, // 16: post.PostService.CreateCommentOrReply:input_type -> post.CreateCommentOrReplyRequest
+	15, // 17: post.PostService.DeleteCommentOrReply:input_type -> post.DeleteCommentOrReplyRequest
+	16, // 18: post.PostService.GetAllCommentsFromPost:input_type -> post.GetAllCommentsFromPostRequest
+	21, // 19: post.PostService.CreatePost:output_type -> google.protobuf.Empty
+	2,  // 20: post.PostService.GetPost:output_type -> post.GetPostResponse
+	4,  // 21: post.PostService.GetAllPostsFromUser:output_type -> post.GetAllPostsFromUserResponse
+	6,  // 22: post.PostService.UpdatePost:output_type -> post.UpdatePostResponse
+	21, // 23: post.PostService.DeletePost:output_type -> google.protobuf.Empty
+	8,  // 24: post.PostService.GetAllPosts:output_type -> post.GetAllPostsResponse
+	10, // 25: post.PostService.UpdateLikesFromPostOrComment:output_type -> post.UpdateLikesFromPostOrCommentResponse
+	12, // 26: post.PostService.GetAllLikesFromPost:output_type -> post.GetAllLikesFromPostResponse
+	14, // 27: post.PostService.CreateCommentOrReply:output_type -> post.CreateCommentOrReplyResponse
+	21, // 28: post.PostService.DeleteCommentOrReply:output_type -> google.protobuf.Empty
+	17, // 29: post.PostService.GetAllCommentsFromPost:output_type -> post.GetAllCommentsFromPostResponse
+	19, // [19:30] is the sub-list for method output_type
+	8,  // [8:19] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_post_post_proto_init() }
@@ -1214,7 +1165,7 @@ func file_post_post_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_post_post_proto_rawDesc), len(file_post_post_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

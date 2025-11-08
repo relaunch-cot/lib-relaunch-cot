@@ -46,7 +46,7 @@ type PostServiceClient interface {
 	UpdateLikesFromPostOrComment(ctx context.Context, in *UpdateLikesFromPostOrCommentRequest, opts ...grpc.CallOption) (*UpdateLikesFromPostOrCommentResponse, error)
 	GetAllLikesFromPost(ctx context.Context, in *GetAllLikesFromPostRequest, opts ...grpc.CallOption) (*GetAllLikesFromPostResponse, error)
 	CreateCommentOrReply(ctx context.Context, in *CreateCommentOrReplyRequest, opts ...grpc.CallOption) (*CreateCommentOrReplyResponse, error)
-	DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*DeleteCommentOrReplyResponse, error)
+	DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllCommentsFromPost(ctx context.Context, in *GetAllCommentsFromPostRequest, opts ...grpc.CallOption) (*GetAllCommentsFromPostResponse, error)
 }
 
@@ -148,9 +148,9 @@ func (c *postServiceClient) CreateCommentOrReply(ctx context.Context, in *Create
 	return out, nil
 }
 
-func (c *postServiceClient) DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*DeleteCommentOrReplyResponse, error) {
+func (c *postServiceClient) DeleteCommentOrReply(ctx context.Context, in *DeleteCommentOrReplyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteCommentOrReplyResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, PostService_DeleteCommentOrReply_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -181,7 +181,7 @@ type PostServiceServer interface {
 	UpdateLikesFromPostOrComment(context.Context, *UpdateLikesFromPostOrCommentRequest) (*UpdateLikesFromPostOrCommentResponse, error)
 	GetAllLikesFromPost(context.Context, *GetAllLikesFromPostRequest) (*GetAllLikesFromPostResponse, error)
 	CreateCommentOrReply(context.Context, *CreateCommentOrReplyRequest) (*CreateCommentOrReplyResponse, error)
-	DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*DeleteCommentOrReplyResponse, error)
+	DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*emptypb.Empty, error)
 	GetAllCommentsFromPost(context.Context, *GetAllCommentsFromPostRequest) (*GetAllCommentsFromPostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
@@ -220,7 +220,7 @@ func (UnimplementedPostServiceServer) GetAllLikesFromPost(context.Context, *GetA
 func (UnimplementedPostServiceServer) CreateCommentOrReply(context.Context, *CreateCommentOrReplyRequest) (*CreateCommentOrReplyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateCommentOrReply not implemented")
 }
-func (UnimplementedPostServiceServer) DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*DeleteCommentOrReplyResponse, error) {
+func (UnimplementedPostServiceServer) DeleteCommentOrReply(context.Context, *DeleteCommentOrReplyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommentOrReply not implemented")
 }
 func (UnimplementedPostServiceServer) GetAllCommentsFromPost(context.Context, *GetAllCommentsFromPostRequest) (*GetAllCommentsFromPostResponse, error) {

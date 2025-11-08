@@ -107,11 +107,6 @@ message DeleteCommentOrReplyRequest {
   string type = 4;
 }
 
-////////////////////////////// REMOVE COMMENT OR REPLY RESPONSE
-message DeleteCommentOrReplyResponse {
-  base_models.PostComments commentsFromPost = 1;
-}
-
 ////////////////////////////// GET ALL COMMENTS FROM POST REQUEST
 message GetAllCommentsFromPostRequest {
   string postId = 1;
@@ -133,6 +128,6 @@ service PostService {
   rpc UpdateLikesFromPostOrComment(UpdateLikesFromPostOrCommentRequest) returns(UpdateLikesFromPostOrCommentResponse);
   rpc GetAllLikesFromPost(GetAllLikesFromPostRequest) returns(GetAllLikesFromPostResponse);
   rpc CreateCommentOrReply(CreateCommentOrReplyRequest) returns(CreateCommentOrReplyResponse);
-  rpc DeleteCommentOrReply(DeleteCommentOrReplyRequest) returns(DeleteCommentOrReplyResponse);
+  rpc DeleteCommentOrReply(DeleteCommentOrReplyRequest) returns(google.protobuf.Empty);
   rpc GetAllCommentsFromPost(GetAllCommentsFromPostRequest) returns(GetAllCommentsFromPostResponse);
 }
