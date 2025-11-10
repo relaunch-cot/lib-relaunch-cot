@@ -202,7 +202,7 @@ func (x *LoginUserResponse) GetToken() string {
 type UpdateUserPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	NewPassword   string                 `protobuf:"bytes,3,opt,name=newPassword,proto3" json:"newPassword,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,2,opt,name=newPassword,proto3" json:"newPassword,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -255,7 +255,7 @@ func (x *UpdateUserPasswordRequest) GetNewPassword() string {
 type UpdateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
-	NewUser       *base_models.User      `protobuf:"bytes,3,opt,name=newUser,proto3" json:"newUser,omitempty"`
+	NewUser       *base_models.User      `protobuf:"bytes,2,opt,name=newUser,proto3" json:"newUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -608,10 +608,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"U\n" +
 	"\x19UpdateUserPasswordRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12 \n" +
-	"\vnewPassword\x18\x03 \x01(\tR\vnewPassword\"X\n" +
+	"\vnewPassword\x18\x02 \x01(\tR\vnewPassword\"X\n" +
 	"\x11UpdateUserRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12+\n" +
-	"\anewUser\x18\x03 \x01(\v2\x11.base_models.UserR\anewUser\"E\n" +
+	"\anewUser\x18\x02 \x01(\v2\x11.base_models.UserR\anewUser\"E\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"4\n" +
