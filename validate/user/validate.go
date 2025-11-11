@@ -20,7 +20,7 @@ func ValidateCreateUserRequest(u *pb.CreateUserRequest) error {
 func ValidateLoginUserRequest(u *pb.LoginUserRequest) error {
 	return validation.ValidateStruct(u,
 		validation.Field(&u.Email, validation.Required, is.Email),
-		validation.Field(&u.Password, validation.Required, validation.Length(8, 100)),
+		validation.Field(&u.Password, validation.Required),
 	)
 }
 
