@@ -55,7 +55,7 @@ func ValidateUpdateUserRequest(u *pb.UpdateUserRequest) error {
 		return err
 	}
 
-	err = validation.ValidateStruct(u,
+	err = validation.ValidateStruct(u.NewUser,
 		validation.Field(&u.NewUser.Email, is.Email),
 	)
 	return err
