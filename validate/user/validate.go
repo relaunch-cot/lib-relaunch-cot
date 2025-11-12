@@ -7,14 +7,23 @@ import (
 )
 
 func ValidateCreateUserRequest(u *pb.CreateUserRequest) error {
-	return validation.ValidateStruct(u,
+	err := validation.ValidateStruct(u,
 		validation.Field(&u.Name, validation.Required),
 		validation.Field(&u.Email, validation.Required, is.Email),
 		validation.Field(&u.Password, validation.Required, validation.Length(8, 100)),
+	)
+
+	if err != nil {
+		return err
+	}
+
+	err = validation.ValidateStruct(u.Settings,
 		validation.Field(&u.Settings.DateOfBirth, validation.Required),
 		validation.Field(&u.Settings.Cpf, validation.Required),
 		validation.Field(&u.Settings.Phone, validation.Required),
 	)
+
+	return err
 }
 
 func ValidateLoginUserRequest(u *pb.LoginUserRequest) error {
@@ -38,10 +47,18 @@ func UpdateUserPasswordRequest(u *pb.UpdateUserPasswordRequest) error {
 }
 
 func ValidateUpdateUserRequest(u *pb.UpdateUserRequest) error {
-	return validation.ValidateStruct(u,
+	err := validation.ValidateStruct(u,
 		validation.Field(&u.UserId, validation.Required, is.UUID),
+	)
+
+	if err != nil {
+		return err
+	}
+
+	err = validation.ValidateStruct(u,
 		validation.Field(&u.NewUser.Email, is.Email),
 	)
+	return err
 }
 
 func ValidateDeleteUserRequest(u *pb.DeleteUserRequest) error {
