@@ -1,5 +1,11 @@
 package notification
 
+import (
+	"github.com/invopop/validation"
+	"github.com/invopop/validation/is"
+	pb "github.com/relaunch-cot/lib-relaunch-cot/proto/notification"
+)
+
 var validTypes []string = []string{
 	"PROJECT_INVITE",
 	"PROJECT_REQUEST",
@@ -36,12 +42,36 @@ var validTypes []string = []string{
 	"TERMS_UPDATED",
 }
 
-func IsValidNotificationType(notificationType string) bool {
-	for _, v := range validTypes {
-		if v == notificationType {
-			return true
-		}
-	}
+func ValidateSendNotificationRequest(n *pb.SendNotificationRequest) error {
+	return validation.ValidateStruct(
+		validation.Field(&n.ReceiverId, validation.Required, is.UUID),
+		validation.Field(&n.SenderId, validation.Required, is.UUID),
+		validation.Field(&n.Title, validation.Required),
+		validation.Field(&n.Content, validation.Required),
+		validation.Field(&n.Type, validation.Required, validation.In(validTypes...)),
+	)
+}
 
-	return false
+func ValidateGetNotificationRequest(n *pb.GetNotificationRequest) error {
+	return validation.ValidateStruct(
+		validation.Field(&n.NotificationId, validation.Required, is.UUID),
+	)
+}
+
+func ValidateGetAllNotificationsFromUserRequest(n *pb.GetAllNotificationsFromUserRequest) error {
+	return validation.ValidateStruct(
+		validation.Field(&n.UserId, validation.Required, is.UUID),
+	)
+}
+
+func ValidateDeleteNotificationRequest(n *pb.DeleteNotificationRequest) error {
+	return validation.ValidateStruct(
+		validation.Field(&n.NotificationId, validation.Required, is.UUID),
+	)
+}
+
+func ValidateDeleteAllNotificationsFromUserRequest(n *pb.DeleteAllNotificationsFromUserRequest) error {
+	return validation.ValidateStruct(
+		validation.Field(&n.UserId, validation.Required, is.UUID),
+	)
 }
