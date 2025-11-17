@@ -12,35 +12,35 @@ func ValidateCreateNewChatRequest(c *pb.CreateNewChatRequest) error {
 	)
 }
 
-func ValidateSendMessageRequest(m *pb.SendMessageRequest) error {
-	return validation.ValidateStruct(m,
-		validation.Field(&m.ChatId, validation.Required, is.UUID),
-		validation.Field(&m.SenderId, validation.Required, is.UUID),
-		validation.Field(&m.MessageContent, validation.Required),
+func ValidateSendMessageRequest(c *pb.SendMessageRequest) error {
+	return validation.ValidateStruct(c,
+		validation.Field(&c.ChatId, validation.Required, is.UUID),
+		validation.Field(&c.SenderId, validation.Required, is.UUID),
+		validation.Field(&c.MessageContent, validation.Required),
 	)
 }
 
-func ValidateGetAllMessagesFromChatRequest(g *pb.GetAllMessagesFromChatRequest) error {
-	return validation.ValidateStruct(g,
-		validation.Field(&g.ChatId, validation.Required, is.UUID),
+func ValidateGetAllMessagesFromChatRequest(c *pb.GetAllMessagesFromChatRequest) error {
+	return validation.ValidateStruct(c,
+		validation.Field(&c.ChatId, validation.Required, is.UUID),
 	)
 }
 
-func ValidateGetAllChatsFromUserRequest(g *pb.GetAllChatsFromUserRequest) error {
-	return validation.ValidateStruct(g,
-		validation.Field(&g.UserId, validation.Required, is.UUID),
+func ValidateGetAllChatsFromUserRequest(c *pb.GetAllChatsFromUserRequest) error {
+	return validation.ValidateStruct(c,
+		validation.Field(&c.UserId, validation.Required, is.UUID),
 	)
 }
 
-func ValidateGetChatFromUsersRequest(g *pb.GetChatFromUsersRequest) error {
-	return validation.ValidateStruct(g,
-		validation.Field(&g.UserIds, validation.Required, validation.Length(2, 2), validation.By(validateUserIds)),
+func ValidateGetChatFromUsersRequest(c *pb.GetChatFromUsersRequest) error {
+	return validation.ValidateStruct(c,
+		validation.Field(&c.UserIds, validation.Required, validation.Length(2, 2), validation.By(validateUserIds)),
 	)
 }
 
-func ValidateGetChatByIdRequest(g *pb.GetChatByIdRequest) error {
-	return validation.ValidateStruct(g,
-		validation.Field(&g.ChatId, validation.Required, is.UUID),
+func ValidateGetChatByIdRequest(c *pb.GetChatByIdRequest) error {
+	return validation.ValidateStruct(c,
+		validation.Field(&c.ChatId, validation.Required, is.UUID),
 	)
 }
 

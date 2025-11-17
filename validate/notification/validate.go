@@ -43,7 +43,7 @@ var validTypes []string = []string{
 }
 
 func ValidateSendNotificationRequest(n *pb.SendNotificationRequest) error {
-	return validation.ValidateStruct(
+	return validation.ValidateStruct(n,
 		validation.Field(&n.ReceiverId, validation.Required, is.UUID),
 		validation.Field(&n.SenderId, validation.Required, is.UUID),
 		validation.Field(&n.Title, validation.Required),
@@ -53,25 +53,25 @@ func ValidateSendNotificationRequest(n *pb.SendNotificationRequest) error {
 }
 
 func ValidateGetNotificationRequest(n *pb.GetNotificationRequest) error {
-	return validation.ValidateStruct(
+	return validation.ValidateStruct(n,
 		validation.Field(&n.NotificationId, validation.Required, is.UUID),
 	)
 }
 
 func ValidateGetAllNotificationsFromUserRequest(n *pb.GetAllNotificationsFromUserRequest) error {
-	return validation.ValidateStruct(
+	return validation.ValidateStruct(n,
 		validation.Field(&n.UserId, validation.Required, is.UUID),
 	)
 }
 
 func ValidateDeleteNotificationRequest(n *pb.DeleteNotificationRequest) error {
-	return validation.ValidateStruct(
+	return validation.ValidateStruct(n,
 		validation.Field(&n.NotificationId, validation.Required, is.UUID),
 	)
 }
 
 func ValidateDeleteAllNotificationsFromUserRequest(n *pb.DeleteAllNotificationsFromUserRequest) error {
-	return validation.ValidateStruct(
+	return validation.ValidateStruct(n,
 		validation.Field(&n.UserId, validation.Required, is.UUID),
 	)
 }
