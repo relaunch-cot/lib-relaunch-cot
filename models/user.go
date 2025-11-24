@@ -1,12 +1,13 @@
 package models
 
 type User struct {
-	UserId   string
-	Name     string
-	Email    string
-	Password string
-	Settings UserSettings
-	Type     string
+	UserId       string
+	Name         string
+	Email        string
+	Password     string
+	Settings     UserSettings
+	Type         string
+	UrlImageUser string
 }
 
 type UserSettings struct {

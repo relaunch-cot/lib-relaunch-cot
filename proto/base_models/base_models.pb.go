@@ -28,6 +28,8 @@ type User struct {
 	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	Settings      *UserSettings          `protobuf:"bytes,4,opt,name=settings,proto3" json:"settings,omitempty"`
 	Password      string                 `protobuf:"bytes,5,opt,name=Password,proto3" json:"Password,omitempty"`
+	Type          string                 `protobuf:"bytes,6,opt,name=Type,proto3" json:"Type,omitempty"`
+	UrlImageUser  string                 `protobuf:"bytes,7,opt,name=UrlImageUser,proto3" json:"UrlImageUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -93,6 +95,20 @@ func (x *User) GetSettings() *UserSettings {
 func (x *User) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+func (x *User) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *User) GetUrlImageUser() string {
+	if x != nil {
+		return x.UrlImageUser
 	}
 	return ""
 }
@@ -981,13 +997,15 @@ var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
-	"\x1dbase_models/base_models.proto\x12\vbase_models\"\x9b\x01\n" +
+	"\x1dbase_models/base_models.proto\x12\vbase_models\"\xd3\x01\n" +
 	"\x04User\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x125\n" +
 	"\bsettings\x18\x04 \x01(\v2\x19.base_models.UserSettingsR\bsettings\x12\x1a\n" +
-	"\bPassword\x18\x05 \x01(\tR\bPassword\"\x8e\x01\n" +
+	"\bPassword\x18\x05 \x01(\tR\bPassword\x12\x12\n" +
+	"\x04Type\x18\x06 \x01(\tR\x04Type\x12\"\n" +
+	"\fUrlImageUser\x18\a \x01(\tR\fUrlImageUser\"\x8e\x01\n" +
 	"\fUserSettings\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x10\n" +
 	"\x03cpf\x18\x02 \x01(\tR\x03cpf\x12 \n" +

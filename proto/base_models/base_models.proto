@@ -10,6 +10,8 @@ message User {
   string email = 3;
   UserSettings settings = 4;
   string Password = 5;
+  string Type = 6;
+  string UrlImageUser = 7;
 }
 
 message UserSettings {
