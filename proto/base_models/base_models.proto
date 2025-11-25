@@ -36,6 +36,7 @@ message Chat {
   User user2 = 3;
   string createdAt = 4;
   string createdBy = 5;
+  string otherUserProfileImageUrl = 6;
 }
 
 message Project {
@@ -78,6 +79,7 @@ message Post {
   string urlImagePost = 7;
   string createdAt = 8;
   string updatedAt = 9;
+  string userUrlImage = 10;
 }
 
 message PostLikes {
@@ -107,4 +109,5 @@ message Comment {
   PostLikes likes = 7;
   string createdAt = 8;
   string updatedAt = 9;
+  string userUrlImage = 10;
 }

@@ -10,6 +10,7 @@ type Post struct {
 	UrlImagePost string
 	CreatedAt    string
 	UpdatedAt    string
+	UserUrlImage string
 }
 
 type PostLikes struct {
@@ -30,13 +31,14 @@ type PostComments struct {
 }
 
 type Comment struct {
-	CommentId string
-	UserId    string
-	UserName  string
-	Content   string
-	Type      string
-	Replies   PostComments
-	Likes     PostLikes
-	CreatedAt string
-	UpdatedAt string
+	CommentId    string
+	UserId       string
+	UserName     string
+	Content      string
+	Type         string
+	Replies      PostComments
+	Likes        PostLikes
+	CreatedAt    string
+	UpdatedAt    string
+	UserUrlImage string
 }

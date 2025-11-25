@@ -266,14 +266,15 @@ func (x *Message) GetCreatedAt() string {
 }
 
 type Chat struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        string                 `protobuf:"bytes,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
-	User1         *User                  `protobuf:"bytes,2,opt,name=user1,proto3" json:"user1,omitempty"`
-	User2         *User                  `protobuf:"bytes,3,opt,name=user2,proto3" json:"user2,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	CreatedBy     string                 `protobuf:"bytes,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	ChatId                   string                 `protobuf:"bytes,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	User1                    *User                  `protobuf:"bytes,2,opt,name=user1,proto3" json:"user1,omitempty"`
+	User2                    *User                  `protobuf:"bytes,3,opt,name=user2,proto3" json:"user2,omitempty"`
+	CreatedAt                string                 `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	CreatedBy                string                 `protobuf:"bytes,5,opt,name=createdBy,proto3" json:"createdBy,omitempty"`
+	OtherUserProfileImageUrl string                 `protobuf:"bytes,6,opt,name=otherUserProfileImageUrl,proto3" json:"otherUserProfileImageUrl,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
 }
 
 func (x *Chat) Reset() {
@@ -337,6 +338,13 @@ func (x *Chat) GetCreatedAt() string {
 func (x *Chat) GetCreatedBy() string {
 	if x != nil {
 		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Chat) GetOtherUserProfileImageUrl() string {
+	if x != nil {
+		return x.OtherUserProfileImageUrl
 	}
 	return ""
 }
@@ -616,6 +624,7 @@ type Post struct {
 	UrlImagePost  string                 `protobuf:"bytes,7,opt,name=urlImagePost,proto3" json:"urlImagePost,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	UserUrlImage  string                 `protobuf:"bytes,10,opt,name=userUrlImage,proto3" json:"userUrlImage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -709,6 +718,13 @@ func (x *Post) GetCreatedAt() string {
 func (x *Post) GetUpdatedAt() string {
 	if x != nil {
 		return x.UpdatedAt
+	}
+	return ""
+}
+
+func (x *Post) GetUserUrlImage() string {
+	if x != nil {
+		return x.UserUrlImage
 	}
 	return ""
 }
@@ -896,6 +912,7 @@ type Comment struct {
 	Likes         *PostLikes             `protobuf:"bytes,7,opt,name=likes,proto3" json:"likes,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,8,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	UserUrlImage  string                 `protobuf:"bytes,10,opt,name=userUrlImage,proto3" json:"userUrlImage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -993,6 +1010,13 @@ func (x *Comment) GetUpdatedAt() string {
 	return ""
 }
 
+func (x *Comment) GetUserUrlImage() string {
+	if x != nil {
+		return x.UserUrlImage
+	}
+	return ""
+}
+
 var File_base_models_base_models_proto protoreflect.FileDescriptor
 
 const file_base_models_base_models_proto_rawDesc = "" +
@@ -1017,13 +1041,14 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x06chatId\x18\x02 \x01(\tR\x06chatId\x12\x1a\n" +
 	"\bsenderId\x18\x03 \x01(\tR\bsenderId\x12&\n" +
 	"\x0emessageContent\x18\x04 \x01(\tR\x0emessageContent\x12\x1c\n" +
-	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\xac\x01\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"\xe8\x01\n" +
 	"\x04Chat\x12\x16\n" +
 	"\x06chatId\x18\x01 \x01(\tR\x06chatId\x12'\n" +
 	"\x05user1\x18\x02 \x01(\v2\x11.base_models.UserR\x05user1\x12'\n" +
 	"\x05user2\x18\x03 \x01(\v2\x11.base_models.UserR\x05user2\x12\x1c\n" +
 	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\"\x95\x04\n" +
+	"\tcreatedBy\x18\x05 \x01(\tR\tcreatedBy\x12:\n" +
+	"\x18otherUserProfileImageUrl\x18\x06 \x01(\tR\x18otherUserProfileImageUrl\"\x95\x04\n" +
 	"\aProject\x12\x1c\n" +
 	"\tprojectId\x18\x01 \x01(\tR\tprojectId\x12\x1a\n" +
 	"\bclientId\x18\x02 \x01(\tR\bclientId\x12\"\n" +
@@ -1056,7 +1081,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\n" +
 	"senderName\x18\a \x01(\tR\n" +
 	"senderName\x12\x1c\n" +
-	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xfe\x01\n" +
+	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\"\xa2\x02\n" +
 	"\x04Post\x12\x16\n" +
 	"\x06postId\x18\x01 \x01(\tR\x06postId\x12\x1a\n" +
 	"\bauthorId\x18\x02 \x01(\tR\bauthorId\x12\x1e\n" +
@@ -1068,7 +1093,9 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\x04type\x18\x06 \x01(\tR\x04type\x12\"\n" +
 	"\furlImagePost\x18\a \x01(\tR\furlImagePost\x12\x1c\n" +
 	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\t \x01(\tR\tupdatedAt\"T\n" +
+	"\tupdatedAt\x18\t \x01(\tR\tupdatedAt\x12\"\n" +
+	"\fuserUrlImage\x18\n" +
+	" \x01(\tR\fuserUrlImage\"T\n" +
 	"\tPostLikes\x12\x1e\n" +
 	"\n" +
 	"likesCount\x18\x01 \x01(\x03R\n" +
@@ -1081,7 +1108,7 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\alikedAt\x18\x04 \x01(\tR\alikedAt\"f\n" +
 	"\fPostComments\x12$\n" +
 	"\rcommentsCount\x18\x01 \x01(\x03R\rcommentsCount\x120\n" +
-	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xa8\x02\n" +
+	"\bcomments\x18\x02 \x03(\v2\x14.base_models.CommentR\bcomments\"\xcc\x02\n" +
 	"\aComment\x12\x1c\n" +
 	"\tcommentId\x18\x01 \x01(\tR\tcommentId\x12\x16\n" +
 	"\x06userId\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
@@ -1091,7 +1118,9 @@ const file_base_models_base_models_proto_rawDesc = "" +
 	"\areplies\x18\x06 \x01(\v2\x19.base_models.PostCommentsR\areplies\x12,\n" +
 	"\x05likes\x18\a \x01(\v2\x16.base_models.PostLikesR\x05likes\x12\x1c\n" +
 	"\tcreatedAt\x18\b \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\t \x01(\tR\tupdatedAtB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
+	"\tupdatedAt\x18\t \x01(\tR\tupdatedAt\x12\"\n" +
+	"\fuserUrlImage\x18\n" +
+	" \x01(\tR\fuserUrlImageB<Z:github.com/relaunch-cot/lib-relaunch-cot/proto/base_modelsb\x06proto3"
 
 var (
 	file_base_models_base_models_proto_rawDescOnce sync.Once

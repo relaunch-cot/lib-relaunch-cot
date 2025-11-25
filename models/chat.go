@@ -5,11 +5,12 @@ import (
 )
 
 type Chat struct {
-	ChatId    string
-	User1     User
-	User2     User
-	CreatedAt time.Time
-	CreatedBy string
+	ChatId                   string
+	User1                    User
+	User2                    User
+	CreatedAt                time.Time
+	CreatedBy                string
+	OtherUserProfileImageUrl string
 }
 
 type Message struct {
