@@ -43,6 +43,7 @@ message GetAllChatsFromUserResponse {
 //////////////////////////////// GET CHAT FROM USERS REQUEST
 message GetChatFromUsersRequest {
   repeated string userIds = 1;
+  string userId = 2;
 }
 
 //////////////////////////////// GET CHAT FROM USERS RESPONSE
@@ -53,6 +54,7 @@ message GetChatFromUsersResponse {
 //////////////////////////////// GET CHAT BY ID REQUEST
 message GetChatByIdRequest {
   string chatId = 1;
+  string userId = 2;
 }
 
 //////////////////////////////// GET CHAT BY ID RESPONSE

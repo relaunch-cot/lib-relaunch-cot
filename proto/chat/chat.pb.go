@@ -321,6 +321,7 @@ func (x *GetAllChatsFromUserResponse) GetChats() []*base_models.Chat {
 type GetChatFromUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserIds       []string               `protobuf:"bytes,1,rep,name=userIds,proto3" json:"userIds,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -360,6 +361,13 @@ func (x *GetChatFromUsersRequest) GetUserIds() []string {
 		return x.UserIds
 	}
 	return nil
+}
+
+func (x *GetChatFromUsersRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
 }
 
 // ////////////////////////////// GET CHAT FROM USERS RESPONSE
@@ -411,6 +419,7 @@ func (x *GetChatFromUsersResponse) GetChat() *base_models.Chat {
 type GetChatByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ChatId        string                 `protobuf:"bytes,1,opt,name=chatId,proto3" json:"chatId,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -448,6 +457,13 @@ func (*GetChatByIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetChatByIdRequest) GetChatId() string {
 	if x != nil {
 		return x.ChatId
+	}
+	return ""
+}
+
+func (x *GetChatByIdRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
 	}
 	return ""
 }
@@ -516,13 +532,15 @@ const file_chat_chat_proto_rawDesc = "" +
 	"\x1aGetAllChatsFromUserRequest\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\"F\n" +
 	"\x1bGetAllChatsFromUserResponse\x12'\n" +
-	"\x05chats\x18\x01 \x03(\v2\x11.base_models.ChatR\x05chats\"3\n" +
+	"\x05chats\x18\x01 \x03(\v2\x11.base_models.ChatR\x05chats\"K\n" +
 	"\x17GetChatFromUsersRequest\x12\x18\n" +
-	"\auserIds\x18\x01 \x03(\tR\auserIds\"A\n" +
+	"\auserIds\x18\x01 \x03(\tR\auserIds\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"A\n" +
 	"\x18GetChatFromUsersResponse\x12%\n" +
-	"\x04chat\x18\x01 \x01(\v2\x11.base_models.ChatR\x04chat\",\n" +
+	"\x04chat\x18\x01 \x01(\v2\x11.base_models.ChatR\x04chat\"D\n" +
 	"\x12GetChatByIdRequest\x12\x16\n" +
-	"\x06chatId\x18\x01 \x01(\tR\x06chatId\"<\n" +
+	"\x06chatId\x18\x01 \x01(\tR\x06chatId\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\tR\x06userId\"<\n" +
 	"\x13GetChatByIdResponse\x12%\n" +
 	"\x04chat\x18\x01 \x01(\v2\x11.base_models.ChatR\x04chat2\xeb\x03\n" +
 	"\vChatService\x12C\n" +
