@@ -35,12 +35,14 @@ func ValidateGetAllChatsFromUserRequest(c *pb.GetAllChatsFromUserRequest) error 
 func ValidateGetChatFromUsersRequest(c *pb.GetChatFromUsersRequest) error {
 	return validation.ValidateStruct(c,
 		validation.Field(&c.UserIds, validation.Required, validation.Length(2, 2), validation.By(validateUserIds)),
+		validation.Field(&c.UserId, validation.Required, is.UUID),
 	)
 }
 
 func ValidateGetChatByIdRequest(c *pb.GetChatByIdRequest) error {
 	return validation.ValidateStruct(c,
 		validation.Field(&c.ChatId, validation.Required, is.UUID),
+		validation.Field(&c.UserId, validation.Required, is.UUID),
 	)
 }
 
