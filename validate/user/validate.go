@@ -79,3 +79,9 @@ func ValidateSendPasswordRecoveryEmailRequest(u *pb.SendPasswordRecoveryEmailReq
 		validation.Field(&u.RecoveryLink, validation.Required),
 	)
 }
+
+func ValidateGetUserByNameRequest(u *pb.GetUserByNameRequest) error {
+	return validation.ValidateStruct(u,
+		validation.Field(&u.Name, validation.Required),
+	)
+}
