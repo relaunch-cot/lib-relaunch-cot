@@ -78,6 +78,7 @@ message GetUserByNameRequest {
 message GetUserResponse{
   string userId = 1;
   string name = 2;
+  string urlImageUser = 3;
 }
 
 message GetUserByNameResponse {

@@ -640,6 +640,7 @@ type GetUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,proto3" json:"userId,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	UrlImageUser  string                 `protobuf:"bytes,3,opt,name=urlImageUser,proto3" json:"urlImageUser,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -684,6 +685,13 @@ func (x *GetUserResponse) GetUserId() string {
 func (x *GetUserResponse) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+func (x *GetUserResponse) GetUrlImageUser() string {
+	if x != nil {
+		return x.UrlImageUser
 	}
 	return ""
 }
@@ -769,10 +777,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\x16GetUserProfileResponse\x12%\n" +
 	"\x04user\x18\x01 \x01(\v2\x11.base_models.UserR\x04user\"*\n" +
 	"\x14GetUserByNameRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"=\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"a\n" +
 	"\x0fGetUserResponse\x12\x16\n" +
 	"\x06userId\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"D\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\"\n" +
+	"\furlImageUser\x18\x03 \x01(\tR\furlImageUser\"D\n" +
 	"\x15GetUserByNameResponse\x12+\n" +
 	"\x05users\x18\x01 \x03(\v2\x15.user.GetUserResponseR\x05users2\xa0\x05\n" +
 	"\vUserService\x12=\n" +
