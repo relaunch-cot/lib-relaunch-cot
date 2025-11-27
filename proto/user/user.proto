@@ -69,6 +69,21 @@ message GetUserProfileResponse {
   base_models.User user = 1;
 }
 
+//////////////////////////////// GET USER BY NAME
+message GetUserByNameRequest {
+  string name = 1;
+}
+
+//////////////////////////////// GET USER BY NAME RESPONSE
+message GetUserResponse{
+  string userId = 1;
+  string name = 2;
+}
+
+message GetUserByNameResponse {
+  repeated GetUserResponse users = 1;
+}
+
 service UserService {
   rpc CreateUser(CreateUserRequest) returns(google.protobuf.Empty);
   rpc LoginUser(LoginUserRequest) returns(LoginUserResponse);
@@ -78,4 +93,5 @@ service UserService {
   rpc GenerateReportFromJSON(GenerateReportRequest) returns(GenerateReportResponse);
   rpc SendPasswordRecoveryEmail(SendPasswordRecoveryEmailRequest) returns(google.protobuf.Empty);
   rpc GetUserProfile(GetUserProfileRequest) returns(GetUserProfileResponse);
+  rpc GetUserByName(GetUserByNameRequest) returns(GetUserByNameResponse);
 }
