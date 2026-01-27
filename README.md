@@ -1,50 +1,53 @@
-# Nome do Projeto: ReLaunch
+# ReLaunch Core Library
 
-## Integrantes:
-- Matheus Oliveira Mangualde - 22301194
-- Henrique de Freitas Issa - 22300732
-- João Pedro Bastos Neves - 22301330
-- Eduardo Mapa Avelar Damasceno - 22301674
-- Eike Levy Albano Neves - 22402772
-- Vinícius Theodoro Giovani - 22300821
+## Sobre o Projeto
 
-**Turma 3B2**
+Biblioteca compartilhada desenvolvida em Go para centralizar e reutilizar código comum entre múltiplos microserviços. O objetivo principal é promover consistência, reduzir duplicação de código e facilitar a manutenção em arquiteturas distribuídas.
 
-## Info:
-Biblioteca utilizada para manter códigos reútilizaveis, a fim de que possam ser utilizados em mais de um microserviço
-### Não precisa estar rodando mas deve estar sempre atualizada nos microserviços que a utilizem
+## Principais Recursos
 
-## Funcionalidades implementadas
-- [x]  Permitir login do usuário
-- [x]  Permitir cadastro do usuário
-- [x]  Usuário redefinir  a senha
-- [x]  Permitir deletar usuário
-- [x]  O usuário deve poder personalizar as configurações do perfil
-- [x]  Buscar informações de perfil do usuario
-- [x]  Deve ser possível exportar relatórios em PDF.
-- [x]  Enviar Email de recuperação de senha
-- [x]  Usuário deletar sua conta
-- [x]  Usuário fazer logout da plataforma
-- [x]  Criar um novo chat entre usuarios
-- [x]  Enviar mensagens no chat entre usuários
-- [x]  Buscar todas as mensagens de um chat específico
-- [x]  Buscar todos os chats de um usuário
-- [x]  Criar um novo projeto (usuários que sejam clientes)
-- [x]  Buscar um projeto específico
-- [x]  Buscar todos os projetos de um usuário
-- [x]  Adicionar freelancer a um projeto
-- [x]  Remover freelancer de um projeto
-- [x]  Listar todos os projetos que estejam sem um freelancer desenvolvendo o mesmo, ou seja, disponíveis para desenvolvimento
-- [x]  Enviar norificações para o usuário (seja de uma mensagem nova, seja de solicitação para participar de um projeto...)
-- [x]  Buscar informações de uma notificação específica
-- [x]  Buscar todas as notificações de um usuário
+### Funcionalidades de Autenticação e Usuários
+- Gerenciamento completo de usuários (cadastro, login, logout)
+- Redefinição e recuperação de senha via email
+- Personalização de perfil e configurações
+- Exclusão de conta
 
-## Padrões requisitados
-- padrão singleton aplicado
-### Padrões GoF aplicados além do singleton:
-- Adapter
-- Facade
-- Strategy
-- Factory
-- Iterator
-### além disso o projeto também aplica padrões de arquitetura (Repository, Dependency Injection) que não são parte dos GoF clássicos, mas complementam a estrutura.
+### Sistema de Comunicação
+- Gerenciamento de chats entre usuários
+- Envio e recuperação de mensagens
+- Sistema de notificações em tempo real
+
+### Gestão de Projetos
+- Criação e busca de projetos
+- Vinculação de freelancers a projetos
+- Listagem de projetos disponíveis
+
+### Recursos Adicionais
+- Exportação de relatórios em PDF
+- Sistema de notificações para eventos da plataforma
+
+## Arquitetura e Padrões de Projeto
+
+A biblioteca implementa diversos padrões de design para garantir qualidade e manutenibilidade:
+
+**Padrões GoF:**
+- **Singleton** - Instâncias únicas de recursos compartilhados
+- **Adapter** - Integração com diferentes interfaces externas
+- **Facade** - Simplificação de operações complexas
+- **Strategy** - Algoritmos intercambiáveis
+- **Factory** - Criação de objetos padronizada
+- **Iterator** - Navegação em coleções
+
+**Padrões Arquiteturais:**
+- **Repository** - Abstração da camada de dados
+- **Dependency Injection** - Desacoplamento e testabilidade
+
+## Tecnologias
+
+- **Go** - Linguagem de programação
+- **Protocol Buffers** - Serialização de dados
+- Arquitetura preparada para microserviços
+
+## Objetivo
+
+Manter uma base de código consistente e testada que possa ser facilmente integrada em diferentes serviços, acelerando o desenvolvimento e garantindo padrões de qualidade em toda a plataforma.
